@@ -18,6 +18,8 @@ export class LoginComponent implements OnInit {
     console.log(this.password);
     if(this.userName =='eivr' && this.password =='123'){
       this.router.navigate(['home']);
+      console.log('123');
+      
     }
   }
 }
