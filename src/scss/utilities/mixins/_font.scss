@@ -1,0 +1,45 @@
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return $remSize * 1rem;
+}
+
+@mixin persona-font-size($size, $lh:$size) {
+  font-size: $size;
+  font-size: calculateRem($size);
+  line-height: $lh;
+}
+
+
+@mixin typo($family, $weight, $size, $lh: $size, $text-color:$white) {
+  font-family: $family;
+  font-weight: $weight;
+  color: $text-color;
+  @include persona-font-size($size, $lh);
+}
+
+
+$rem-base-font: 16px !default;
+
+@mixin perso-font-size($font-size, $lh: 0) {
+  font-size: $font-size;
+  font-size: ($font-size / $rem-base-font) * 1rem;
+
+  @if ($lh > 0) {
+    line-height: $lh;
+    line-height: ($lh / $rem-base-font) * 1rem;
+  }
+}
+
+
+@mixin ecs-typo($family, $weight, $size, $lh: $size, $text-color:$white) {
+  font-family: $family;
+  font-weight: $weight;
+  color: $text-color;
+  @include perso-font-size($size, $lh);
+}
+
+
+
+// p {
+//   @include font-size(14px)
+// }

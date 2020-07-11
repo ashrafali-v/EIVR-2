@@ -1,0 +1,30 @@
+@mixin border-cta($stroke-color: '', $bg-color: $color) {
+    padding: $default-padding;
+    margin-top: $default-margin;
+    @include border-radius($default-unit*6);
+    border: $stroke-color $default-unit solid;
+    background-color: $bg-color;
+    @include typo($primary-font-regular, bold, 15px, 1.7, $stroke-color);
+    display: inline-block;
+    vertical-align: middle;
+    &:hover {
+        background-color: darken($bg-color, 10%);
+        border-color: rgba($stroke-color, 0.6);
+        text-decoration: none;
+    }
+}
+
+@mixin fill-cta($bg-color: $color, $text-color: '') {
+    padding: $default-padding/2 $default-padding*1.5;
+    margin-top: $default-margin;
+    border: none;
+    @include border-radius($default-unit*6);
+    background-color: $bg-color;
+    @include typo($primary-font-regular, bold, 15px, 1.7, $text-color);
+    display: inline-block;
+    vertical-align: middle;
+    &:hover {
+        background-color: darken($bg-color, 10%);
+        text-decoration: none;
+    }
+}
