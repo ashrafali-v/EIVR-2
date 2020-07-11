@@ -1,0 +1,29 @@
+<div>
+    <table class="table responsive-table table-striped table-header-fixed">
+        <thead>
+          <tr>
+            <th scope="col">
+              Message key
+            </th>
+            <th scope="col">
+             Message value
+            </th>
+            <th scope="col">Actions
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr  *ngFor="let message of messages">
+            <td data-label="Message key">
+                {{message.messageKey}}
+            </td>
+            <td data-label="Message value">
+                {{message.messageText}}
+            </td>
+            <td data-label="Actions">
+                <button type="button" (click)="editMessage(message.messageKey)">Edit</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+</div>
