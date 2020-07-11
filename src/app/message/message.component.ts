@@ -9,10 +9,14 @@ import {UpdateMessageComponent} from '../modals/update-message/update-message.co
 })
 export class MessageComponent implements OnInit {
   messages:any;
+  getAllMessagesLoader:boolean = true;
+  currentPage: any = 1;
+  pageSize: any = 5;
   constructor(private sharedService: CommonAppService,private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.sharedService.getAllMessages().subscribe(data=>{
+      this.getAllMessagesLoader = false;
       this.messages = data;
     });
   }
@@ -20,12 +24,16 @@ export class MessageComponent implements OnInit {
     console.log(key);
     this.sharedService.getMessage(key).subscribe(data=>{
       console.log(data);
-      const editPointPlanModalRef = this.modalService.open(UpdateMessageComponent, {
+      const updateMessageModalRef = this.modalService.open(UpdateMessageComponent, {
         ariaLabelledBy: "modal-basic-title",
         size: "lg",
         scrollable: true,
         backdrop: 'static'
       });
+      updateMessageModalRef.componentInstance.modalTitle = "Edit message";
+      updateMessageModalRef.componentInstance.modalDescription = "Edit message description";
+      updateMessageModalRef.componentInstance.messageKey = data[0].messageKey;
+      updateMessageModalRef.componentInstance.messageValue = data[0].messageText;
     });
   }
 }

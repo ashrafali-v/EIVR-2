@@ -1,4 +1,7 @@
-<div>
+<div *ngIf="getAllMessagesLoader">
+    loading...
+</div>
+<div *ngIf="!getAllMessagesLoader">
     <table class="table responsive-table table-striped table-header-fixed">
         <thead>
           <tr>
@@ -13,7 +16,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr  *ngFor="let message of messages">
+          <tr  *ngFor="let message of messages | slice : (currentPage-1) * pageSize : (currentPage-1) * pageSize + pageSize; let i = index">
             <td data-label="Message key">
                 {{message.messageKey}}
             </td>
@@ -26,4 +29,7 @@
           </tr>
         </tbody>
       </table>
+      <ngb-pagination size="sm"
+        [(page)]="currentPage" [pageSize]="pageSize" [collectionSize]="messages.length" [maxSize]="5">
+      </ngb-pagination>
 </div>
