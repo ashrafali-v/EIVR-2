@@ -16,7 +16,7 @@ export class MessageComponent implements OnInit,OnDestroy {
   messages:any;
   getAllMessagesLoader:boolean = true;
   currentPage: any = 1;
-  pageSize: any = 10;
+  pageSize: number = 10;
   private observableSubscriptions = new SubSink();
   constructor(private sharedService: CommonAppService,private modalService: NgbModal,public toastr: ToastrService) { }
 
@@ -29,9 +29,9 @@ export class MessageComponent implements OnInit,OnDestroy {
   ngOnDestroy() {
     this.observableSubscriptions.unsubscribe();
   }
-  editMessage(key:any){
-    console.log(key);
-    this.observableSubscriptions.add(this.sharedService.getMessage(key).subscribe(data=>{
+  editMessage(message:any,currentPage:number,index:number){
+    console.log(message);
+    this.observableSubscriptions.add(this.sharedService.getMessage(message.messageKey).subscribe(data=>{
       const updateMessageModalRef = this.modalService.open(UpdateMessageComponent, {
         ariaLabelledBy: "modal-basic-title",
         size: "lg",
@@ -44,9 +44,9 @@ export class MessageComponent implements OnInit,OnDestroy {
       updateMessageModalRef.componentInstance.messageValue = data[0].messageText;
       updateMessageModalRef.componentInstance.emitService.subscribe((result) => {
         if (result) {
-          console.log(result);
+          message.messageText = result;
           updateMessageModalRef.close();
-          this.sharedService.saveMessage(key,result).subscribe(data=>{
+          this.sharedService.saveMessage(message).subscribe(data=>{
             console.log(data);
             this.toastr.success("Message updated successfully","Success");
           },err=>{
