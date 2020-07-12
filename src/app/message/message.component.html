@@ -24,7 +24,9 @@
                 {{message.messageText}}
             </td>
             <td data-label="Actions">
-                <button type="button" (click)="editMessage(message.messageKey)">Edit</button>
+              <button type="button" (click)="messageInfo(message)">Info</button>
+              <button type="button" (click)="editMessage(message.messageKey)">Edit</button>
+                <button type="button" (click)="deleteMessage(message.messageKey)">Delete</button>
             </td>
           </tr>
         </tbody>
