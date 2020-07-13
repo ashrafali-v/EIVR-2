@@ -10,7 +10,8 @@ body {
     padding: $null;
     overflow-x: hidden;
     // display: table;
-    // width: $full;
+    height: $full;
+    background-color: $nutral-light-color;
 }
 
 * {

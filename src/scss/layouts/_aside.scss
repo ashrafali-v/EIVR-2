@@ -1,0 +1,4 @@
+h2 {
+    @include ecs-typo($primary-font-regular, 700, 25px, 37px, $white);
+    padding: $default-padding*1.4 $default-padding*2;
+}

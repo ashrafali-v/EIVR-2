@@ -1,1 +1,24 @@
-.navigation {}
+.nav {
+    @include flexbox();
+    @include flex(1 0 auto);
+    @include flex-direction(column);
+    li {
+        display: block;
+        border-bottom: thin solid $primary-dark-color;
+        a {
+            padding: $default-padding*2;
+            background-color: $white;
+            display: block;
+            &:hover {
+                text-decoration: none;
+            }
+            img {
+                margin-right: $default-margin;
+            }
+            span {
+                @include ecs-typo($primary-font-regular, 400, 15px, 37px, $nutral-dark-color);
+                vertical-align: middle;
+            }
+        }
+    }
+}

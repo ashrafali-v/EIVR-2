@@ -1,0 +1,21 @@
+table {
+    width: $full;
+    thead {
+        tr {
+            background-color: $nutral-light-color;
+            th {
+                @include ecs-typo($primary-font-regular, 600, 13px, 17px, $nutral-dark-color);
+                padding: $default-padding*2;
+            }
+        }
+    }
+    tbody {
+        tr {
+            td {
+                @include ecs-typo($primary-font-regular, 400, 13px, 17px, $nutral-dark-color);
+                padding: $default-padding $default-padding*2;
+                border-bottom: thin solid $nutral-light-color;
+            }
+        }
+    }
+}
