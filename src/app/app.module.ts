@@ -7,6 +7,12 @@ import { UpdateMessageComponent } from './modals/update-message/update-message.c
 import { HeaderComponent } from './header/header.component';
 import { AsideComponent } from './aside/aside.component';
 import { FooterComponent } from './footer/footer.component';
+import { FormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ViewMessageComponent } from './modals/view-message/view-message.component';
+import { DeleteMessageComponent } from './modals/delete-message/delete-message.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,11 +20,17 @@ import { FooterComponent } from './footer/footer.component';
     HeaderComponent,
     AsideComponent,
     FooterComponent,
+    ViewMessageComponent,
+    DeleteMessageComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      closeButton: true}),
   ],
   providers: [],
   bootstrap: [AppComponent]

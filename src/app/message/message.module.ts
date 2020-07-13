@@ -4,6 +4,8 @@ import { MessageComponent } from './message.component';
 import { MessageRoutingModule } from './message-routing.module';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrModule } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 
 @NgModule({
   declarations: [MessageComponent],
@@ -11,7 +13,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CommonModule,
     MessageRoutingModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    ToastrModule
+  ],providers:[
+    ToastrService
   ]
 })
 export class MessageModule { }

@@ -5,10 +5,9 @@
     </button>
   </div>
   <div class="modal-body">
-    <p>{{messageKey}}</p>
-    <textarea name="messagevalue" [(ngModel)]="messageValue" id="msg-value" cols="30" rows="10">{{messageValue}}</textarea>
+    <p>Do you wish to delete <b>{{messageKey}}</b>?</p>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="saveMessage(messageValue)">Save</button>
+    <button type="button" class="btn btn-outline-dark" (click)="deleteMessage(messageKey)">Yes</button>
     <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Cancel</button>
   </div>

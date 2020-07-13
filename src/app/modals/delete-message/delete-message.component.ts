@@ -2,22 +2,20 @@ import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-update-message',
-  templateUrl: './update-message.component.html',
-  styleUrls: ['./update-message.component.scss']
+  selector: 'app-delete-message',
+  templateUrl: './delete-message.component.html',
+  styleUrls: ['./delete-message.component.scss']
 })
-export class UpdateMessageComponent implements OnInit {
+export class DeleteMessageComponent implements OnInit {
   @Input() modalTitle: string;
   @Input() modalDescription: string;
   @Input() messageKey: string;
-  @Input() messageValue: string;
   @Output() emitService = new EventEmitter();
   constructor(public activeModal: NgbActiveModal) { }
 
   ngOnInit(): void {
   }
-  saveMessage(msg:any) {
+  deleteMessage(msg:any) {
     this.emitService.next(msg);
   }
-
 }
