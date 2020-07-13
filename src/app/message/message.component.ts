@@ -29,7 +29,7 @@ export class MessageComponent implements OnInit,OnDestroy {
   ngOnDestroy() {
     this.observableSubscriptions.unsubscribe();
   }
-  editMessage(message:any,currentPage:number,index:number){
+  editMessage(message:any){
     console.log(message);
     this.observableSubscriptions.add(this.sharedService.getMessage(message.messageKey).subscribe(data=>{
       const updateMessageModalRef = this.modalService.open(UpdateMessageComponent, {
