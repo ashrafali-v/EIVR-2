@@ -1,0 +1,81 @@
+@mixin transition($transition-property, $transition-time, $method) {
+    -webkit-transition: $transition-property $transition-time $method;
+    -moz-transition: $transition-property $transition-time $method;
+    -ms-transition: $transition-property $transition-time $method;
+    -o-transition: $transition-property $transition-time $method;
+    transition: $transition-property $transition-time $method;
+}
+
+@mixin transform($transforms) {
+    -webkit-transform: $transforms;
+    -moz-transform: $transforms;
+    -ms-transform: $transforms;
+    transform: $transforms;
+}
+
+@mixin transformImp($transforms) {
+    -webkit-transform: $transforms !important;
+    -moz-transform: $transforms !important;
+    -ms-transform: $transforms !important;
+    transform: $transforms !important;
+}
+
+// Rotate
+@mixin rotate ($deg) {
+    @include transform(rotate(#{$deg}deg));
+}
+
+// Scale
+@mixin scale($scale) {
+    @include transform(scale($scale));
+}
+
+// ScaleX
+@mixin scaleX($scale) {
+    @include transform(scaleX($scale));
+}
+
+// ScaleY
+@mixin scaleY($scale) {
+    @include transform(scaleY($scale));
+}
+
+// Translate
+@mixin translate ($x, $y) {
+    @include transform(translate($x, $y));
+}
+
+@mixin translateImp ($x, $y) {
+    @include transformImp(translate($x, $y));
+}
+
+@mixin translateX ($x) {
+    @include transform(translate($x));
+}
+
+@mixin translateY ($y) {
+    @include transform(translate($y));
+}
+
+// Skew
+@mixin skew ($x, $y) {
+    @include transform(skew(#{$x}deg, #{$y}deg));
+}
+
+// Transform Origin
+@mixin transform-origin ($origin) {
+    -webkit-transform-origin: $origin;
+    -moz-transform-origin: $origin;
+    -ms-transform-origin: $origin;
+    transform-origin: $origin;
+}
+
+@mixin rotate($degrees) {
+    -webkit-transform: rotate($degrees);
+    -moz-transform: rotate($degrees);
+    -ms-transform: rotate($degrees);
+    -o-transform: rotate($degrees);
+    transform: rotate($degrees);
+    // -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=#{cos($degrees)}, M12=#{-1*sin($degrees)}, M21=#{sin($degrees)}, M22=#{cos($degrees)})";
+    // filter : progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=#{cos($degrees)}, M12=#{-1*sin($degrees)}, M21=#{sin($degrees)}, M22=#{cos($degrees)});
+}

@@ -1,0 +1,17 @@
+.none-display {
+    display: none;
+}
+
+.persona-relative {
+    position: relative;
+}
+
+.persona-container {
+    @include device(lg) {
+        width: calc(#{$full} - 80px);
+        max-width: 1680px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+}

@@ -1,0 +1,16 @@
+.bs-datepicker-body {
+    .months {
+        tr {
+            td {
+                span {
+                    @include ecs-typo($primary-font-regular, 600, 14px, 18px, $primary-dark-color);
+                }
+                &.disabled {
+                    span {
+                        @include ecs-typo($primary-font-regular, normal, 14px, 18px, rgba($primary-dark-color, .3));
+                    }
+                }
+            }
+        }
+    }
+}

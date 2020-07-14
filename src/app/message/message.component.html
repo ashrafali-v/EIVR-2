@@ -1,37 +1,38 @@
 <div *ngIf="getAllMessagesLoader">
     loading...
 </div>
-<div *ngIf="!getAllMessagesLoader">
-    <table class="table responsive-table table-striped table-header-fixed">
-        <thead>
-          <tr>
-            <th scope="col">
-              Message key
-            </th>
-            <th scope="col">
-             Message value
-            </th>
-            <th scope="col">Actions
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr  *ngFor="let message of messages | slice : (currentPage-1) * pageSize : (currentPage-1) * pageSize + pageSize; let i = index">
-            <td data-label="Message key">
-                {{message.messageKey}}
-            </td>
-            <td data-label="Message value">
-                {{message.messageText}}
-            </td>
-            <td data-label="Actions">
-              <button type="button" (click)="messageInfo(message)">Info</button>
-              <button type="button" (click)="editMessage(message)">Edit</button>
-                <button type="button" (click)="deleteMessage(message.messageKey)">Delete</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <ngb-pagination size="sm"
-        [(page)]="currentPage" [pageSize]="pageSize" [collectionSize]="messages.length" [maxSize]="5">
-      </ngb-pagination>
+<div class="app-message-content" *ngIf="!getAllMessagesLoader">
+    <h2>View Messages</h2>
+    <div class="box-panel">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        Message key
+                    </th>
+                    <th>
+                        Message value
+                    </th>
+                    <th>Actions
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let message of messages | slice : (currentPage-1) * pageSize : (currentPage-1) * pageSize + pageSize; let i = index">
+                    <td data-label="Message key">
+                        {{message.messageKey}}
+                    </td>
+                    <td data-label="Message value">
+                        {{message.messageText}}
+                    </td>
+                    <td data-label="Actions">
+                        <button type="button" (click)="messageInfo(message)">Info</button>
+                        <button type="button" (click)="editMessage(message)">Edit</button>
+                        <button type="button" (click)="deleteMessage(message.messageKey)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <ngb-pagination size="sm" [(page)]="currentPage" [pageSize]="pageSize" [collectionSize]="messages.length" [maxSize]="5"></ngb-pagination>
+    </div>
 </div>

@@ -1,0 +1,30 @@
+$primary-font-regular: 'Karla';
+$icon-font: 'FontAwesome';
+$georgia-font: 'Georgia';
+$null: 0;
+$default-unit: 2px;
+$default-padding: $default-unit*5;
+$default-margin: $default-unit*5;
+$full: 100%;
+$fullVh: 100vh;
+$default-font-size: 14px;
+$primary-color: #F9B047;
+$secondary-color: #F16F3F;
+$primary-dark-color: #020B7A;
+$nutral-color: #E5E5E5;
+$nutral-dark-color: #43425D;
+$nutral-light-color: #F5F7F9;
+$nutral-medium-color:#707070;
+$white: #fff;
+$dark:#000;
+$transition-bg: transparent;
+//Vars
+$assetPath: "../../images";
+//Functions
+@function get-path-to-assets($assetPath) {
+    @return $assetPath;
+}
+
+// $default-unit:calcUnitRem(2px);
+// $default-padding:$default-unit*5;
+// $default-margin:$default-unit*5;

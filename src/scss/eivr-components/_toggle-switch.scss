@@ -1,0 +1,59 @@
+.ecs-toggle-switch {
+    margin: $default-margin*2 auto;
+    padding-left: $default-padding*2;
+    @include flexbox();
+    @include flex(1 0 auto);
+    @include flex-direction(row);
+    @include justify-content(center);
+    @include align-items(center);
+    @include device(lg) {
+        margin-top: $null;
+        margin-bottom: $null;
+    }
+    .selector {
+        @include ecs-typo($primary-font-regular, 700, 16px, 37px, $primary-dark-color);
+        text-transform: uppercase;
+        margin: $null $default-margin;
+    }
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: $default-unit*20;
+        height: $default-unit*12.5;
+        // margin: $default-margin;
+        @include translateY($null);
+        input {
+            display: none;
+        }
+        .slider {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            @include border-radius($default-unit*15);
+            @include box-shadow(0, 0, 0, 2px, $primary-dark-color, false);
+            cursor: pointer;
+            border: 4px solid transparent;
+            overflow: hidden;
+            transition: .4s;
+            &:before {
+                position: absolute;
+                content: "";
+                width: 100%;
+                height: 100%;
+                background: $primary-dark-color;
+                @include border-radius($default-unit*15);
+                @include translateX(-$default-unit*7.5);
+                transition: .4s;
+            }
+        }
+        input:checked+.slider:before {
+            @include translateX($default-unit*7.5);
+            background: $primary-dark-color;
+        }
+        input:checked+.slider {
+            @include box-shadow(0, 0, 0, 2px, $primary-dark-color, false);
+        }
+    }
+}

@@ -1,0 +1,48 @@
+@mixin aspect-ratio($width, $height) {
+    position: relative;
+
+    &:before {
+        display: block;
+        content: "";
+        width: 100%;
+        padding-top: ($height / $width) * $full;
+    }
+
+    > .img-src {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-repeat: no-repeat;
+        background-position: top left;
+        background-size: 100%;
+    }
+    /*>video {
+
+    display: block;
+
+    width: 130vw;
+    @include vh-center();
+
+    @include device(lg) {
+      width: 100vw;
+    }
+  }*/
+    > video {
+        display: block;
+        // width: 130vw;
+        width: 100vw;
+        // width: $full;
+        @include vh-center();
+
+        @include device(lg) {
+            width: $full;
+        }
+    }
+}
+
+@function calcRatio($width, $height) {
+  $ratio: ($height / $width) * $full;
+  @return $ratio;
+}
