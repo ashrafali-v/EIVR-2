@@ -5,9 +5,19 @@
     li {
         display: block;
         border-bottom: thin solid $primary-dark-color;
+        background-color: $white;
+        &.active-page {
+            background-color: $nutral-light-color;
+            border-left: 5px solid $primary-color;
+            a {
+                margin-left: -5px;
+                span {
+                    @include ecs-typo($primary-font-regular, 600, 15px, 37px, $nutral-dark-color);
+                }
+            }
+        }
         a {
             padding: $default-padding*2;
-            background-color: $white;
             display: block;
             &:hover {
                 text-decoration: none;

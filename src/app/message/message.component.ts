@@ -1,9 +1,9 @@
-import { Component, OnInit,OnDestroy } from '@angular/core';
-import {CommonAppService} from '../services/common-app.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { CommonAppService } from '../services/common-app.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SubSink } from 'subsink';
 import { ToastrService } from 'ngx-toastr';
-import {UpdateMessageComponent} from '../modals/update-message/update-message.component'
+import { UpdateMessageComponent } from '../modals/update-message/update-message.component'
 import { ViewMessageComponent } from '../modals/view-message/view-message.component';
 import { DeleteMessageComponent } from '../modals/delete-message/delete-message.component';
 
@@ -12,16 +12,16 @@ import { DeleteMessageComponent } from '../modals/delete-message/delete-message.
   templateUrl: './message.component.html',
   styleUrls: ['./message.component.scss']
 })
-export class MessageComponent implements OnInit,OnDestroy {
-  messages:any;
-  getAllMessagesLoader:boolean = true;
+export class MessageComponent implements OnInit, OnDestroy {
+  messages: any;
+  getAllMessagesLoader: boolean = true;
   currentPage: any = 1;
   pageSize: number = 10;
   private observableSubscriptions = new SubSink();
-  constructor(private sharedService: CommonAppService,private modalService: NgbModal,public toastr: ToastrService) { }
+  constructor(private sharedService: CommonAppService, private modalService: NgbModal, public toastr: ToastrService) { }
 
   ngOnInit(): void {
-    this.observableSubscriptions.add(this.sharedService.getAllMessages().subscribe(data=>{
+    this.observableSubscriptions.add(this.sharedService.getAllMessages().subscribe(data => {
       this.getAllMessagesLoader = false;
       this.messages = data;
     }));
@@ -29,9 +29,9 @@ export class MessageComponent implements OnInit,OnDestroy {
   ngOnDestroy() {
     this.observableSubscriptions.unsubscribe();
   }
-  editMessage(message:any){
+  editMessage(message: any) {
     console.log(message);
-    this.observableSubscriptions.add(this.sharedService.getMessage(message.messageKey).subscribe(data=>{
+    this.observableSubscriptions.add(this.sharedService.getMessage(message.messageKey).subscribe(data => {
       const updateMessageModalRef = this.modalService.open(UpdateMessageComponent, {
         ariaLabelledBy: "modal-basic-title",
         size: "lg",
@@ -46,10 +46,10 @@ export class MessageComponent implements OnInit,OnDestroy {
         if (result) {
           message.messageText = result;
           updateMessageModalRef.close();
-          this.sharedService.saveMessage(message).subscribe(data=>{
+          this.sharedService.saveMessage(message).subscribe(data => {
             console.log(data);
-            this.toastr.success("Message updated successfully","Success");
-          },err=>{
+            this.toastr.success("Message updated successfully", "Success");
+          }, err => {
             console.log(err);
             this.toastr.error('Message update failed', 'Error');
           });
@@ -59,7 +59,7 @@ export class MessageComponent implements OnInit,OnDestroy {
       });
     }));
   }
-  messageInfo(data:any){
+  messageInfo(data: any) {
     console.log(data);
     const messageInfoModalRef = this.modalService.open(ViewMessageComponent, {
       ariaLabelledBy: "modal-basic-title",
@@ -71,13 +71,13 @@ export class MessageComponent implements OnInit,OnDestroy {
     messageInfoModalRef.componentInstance.modalDescription = "View message description";
     messageInfoModalRef.componentInstance.messageKey = data.messageKey;
     messageInfoModalRef.componentInstance.messageValue = data.messageText;
-    
+
   }
-  deleteMessage(key:any){
+  deleteMessage(key: any) {
     console.log(key);
     const deleteMessageModalRef = this.modalService.open(DeleteMessageComponent, {
       ariaLabelledBy: "modal-basic-title",
-      size: "lg",
+      size: "md",
       scrollable: true,
       backdrop: 'static'
     });

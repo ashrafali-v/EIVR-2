@@ -1,0 +1,33 @@
+::ng-deep {
+    .modal-backdrop {
+        background-color: $nutral-dark-color;
+        opacity: .8;
+    }
+    .modal {
+        @include v-center();
+        height: auto;
+        .modal-dialog {
+            .modal-content {
+                padding: $default-padding*2;
+                .modal-header {
+                    border: none;
+                    padding: $default-padding;
+                }
+                .modal-body {
+                    padding: $default-padding;
+                    p {
+                        @include ecs-typo($primary-font-regular, 400, 15px, 20px, $nutral-dark-color);
+                        margin-bottom: $default-margin;
+                    }
+                }
+                .modal-footer {
+                    padding: $default-padding;
+                    border: none;
+                }
+                .close {
+                    border: none;
+                }
+            }
+        }
+    }
+}

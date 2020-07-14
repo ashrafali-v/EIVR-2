@@ -2,4 +2,23 @@ app-footer {
     height: $default-unit*40;
     background-color: $primary-color;
     margin-top: auto;
+    @include flexbox();
+    @include flex-direction(row);
+    @include justify-content(space-between);
+    padding: $default-padding*2;
+    p {
+        @include ecs-typo($primary-font-regular, 400, 15px, 37px, $nutral-dark-color);
+        @include align-self(center);
+    }
+    ul {
+        @include flexbox();
+        @include flex-direction(row);
+        @include align-self(center);
+        li {
+            margin: $null $default-margin*2;
+            a {
+                @include ecs-typo($primary-font-regular, 400, 15px, 37px, $nutral-dark-color);
+            }
+        }
+    }
 }

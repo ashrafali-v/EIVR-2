@@ -1,0 +1,15 @@
+.pagination {
+    .page-item {
+        .page-link {
+            border-color: rgba($nutral-dark-color, .1);
+            @include ecs-typo($primary-font-regular, 400, 15px, 20px, $nutral-dark-color);
+            padding: $default-padding;
+        }
+        &.active {
+            .page-link {
+                background-color: $primary-color;
+                color: $white;
+            }
+        }
+    }
+}
