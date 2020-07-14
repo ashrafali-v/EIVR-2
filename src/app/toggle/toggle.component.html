@@ -1,0 +1,33 @@
+<div class="app-message-content">
+    <h2>View Toggles</h2>
+    <div class="box-panel">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        Message key
+                    </th>
+                    <th>
+                        Message value
+                    </th>
+                    <th>Status
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let toggle of togglesArray | slice : (currentPage-1) * pageSize : (currentPage-1) * pageSize + pageSize; let i = index">
+                    <td data-label="Message key">
+                        {{toggle.messageKey}}
+                    </td>
+                    <td data-label="Message value">
+                        {{toggle.messageValue}}
+                    </td>
+                    <td data-label="Actions">
+                        {{toggle.status}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <ngb-pagination size="sm" [(page)]="currentPage" [pageSize]="pageSize" [collectionSize]="togglesArray.length" [maxSize]="5"></ngb-pagination>
+    </div>
+</div>
