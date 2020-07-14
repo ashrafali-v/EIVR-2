@@ -1,0 +1,17 @@
+﻿/*!
+ * EIVR Master SCSS v1.0.0
+ * Copyright 2019-2020 
+ * Author: AMALJITH & ASHRAF
+ */
+
+@charset "UTF-8";
+// mixins scss
+@import 'utilities/utilities-dir';
+// vendor scss
+@import 'vendor/vendor-dir';
+// base scss
+@import 'base/base-dir';
+// ecs-components scss
+@import 'eivr-components/components-dir';
+// layouts scss
+@import 'layouts/layout-dir';

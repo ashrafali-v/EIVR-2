@@ -1,0 +1,53 @@
+.ecs-tabs {
+    @include device(lg) {
+        width: calc(#{ $full} - 30px);
+    }
+    .nav {
+        @include flexbox();
+        @include flex(1 0 auto);
+        @include flex-direction(row);
+        @include justify-content(center);
+        @include align-items(flex-end);
+        &.nav-pills {
+            .nav-link {
+                padding: $default-padding/2 $default-padding;
+                background-color: $transition-bg;
+                text-align: center;
+                @include ecs-typo($primary-font-regular, 400, 12px, 18px, $primary-dark-color);
+                @include device(lg) {
+                    padding: $default-padding/2 $default-padding*2;
+                }
+                &.active {
+                    @include ecs-typo($primary-font-regular, 700, 16px, 20px, $primary-dark-color);
+                    position: relative;
+                    &::before {
+                        content: '';
+                        display: table;
+                        width: $full/5;
+                        height: $default-unit*2.5;
+                        background-color: $secondary-color;
+                        @include h-center();
+                        top: $full + 10;
+                    }
+                }
+            }
+            .nav-item {
+                &:first-child {
+                    .active {
+                        margin-left: $default-margin*9.5;
+                        transition: margin-left 0.5s ease;
+                        @include device(lg) {
+                            margin-left: $default-margin*16.5;
+                        }
+                    }
+                }
+                &:last-child {
+                    .active {
+                        margin-right: $default-margin*10;
+                        transition: margin-right 0.5s ease;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,38 @@
+@import '../scss/eivr-master';
+::ng-deep {
+    app-root {
+        .eivr-baselayout {
+            @include flexbox();
+            @include flex(1 0 auto);
+            @include flex-direction(row);
+            @include flex-wrap(wrap);
+            @include justify-content(flex-start);
+            height: $full;
+            // @include align-items(flex-end);
+            app-aside {
+                @include flex(2 0 auto);
+                background-color: $primary-dark-color;
+                align-self: stretch;
+                height: calc(#{$full} - #{$default-unit*40});
+            }
+            .content-wrapper {
+                @include flex(0 0 auto);
+                @include flexbox();
+                @include flex-direction(column);
+                @include justify-content(flex-start);
+                max-width: calc(#{$full} - #{$default-unit*130});
+                app-header {
+                    @include flex(0 0 auto);
+                }
+                app-message {
+                    // display: none;
+                    @include flex(1 0 auto);
+                    padding: $default-padding*2;
+                }
+            }
+            app-footer {
+                @include flex(10 0 $full);
+            }
+        }
+    }
+}

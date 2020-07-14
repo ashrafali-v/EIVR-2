@@ -1,0 +1,33 @@
+@mixin vh-center {
+    position: absolute;
+    top: $full/2;
+    left: $full/2;
+    @include translate(-$full/2, -$full/2)
+}
+
+@mixin vh-centerImp {
+    position: absolute;
+    top: $full/2 !important;
+    left: $full/2 !important;
+    @include translateImp(-$full/2, -$full/2)
+}
+
+@mixin h-center {
+    position: absolute;
+    left: $full/2;
+    transform: translateX(-$full/2);
+}
+
+@mixin v-center {
+    position: absolute;
+    top: $full/2;
+    transform: translateY(-$full/2);
+}
+
+@mixin clearfix {
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
