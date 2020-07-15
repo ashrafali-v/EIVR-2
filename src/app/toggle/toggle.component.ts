@@ -19,5 +19,9 @@ export class ToggleComponent implements OnInit {
     {"messageKey":"message key5","messageValue":"message value5","status":false},
     {"messageKey":"message key6","messageValue":"message value6","status":false}];
   }
+  enableToggle(event:any){
+    console.log(event);
+    
+  }
 
 }

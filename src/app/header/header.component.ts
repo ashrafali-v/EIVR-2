@@ -22,5 +22,4 @@ export class HeaderComponent implements OnInit {
     this.menuToggleStatus = !this.menuToggleStatus;
     this.sharedService.setMenuToggle(this.menuToggleStatus);
   }
-
 }
