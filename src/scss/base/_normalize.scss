@@ -1,36 +1,72 @@
-html,
-body {
-    height: $full;
-}
-
-body {
-    // display: table;
-    // width: $full;
-    margin: $null;
-    padding: $null;
-    overflow-x: hidden;
-    // display: table;
-    height: $full;
-    background-color: $nutral-light-color;
-}
-
-* {
-    padding: $null;
-    margin: $null;
-    &:focus {
-        outline: none;
+::ng-deep {
+    html,
+    body {
+        height: $full;
     }
-}
-
-.header {
-    @include device(lg) {
-        height: inherit;
+    body {
+        // display: table;
+        // width: $full;
+        margin: $null;
+        padding: $null;
+        overflow-x: hidden;
+        // display: table;
+        height: $full;
+        background-color: $nutral-light-color;
     }
-}
-
-ul,
-li {
-    list-style: none;
-    padding: $null;
-    margin: $null;
+    * {
+        padding: $null;
+        margin: $null;
+        &:focus {
+            outline: none;
+        }
+    }
+    .header {
+        @include device(lg) {
+            height: inherit;
+        }
+    }
+    ul,
+    li {
+        list-style: none;
+        padding: $null;
+        margin: $null;
+    }
+    a {
+        &:focus {
+            outline: none;
+            box-shadow: none !important;
+        }
+    }
+    button {
+        background-color: $transparent-bg;
+        border: none;
+        &:focus {
+            outline: none;
+            box-shadow: none !important;
+        }
+        &.btn-outline-dark {
+            &:hover {
+                background-color: $primary-dark-color;
+                color: $white;
+            }
+        }
+        &.btn-primary {
+            background-color: $primary-color;
+            border: none;
+            &:hover {
+                background-color: darken($primary-color, 10%);
+                color: $white;
+            }
+        }
+    }
+    textarea {
+        width: $full;
+        max-height: $default-unit*100;
+        overflow-y: auto;
+        resize: none;
+        border: none;
+        background-color: $nutral-light-color;
+        padding: $default-padding*2;
+        @include border-radius($default-unit*5);
+    }
 }

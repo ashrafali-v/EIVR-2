@@ -3,12 +3,12 @@
     <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
-  </div>
-  <div class="modal-body">
-    <p>{{messageKey}}</p>
+</div>
+<div class="modal-body">
+    <p><b>{{messageKey}}</b></p>
     <textarea name="messagevalue" [(ngModel)]="messageValue" id="msg-value" cols="30" rows="10">{{messageValue}}</textarea>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="saveMessage(messageValue)">Save</button>
-    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Cancel</button>
-  </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="saveMessage(messageValue)">Save</button>
+    <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Cancel</button>
+</div>

@@ -25,10 +25,16 @@
                     <td data-label="Message value">
                         {{message.messageText}}
                     </td>
-                    <td data-label="Actions">
-                        <button type="button" (click)="messageInfo(message)">Info</button>
-                        <button type="button" (click)="editMessage(message)">Edit</button>
-                        <button type="button" (click)="deleteMessage(message.messageKey)">Delete</button>
+                    <td width="150px" data-label="Actions">
+                        <button type="button" (click)="messageInfo(message)">
+                            <img src="../../assets/infromation.svg" alt="">
+                        </button>
+                        <button type="button" (click)="editMessage(message)">
+                            <img src="../../assets/edit.svg" alt="">
+                        </button>
+                        <button type="button" (click)="deleteMessage(message.messageKey)">
+                            <img src="../../assets/delete.svg" alt="">
+                        </button>
                     </td>
                 </tr>
             </tbody>
