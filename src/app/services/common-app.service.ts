@@ -1,19 +1,27 @@
-import { Injectable } from '@angular/core';
+import { Injectable,Output,EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { map, filter, catchError, mergeMap } from 'rxjs/operators';
+import { ComponentStatus } from '../model/component.status';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommonAppService {
+  @Output() OnChange: EventEmitter<any> = new EventEmitter();
   jsonHttpHeader: any;
+  headerSatus:boolean = true;
+  asideSatus:boolean =true;
+  footerSatus:boolean=true;
+  componentStatus: any;
   serviceBase = 'https://prod.schoolguard360.com/eivr/dashboard/';
   eivrApiEndpoints = {
     GetAllMessages:'getAllMessages/',
     GetMessageByKey:'getMessageByKey/',
     SaveMessage:'saveMessages/'
   }
-  constructor(private httpClient: HttpClient) { 
+  constructor(private httpClient: HttpClient) {
+    this.componentStatus = new ComponentStatus();
     this.jsonHttpHeader = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
@@ -40,5 +48,15 @@ export class CommonAppService {
     return this.httpClient.post(this.serviceBase+url,data,this.jsonHttpHeader).pipe(
       map((res:any) => res)
     )
+  }
+  setComponentStatus(header:boolean,aside:boolean,footer:boolean){
+
+    this.componentStatus.header = header;
+    this.componentStatus.aside = aside;
+    this.componentStatus.footer = footer;
+    this.OnChange.emit(this.componentStatus);
+  }
+  public getComponentStatus(): Observable<any> {
+    return this.OnChange;
   }
 }
