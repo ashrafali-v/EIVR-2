@@ -21,6 +21,7 @@ export class MessageComponent implements OnInit, OnDestroy {
   constructor(private sharedService: CommonAppService, private modalService: NgbModal, public toastr: ToastrService) { }
 
   ngOnInit(): void {
+    this.sharedService.setComponentStatus(true,true,true);
     this.observableSubscriptions.add(this.sharedService.getAllMessages().subscribe(data => {
       this.getAllMessagesLoader = false;
       this.messages = data;
@@ -73,8 +74,7 @@ export class MessageComponent implements OnInit, OnDestroy {
     messageInfoModalRef.componentInstance.messageValue = data.messageText;
 
   }
-  deleteMessage(key: any) {
-    console.log(key);
+  deleteMessage(message: any,index:any) {
     const deleteMessageModalRef = this.modalService.open(DeleteMessageComponent, {
       ariaLabelledBy: "modal-basic-title",
       size: "md",
@@ -83,10 +83,12 @@ export class MessageComponent implements OnInit, OnDestroy {
     });
     deleteMessageModalRef.componentInstance.modalTitle = "Delete message";
     deleteMessageModalRef.componentInstance.modalDescription = "Delete message description";
-    deleteMessageModalRef.componentInstance.messageKey = key;
+    deleteMessageModalRef.componentInstance.messageKey = message.messageKey;
     deleteMessageModalRef.componentInstance.emitService.subscribe((result) => {
       if (result) {
         console.log(result);
+        var index = this.messages.findIndex(x => x.messageKey == message.messageKey);
+        this.messages.splice(index,1);
         deleteMessageModalRef.close();
       }
     }, (reason) => {

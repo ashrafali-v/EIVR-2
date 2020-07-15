@@ -1,9 +1,9 @@
 <div class="eivr-baselayout">
-    <app-aside></app-aside>
+    <app-aside *ngIf="isAside"></app-aside>
     <div class="content-wrapper">
-        <app-header></app-header>
+        <app-header *ngIf="isHeader"></app-header>
         <router-outlet></router-outlet>
     </div>
-    <app-footer></app-footer>
+    <app-footer *ngIf="isFooter"></app-footer>
 
 </div>

@@ -12,7 +12,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ViewMessageComponent } from './modals/view-message/view-message.component';
 import { DeleteMessageComponent } from './modals/delete-message/delete-message.component';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +29,7 @@ import { DeleteMessageComponent } from './modals/delete-message/delete-message.c
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
+    NgbModule,
     ToastrModule.forRoot({
       closeButton: true}),
   ],
