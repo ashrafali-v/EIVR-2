@@ -11,6 +11,7 @@ export class AppComponent implements OnInit {
   isHeader:boolean = true;
   isAside:boolean = true;
   isFooter:boolean = true;
+  toggleClass:boolean = true;
   constructor(private sharedService: CommonAppService) { }
   ngOnInit(): void {
 
@@ -20,5 +21,9 @@ export class AppComponent implements OnInit {
         this.isAside = data.aside;
         this.isFooter = data.footer;
       });
+      this.sharedService.getMenuToggle().subscribe(
+        data => {
+          this.toggleClass = data;
+        });
   }
 }

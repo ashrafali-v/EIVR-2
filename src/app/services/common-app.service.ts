@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class CommonAppService {
   @Output() OnChange: EventEmitter<any> = new EventEmitter();
+  @Output() Ontoggle: EventEmitter<any> = new EventEmitter();
   jsonHttpHeader: any;
   headerSatus:boolean = true;
   asideSatus:boolean =true;
@@ -58,5 +59,11 @@ export class CommonAppService {
   }
   public getComponentStatus(): Observable<any> {
     return this.OnChange;
+  }
+  setMenuToggle(status:boolean){
+    this.Ontoggle.emit(status);
+  }
+  public getMenuToggle(): Observable<any> {
+    return this.Ontoggle;
   }
 }

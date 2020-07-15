@@ -9,6 +9,7 @@ import { CommonAppService } from '../services/common-app.service';
 })
 export class HeaderComponent implements OnInit {
   public isCollapsed :any;
+  menuToggleStatus:boolean = true;
   constructor(private router: Router,private sharedService: CommonAppService) { }
 
   ngOnInit(): void {
@@ -16,6 +17,10 @@ export class HeaderComponent implements OnInit {
   signOut(){
     this.sharedService.setComponentStatus(false,false,false);
     this.router.navigate(['/login'])
+  }
+  toggleMenu(){
+    this.menuToggleStatus = !this.menuToggleStatus;
+    this.sharedService.setMenuToggle(this.menuToggleStatus);
   }
 
 }

@@ -1,4 +1,4 @@
-<div class="eivr-baselayout">
+<div [className]="toggleClass ? 'eivr-baselayout' : 'eivr-baselayout menu-hide'">
     <app-aside *ngIf="isAside"></app-aside>
     <div class="content-wrapper">
         <app-header *ngIf="isHeader"></app-header>
