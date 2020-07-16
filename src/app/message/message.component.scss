@@ -2,8 +2,8 @@
 ::ng-deep {
     .app-message-content {
         h2 {
-            @include ecs-typo($primary-font-regular, 400, 28px, 37px, $nutral-dark-color);
-            padding: $null;
+            @include ecs-typo($primary-font-regular, 400, 20px, 37px, $nutral-dark-color);
+            padding: $null $default-padding*2;
             padding-bottom: $default-padding;
             margin: $null;
         }

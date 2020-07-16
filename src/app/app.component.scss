@@ -17,6 +17,7 @@
                 max-width: $default-unit*130;
                 width: $full;
                 position: fixed;
+                transition: all .9s ease-in-out;
             }
             .content-wrapper {
                 @include flex(0 0 auto);
@@ -26,6 +27,7 @@
                 max-width: calc(#{$full} - #{$default-unit*130});
                 width: $full;
                 margin-left: $default-unit*130;
+                transition: all .9s ease-in-out;
                 app-header {
                     @include flex(0 0 auto);
                 }
@@ -33,15 +35,34 @@
                     // display: none;
                     @include flex(1 0 auto);
                     padding: $default-padding*2;
+                    margin-top: $default-unit*27.5;
                 }
                 app-toggle {
                     // display: none;
                     @include flex(1 0 auto);
                     padding: $default-padding*2;
+                    margin-top: $default-unit*27.5;
                 }
             }
             app-footer {
                 @include flex(10 0 $full);
+            }
+            &.menu-hide {
+                app-aside {
+                    max-width: $default-unit*37.5;
+                    transition: all .9s;
+                }
+                .content-wrapper {
+                    max-width: calc(#{$full} - #{$default-unit*37.5});
+                    width: $full;
+                    margin-left: $default-unit*37.5;
+                    transition: all .9s ease-in-out;
+                    app-header {
+                        max-width: calc(#{$full} - #{$default-unit*37.5});
+                        transition: all .9s ease-in-out;
+                        // max-width: calc(#{$full} - #{$default-unit*130});
+                    }
+                }
             }
         }
     }

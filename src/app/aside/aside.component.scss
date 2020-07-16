@@ -1,1 +1,21 @@
-::ng-deep {}
+@import '../../scss/eivr-master';
+::ng-deep {
+    h2 {
+        &.logo {
+            @include ecs-typo($primary-font-regular, 700, 25px, 37px, $white);
+            padding: $default-padding $default-padding*2;
+            transition: font-size .1s ease-out .7s;
+            img {
+                width: $default-unit*10;
+            }
+        }
+    }
+    .menu-hide {
+        h2 {
+            &.logo {
+                font-size: $null;
+                transition: font-size .1s ease-out;
+            }
+        }
+    }
+}

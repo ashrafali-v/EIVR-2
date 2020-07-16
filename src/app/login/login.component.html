@@ -1,7 +1,19 @@
-<div>
-    <form>
-        <input type="text" name="userName" [(ngModel)]="userName" placeholder="Username">
-        <input type="password" name="password" [(ngModel)]="password" placeholder="Password">
-        <input type="button" value="submit" (click)="login()">
-    </form>
+<div class="login-page">
+    <div class="image-login">
+        <div class="img-ratio">
+            <div class="img-src" style="background-image:url(../../assets/login_bg14@2x.png)"></div>
+        </div>
+    </div>
+    <div class="login-container">
+        <div class="login">
+            <h2>SOFLO IVR</h2>
+            <p>Welcome back! Please login to your account.</p>
+            <form>
+                <input type="text" name="userName" [(ngModel)]="userName" placeholder="Username">
+                <input type="password" name="password" [(ngModel)]="password" placeholder="Password">
+                <a href="http://">Forgot Password?</a>
+                <input type="button" value="submit" (click)="login()">
+            </form>
+        </div>
+    </div>
 </div>
