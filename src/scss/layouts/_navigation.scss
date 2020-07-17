@@ -1,33 +1,51 @@
-.nav {
-    @include flexbox();
-    @include flex(1 0 auto);
-    @include flex-direction(column);
-    li {
-        display: block;
-        border-bottom: thin solid $primary-dark-color;
-        background-color: $white;
-        &.active-page {
-            background-color: $nutral-light-color;
-            border-left: 5px solid $primary-color;
+::ng-deep {
+    .nav {
+        @include flexbox();
+        @include flex(1 0 auto);
+        @include flex-direction(column);
+        li {
+            display: block;
+            border-bottom: thin solid $primary-dark-color;
+            background-color: $white;
+            &.active-page {
+                background-color: $nutral-light-color;
+                border-left: 5px solid $primary-color;
+                a {
+                    margin-left: -5px;
+                    span {
+                        @include ecs-typo($primary-font-regular, 600, 15px, 37px, $nutral-dark-color);
+                    }
+                }
+            }
             a {
-                margin-left: -5px;
+                padding: $default-padding $default-padding*2;
+                display: block;
+                &:hover {
+                    text-decoration: none;
+                }
+                img {
+                    margin-right: $default-margin;
+                }
                 span {
-                    @include ecs-typo($primary-font-regular, 600, 15px, 37px, $nutral-dark-color);
+                    @include ecs-typo($primary-font-regular, 400, 15px, 37px, $nutral-dark-color);
+                    vertical-align: middle;
+                    transition: font-size .1s ease-out .7s;
                 }
             }
         }
-        a {
-            padding: $default-padding*2;
-            display: block;
-            &:hover {
-                text-decoration: none;
-            }
-            img {
-                margin-right: $default-margin;
-            }
-            span {
-                @include ecs-typo($primary-font-regular, 400, 15px, 37px, $nutral-dark-color);
-                vertical-align: middle;
+    }
+    .menu-hide {
+        .nav {
+            li {
+                a {
+                    img {
+                        margin-left: $default-margin
+                    }
+                    span {
+                        font-size: $null;
+                        transition: font-size .1s ease-out;
+                    }
+                }
             }
         }
     }

@@ -1,6 +1,7 @@
 $xs: 0;
 $sm: 576px;
 $md: 768px;
+$mmd: 900px;
 $lg: 992px;
 $xl: 1367px;
 $xxl: 1441px;
@@ -27,6 +28,16 @@ $xxl: 1441px;
     }
     @else if $point==xxl {
         @media (min-width: $xxl) {
+            @content;
+        }
+    }
+    @else if $point==mh {
+        @media (min-height: $md) {
+            @content;
+        }
+    }
+    @else if $point==mmh {
+        @media (min-height: $mmd) {
             @content;
         }
     }
