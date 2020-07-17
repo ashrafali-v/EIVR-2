@@ -1,16 +1,60 @@
 table {
     width: $full;
     margin-bottom: $default-margin*2;
+    display: block;
+    tr {
+        width: 100%;
+        @include flexbox();
+        th {
+            @include flex(2 2 $full);
+            display: block;
+            word-break: break-all;
+            &:first-child {
+                @include flex(2 2 $full/5);
+            }
+            &:last-child {
+                @include flex(2 2 $full/5);
+            }
+        }
+        td {
+            @include flex(2 2 $full);
+            display: block;
+            word-break: break-all;
+            &:first-child {
+                @include flex(2 2 $full/5);
+            }
+            &:last-child {
+                @include flex(2 2 $full/5);
+            }
+        }
+    }
     thead {
+        display: block;
+        width: $full;
         tr {
-            background-color: $nutral-light-color;
+            // background-color: $nutral-light-color;
             th {
-                @include ecs-typo($primary-font-regular, 600, 15px, 17px, $nutral-dark-color);
-                padding: $default-padding*2;
+                @include ecs-typo($primary-font-regular, 400, 15px, 17px, $nutral-dark-color);
+                padding: $null $default-padding*2 $default-padding*2;
+                &::after {
+                    content: '';
+                    display: table;
+                    width: $default-unit*25;
+                    height: $default-unit*3;
+                    background-color: $primary-color;
+                    margin-top: $default-margin;
+                }
             }
         }
     }
     tbody {
+        display: block;
+        width: $full;
+        overflow-y: auto;
+        max-height: $default-unit*140;
+        @include device(mmh) {
+            max-height: $default-unit*280;
+        }
         tr {
             td {
                 @include ecs-typo($primary-font-regular, 400, 15px, 17px, $nutral-dark-color);

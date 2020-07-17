@@ -1,0 +1,82 @@
+@import '../../scss/eivr-master';
+::ng-deep {
+    .login-inherits {
+        margin-left: 0px !important;
+        max-width: inherit !important;
+    }
+    app-login {
+        // @include flexbox();
+        // @include flex-direction(column);
+        // @include justify-content(flex-start);
+        .login-page {
+            // @include align-self(center);
+            @include flexbox();
+            @include flex-direction(row);
+            @include justify-content(space-between);
+            .image-login {
+                @include flex(0 0 $full/2);
+                >.img-ratio {
+                    @include aspect-ratio(1, 1.02);
+                    .img-src {
+                        // background-position:top center;
+                        background-size: cover;
+                        @include device(lg) {
+                            background-position: center;
+                        }
+                    }
+                }
+            }
+            .login-container {
+                @include flex(0 1 $full/2);
+                @include flex-direction(row);
+                @include justify-content(space-between);
+                position: relative;
+                .login {
+                    @include vh-center();
+                    @extend .box-panel;
+                    @include border-radius($default-padding);
+                    padding: $default-padding*3;
+                    width: $default-unit*300;
+                    h2 {
+                        @include ecs-typo($primary-font-regular, 800, 35px, 37px, $primary-light-color);
+                        text-align: center;
+                        letter-spacing: 5px;
+                    }
+                    p {
+                        @include ecs-typo($primary-font-regular, 400, 16px, 37px, $nutral-color);
+                        margin-bottom: $default-margin*2;
+                        text-align: center;
+                    }
+                    form {
+                        input {
+                            display: block;
+                            width: $full;
+                            padding: $default-padding;
+                            @include border-radius($null);
+                            border: none;
+                            border-bottom: thin solid rgba($nutral-color, .5);
+                            background-color: $transparent-bg;
+                            max-width: $full - 20;
+                            margin: $null auto;
+                            margin-bottom: $default-margin*2;
+                            &[type=button] {
+                                display: table;
+                                border: none;
+                                background-color: $primary-light-color;
+                                @include border-radius($default-padding);
+                                @include ecs-typo($primary-font-regular, 400, 16px, 37px, $white);
+                            }
+                        }
+                        a {
+                            display: block;
+                            max-width: $full - 20;
+                            margin: $null auto;
+                            margin-bottom: $default-margin*2;
+                            text-align: left;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
