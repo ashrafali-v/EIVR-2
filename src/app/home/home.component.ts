@@ -8,10 +8,9 @@ import { CommonAppService } from '../services/common-app.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private sharedService: CommonAppService) { }
-
-  ngOnInit(): void {
+  constructor(private sharedService: CommonAppService) { 
     this.sharedService.setComponentStatus(true,true,true);
   }
-
+  ngOnInit(): void {
+  }
 }
