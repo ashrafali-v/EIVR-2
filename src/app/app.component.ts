@@ -1,6 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import { CommonAppService } from '../app/services/common-app.service';
-
+import { Router }  from "@angular/router";
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,13 +8,11 @@ import { CommonAppService } from '../app/services/common-app.service';
 })
 export class AppComponent implements OnInit {
   title = 'EIVR';
-  isHeader:boolean = true;
-  isAside:boolean = true;
-  isFooter:boolean = true;
+  isHeader:boolean = false;
+  isAside:boolean = false;
+  isFooter:boolean = false;
   toggleClass:boolean = true;
-  constructor(private sharedService: CommonAppService) { }
-  ngOnInit(): void {
-
+  constructor(private sharedService: CommonAppService,public router: Router) { 
     this.sharedService.getComponentStatus().subscribe(
       data => {
         this.isHeader = data.header;
@@ -25,5 +23,7 @@ export class AppComponent implements OnInit {
         data => {
           this.toggleClass = data;
         });
+  }
+  ngOnInit(): void {
   }
 }

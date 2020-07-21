@@ -8,11 +8,22 @@
         <div class="login">
             <h2>SOFLO IVR</h2>
             <p>Welcome back! Please login to your account.</p>
-            <form>
-                <input type="text" name="userName" [(ngModel)]="userName" placeholder="Username">
-                <input type="password" name="password" [(ngModel)]="password" placeholder="Password">
-                <a href="http://">Forgot Password?</a>
-                <input type="button" value="submit" (click)="login()">
+            <form #loginForm="ngForm">
+                <section>
+                    <input type="text" name="userName" autofocus required #userName="ngModel" ngModel placeholder="Username">
+                    <div class="alert alert-danger" *ngIf="userName.touched && userName.invalid">
+                        <div *ngIf="userName.errors.required"> This field cannot be empty</div>
+                    </div>
+                </section>
+                <section>
+                    <input type="password" name="userPassword" required #userPassword="ngModel" ngModel placeholder="Password">
+                    <div class="alert alert-danger" *ngIf="userPassword.touched && userPassword.invalid">
+                        <div *ngIf="userPassword.errors.required"> This field cannot be empty</div>
+                    </div>
+                </section>
+                <div *ngIf="invalidCred">user name or password is not correct</div>
+                <a href="#">Forgot Password?</a>
+                <input type="button" value="submit" [disabled]="loginForm.invalid" (click)="login(loginForm.value)">
             </form>
         </div>
     </div>

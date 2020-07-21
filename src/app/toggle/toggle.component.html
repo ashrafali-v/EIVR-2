@@ -25,7 +25,7 @@
                     <td data-label="Actions">
                         <div class="ecs-toggle-switch">
                             <label class="switch">
-                                <input type="checkbox" [checked]="toggle.Status" (change)="enableToggle($event)">
+                                <input type="checkbox" [checked]="toggle.status" (change)="enableToggle(!toggle.status)">
                                 <span class="slider"></span>
                             </label>
                         </div>

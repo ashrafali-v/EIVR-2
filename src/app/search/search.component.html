@@ -1,0 +1,46 @@
+<div class="app-toggle-content">
+    <h2>Search</h2>
+    <div class="box-panel">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        Phone Number
+                    </th>
+                    <th>
+                        Contact ID
+                    </th>
+                    <th>
+                        Call Duration
+                    </th>
+                    <th>
+                        Time Stamp
+                    </th>
+                    <th>
+                        Call Health
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let call of callArray | slice : (currentPage-1) * pageSize : (currentPage-1) * pageSize + pageSize; let i = index">
+                    <td data-label="Phone No">
+                        {{call.PhoneNo}}
+                    </td>
+                    <td data-label="Contact ID">
+                        {{call.ContactId}}
+                    </td>
+                    <td data-label="Call Duration">
+                        {{call.CallDuration}}
+                    </td>
+                    <td data-label="Time Stamp">
+                        {{call.TimeStamp}}
+                    </td>
+                    <td data-label="Call Health">
+                        {{call.CallHealth}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <ngb-pagination size="sm" [(page)]="currentPage" [pageSize]="pageSize" [collectionSize]="callArray.length" [maxSize]="5"></ngb-pagination>
+    </div>
+</div>
