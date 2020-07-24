@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { CommonAppService } from '../services/common-app.service';
 @Component({
   selector: 'app-toggle',
   templateUrl: './toggle.component.html',
@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ToggleComponent implements OnInit {
 
-  constructor() { }
+  constructor(private sharedService: CommonAppService) { 
+    this.sharedService.setComponentStatus(true,true,true);
+  }
   togglesArray:any = [];
   currentPage: any = 1;
   pageSize: number = 10;

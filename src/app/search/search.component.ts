@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { CommonAppService } from '../services/common-app.service';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -9,7 +9,9 @@ export class SearchComponent implements OnInit {
   callArray:any = [];
   currentPage: any = 1;
   pageSize: number = 10;
-  constructor() { }
+  constructor(private sharedService: CommonAppService) {
+    this.sharedService.setComponentStatus(true,true,true);
+   }
 
   ngOnInit(): void {
     this.callArray = [{"PhoneNo":8005,"ContactId":"INV-123","CallDuration":22,"TimeStamp":'12/01/23',"CallHealth":true},
