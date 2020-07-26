@@ -14,12 +14,12 @@ export class ToggleComponent implements OnInit {
   currentPage: any = 1;
   pageSize: number = 10;
   ngOnInit(): void {
-    this.togglesArray = [{"messageKey":"message key1","messageValue":"message value1","status":true},
-    {"messageKey":"message key2","messageValue":"message value2","status":true},
-    {"messageKey":"message key3","messageValue":"message value3","status":false},
-    {"messageKey":"message key4","messageValue":"message value4","status":true},
-    {"messageKey":"message key5","messageValue":"message value5","status":false},
-    {"messageKey":"message key6","messageValue":"message value6","status":false}];
+    this.togglesArray = [{"messageKey":"message key1","messageValue":"message value1"},
+    {"messageKey":"message key2","messageValue":"message value2"},
+    {"messageKey":"message key3","messageValue":"message value3"},
+    {"messageKey":"message key4","messageValue":"message value4"},
+    {"messageKey":"message key5","messageValue":"message value5"},
+    {"messageKey":"message key6","messageValue":"message value6"}];
   }
   enableToggle(event:any){
     console.log(event);
