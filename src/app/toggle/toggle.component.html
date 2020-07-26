@@ -1,28 +1,36 @@
 <div class="app-toggle-content">
     <h2>View Toggles</h2>
-    <div class="box-panel">
+    <div class="box-panel" *ngIf="toggles$ | async as toggles; else loadingOrError">
         <table>
             <thead>
                 <tr>
                     <th>
-                        Message key
+                        Toggle key
                     </th>
                     <th>
-                        Message value
+                        Toggle value
                     </th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let toggle of togglesArray | slice : (currentPage-1) * pageSize : (currentPage-1) * pageSize + pageSize; let i = index">
+                <tr *ngFor="let toggle of toggles | slice : (currentPage-1) * pageSize : (currentPage-1) * pageSize + pageSize; let i = index">
                     <td data-label="Message key">
-                        {{toggle.messageKey}}
+                        {{toggle.toggleKey}}
                     </td>
                     <td data-label="Message value">
-                        {{toggle.messageValue}}
+                        {{toggle.toggleValue}}
                     </td>
                 </tr>
             </tbody>
         </table>
-        <ngb-pagination size="sm" [(page)]="currentPage" [pageSize]="pageSize" [collectionSize]="togglesArray.length" [maxSize]="5"></ngb-pagination>
+        <ngb-pagination size="sm" [(page)]="currentPage" [pageSize]="pageSize" [collectionSize]="toggles.length" [maxSize]="5"></ngb-pagination>
     </div>
+    <ng-template #loadingOrError>
+        <div *ngIf="loadingError$ | async; else loading">
+          Error loading the list of users. Please try again later.
+        </div>
+        <ng-template #loading>
+          Loading toggles...
+        </ng-template>
+    </ng-template>
 </div>

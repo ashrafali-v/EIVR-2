@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonAppService } from '../services/common-app.service';
+import { catchError } from 'rxjs/operators';
+import { Subject,of } from 'rxjs';
 @Component({
   selector: 'app-toggle',
   templateUrl: './toggle.component.html',
@@ -10,16 +12,18 @@ export class ToggleComponent implements OnInit {
   constructor(private sharedService: CommonAppService) { 
     this.sharedService.setComponentStatus(true,true,true);
   }
-  togglesArray:any = [];
+  toggles$:any = [];
   currentPage: any = 1;
   pageSize: number = 10;
+  loadingError$ = new Subject<boolean>();
   ngOnInit(): void {
-    this.togglesArray = [{"messageKey":"message key1","messageValue":"message value1"},
-    {"messageKey":"message key2","messageValue":"message value2"},
-    {"messageKey":"message key3","messageValue":"message value3"},
-    {"messageKey":"message key4","messageValue":"message value4"},
-    {"messageKey":"message key5","messageValue":"message value5"},
-    {"messageKey":"message key6","messageValue":"message value6"}];
+    this.toggles$ = this.sharedService.getAllToggles().pipe(
+      catchError((error) => {
+        console.error('error loading the list of users', error);
+        this.loadingError$.next(true);
+        return of();
+      })
+    );
   }
   enableToggle(event:any){
     console.log(event);

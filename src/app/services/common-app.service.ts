@@ -19,7 +19,8 @@ export class CommonAppService {
   eivrApiEndpoints = {
     GetAllMessages:'getAllMessages/',
     GetMessageByKey:'getMessageByKey/',
-    SaveMessage:'saveMessages/'
+    SaveMessage:'saveMessages/',
+    GetAllToggles:'getAllToggles/'
   }
   constructor(private httpClient: HttpClient) {
     this.componentStatus = new ComponentStatus();
@@ -65,5 +66,11 @@ export class CommonAppService {
   }
   public getMenuToggle(): Observable<any> {
     return this.Ontoggle;
+  }
+  public getAllToggles(){
+    var url = this.eivrApiEndpoints['GetAllToggles'];
+    return this.httpClient.get(this.serviceBase+url, this.jsonHttpHeader).pipe(
+      map((res:any) => res)
+    )
   }
 }
