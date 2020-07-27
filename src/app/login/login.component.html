@@ -8,7 +8,7 @@
         <div class="login">
             <h2>SOFLO IVR</h2>
             <p>Welcome back! Please login to your account.</p>
-            <form #loginForm="ngForm">
+            <form #loginForm="ngForm" (keyup.enter)="login(loginForm.value)">
                 <section>
                     <input type="text" name="userName" autofocus required #userName="ngModel" ngModel placeholder="Username">
                     <div class="alert alert-danger" *ngIf="userName.touched && userName.invalid">
