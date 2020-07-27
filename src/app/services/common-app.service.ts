@@ -21,7 +21,8 @@ export class CommonAppService {
     GetMessageByKey:'getMessageByKey/',
     SaveMessage:'saveMessages/',
     GetAllToggles:'getAllToggles/',
-    GetToggleByKey:'getToggleByKey/'
+    GetToggleByKey:'getToggleByKey/',
+    SaveToggle:'saveToggle/',
   }
   constructor(private httpClient: HttpClient) {
     this.componentStatus = new ComponentStatus();
@@ -77,6 +78,12 @@ export class CommonAppService {
   public searchToggle(key:any){
     var url = this.eivrApiEndpoints['GetToggleByKey'];
     return this.httpClient.get(this.serviceBase+url+'?toggleKey='+key, this.jsonHttpHeader).pipe(
+      map((res:any) => res)
+    )
+  }
+  public saveToggle(data:any){
+    var url = this.eivrApiEndpoints['SaveToggle'];
+    return this.httpClient.post(this.serviceBase+url,data,this.jsonHttpHeader).pipe(
       map((res:any) => res)
     )
   }

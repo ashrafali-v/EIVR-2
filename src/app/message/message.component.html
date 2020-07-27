@@ -3,6 +3,13 @@
 </div>
 <div class="app-message-content" *ngIf="!getAllMessagesLoader">
     <h2>View Messages</h2>
+    <div>
+        <input type="text" [(ngModel)]="messageKey">
+        <button class="btn bg-transparent" style="margin-left: -40px; z-index: 100;" (click)="clearSearchMessage()">
+            <i class="fa fa-times"></i>
+          </button>
+        <button type="button" class="btn btn-primary" (click)="searchMessage()">Search Message</button>
+    </div>
     <div class="box-panel">
         <table>
             <thead>
