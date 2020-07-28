@@ -17,6 +17,7 @@ export class MessageComponent implements OnInit, OnDestroy {
   getAllMessagesLoader: boolean = true;
   currentPage: any = 1;
   pageSize: number = 10;
+  messageKey:any ='';
   private observableSubscriptions = new SubSink();
   constructor(private sharedService: CommonAppService, private modalService: NgbModal, public toastr: ToastrService) { }
 
@@ -94,5 +95,27 @@ export class MessageComponent implements OnInit, OnDestroy {
     }, (reason) => {
       console.log(reason);
     });
+  }
+  searchMessage(){
+    console.log(this.messageKey);
+    this.messages.length = 0;
+    if(this.messageKey != ''){
+      this.observableSubscriptions.add(this.sharedService.getMessage(this.messageKey).subscribe(data => {
+        this.messages = data;
+      }));
+    }else{
+      return false;
+    }
+  }
+  clearSearchMessage(){
+    if(this.messageKey != ''){
+      this.messageKey = '';
+      this.observableSubscriptions.add(this.sharedService.getAllMessages().subscribe(data => {
+        this.getAllMessagesLoader = false;
+        this.messages = data;
+      }));
+    }else {
+      return false;
+    }
   }
 }

@@ -21,7 +21,10 @@ export class CommonAppService {
     GetMessageByKey:'getMessageByKey/',
     SaveMessage:'saveMessages/',
     GetAllToggles:'getAllToggles/',
-    GetToggleByKey:'getToggleByKey/'
+    GetToggleByKey:'getToggleByKey/',
+    SaveToggle:'saveToggle/',
+    getLogByContactId:'getContactId/',
+    getLogByPhoneNumber:'getContactDetailByPhone/'
   }
   constructor(private httpClient: HttpClient) {
     this.componentStatus = new ComponentStatus();
@@ -77,6 +80,24 @@ export class CommonAppService {
   public searchToggle(key:any){
     var url = this.eivrApiEndpoints['GetToggleByKey'];
     return this.httpClient.get(this.serviceBase+url+'?toggleKey='+key, this.jsonHttpHeader).pipe(
+      map((res:any) => res)
+    )
+  }
+  public saveToggle(data:any){
+    var url = this.eivrApiEndpoints['SaveToggle'];
+    return this.httpClient.post(this.serviceBase+url,data,this.jsonHttpHeader).pipe(
+      map((res:any) => res)
+    )
+  }
+  public getCallLogByContactId(key:any){
+    var url = this.eivrApiEndpoints['getLogByContactId'];
+    return this.httpClient.get(this.serviceBase+url+'?contactId='+key,this.jsonHttpHeader).pipe(
+      map((res:any) => res)
+    )
+  }
+  public getCallLogByPhoneNumber(key:any){
+    var url = this.eivrApiEndpoints['getLogByPhoneNumber'];
+    return this.httpClient.get(this.serviceBase+url+'?phoneNumber='+key,this.jsonHttpHeader).pipe(
       map((res:any) => res)
     )
   }

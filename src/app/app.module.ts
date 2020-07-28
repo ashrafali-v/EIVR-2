@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ViewMessageComponent } from './modals/view-message/view-message.component';
 import { DeleteMessageComponent } from './modals/delete-message/delete-message.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CreateToggleComponent } from './modals/create-toggle/create-toggle.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +23,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FooterComponent,
     ViewMessageComponent,
     DeleteMessageComponent,
+    CreateToggleComponent,
   ],
   imports: [
     BrowserModule,
