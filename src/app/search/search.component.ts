@@ -14,47 +14,60 @@ export class SearchComponent implements OnInit {
   currentPage: any = 1;
   pageSize: number = 10;
   searchKey:any = '';
-  calLog:any;
+  searchStatus:boolean = false;
+  searchBy:string='contactId';
   private observableSubscriptions = new SubSink();
   constructor(private sharedService: CommonAppService) {
-    this.calLog = new CallLog();
     this.sharedService.setComponentStatus(true,true,true);
    }
 
   ngOnInit(): void {
-    // this.callArray = [{"PhoneNo":8005,"ContactId":"INV-123","CallDuration":22,"TimeStamp":'12/01/23',"CallHealth":true},
-    // {"PhoneNo":8006,"ContactId":"INV-123","CallDuration":23,"TimeStamp":'12/01/23',"CallHealth":true},
-    // {"PhoneNo":8007,"ContactId":"INV-103","CallDuration":12,"TimeStamp":'12/01/23',"CallHealth":true},
-    // {"PhoneNo":8008,"ContactId":"INV-023","CallDuration":18,"TimeStamp":'12/01/23',"CallHealth":true},
-    // {"PhoneNo":8009,"ContactId":"INV-153","CallDuration":11,"TimeStamp":'12/01/23',"CallHealth":true},
-    // {"PhoneNo":8012,"ContactId":"INV-623","CallDuration":34,"TimeStamp":'12/01/23',"CallHealth":true}];
   }
   searchCallLog(){
     this.callArray.length = 0;
+    console.log(this.searchBy);
     if(this.searchKey != ''){
-      this.observableSubscriptions.add(this.sharedService.getCallLog(this.searchKey).subscribe(data => {
-        console.log(data);
-        data.forEach(element => {
-          this.calLog.contactId = element.contactId;
-          this.calLog.phoneNo = element.phoneNo;
-          this.calLog.callDuration = element.endTime - element.startTime;
-          this.calLog.timeStamp = element.phoneNo;
-          this.calLog.callHealth = !element.callError;
-          this.call.push(this.calLog);
-        });
-        this.callArray = this.call;
-        
-      }));
+      if(this.searchBy =='contactId'){
+        this.observableSubscriptions.add(this.sharedService.getCallLogByContactId(this.searchKey).subscribe(data => {
+          this.searchStatus = true;
+          for(let i in data){
+            var userCallLOg = this.formatCallLog(data[i]);
+            this.callArray.push(userCallLOg);
+          };
+        }));
+      }else{
+        this.observableSubscriptions.add(this.sharedService.getCallLogByPhoneNumber(this.searchKey).subscribe(data => {
+          this.searchStatus = true;
+          for(let i in data){
+            var userCallLOg = this.formatCallLog(data[i]);
+            this.callArray.push(userCallLOg);
+          };
+        }));
+      }
     }else{
       return false;
     }
   }
   clearSearch(){
+    this.searchStatus = false;
     if(this.searchKey != ''){
       this.searchKey = '';
       this.callArray.length = 0;
     }else {
       return false;
     }
+  }
+  formatCallLog(log){
+    var callLog = new CallLog();
+    callLog.contactId = log.contactId;
+    callLog.phoneNo = log.phoneNo;
+    callLog.callDuration = log.endTime - log.startTime;
+    callLog.timeStamp = log.phoneNo;
+    callLog.callHealth = !log.callError;
+    return callLog;
+  }
+  onSearchByChange(radioValue:any){
+    console.log(radioValue);
+    this.searchBy = radioValue;
   }
 }

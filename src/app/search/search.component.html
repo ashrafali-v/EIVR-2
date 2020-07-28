@@ -8,13 +8,13 @@
             <button type="button" class="btn btn-primary" (click)="searchCallLog()">Search Call Log</button>
             <form action="/action_page.php">
                 <p>Please select your search method:</p>
-                <input type="radio" id="contactId" name="category" value="contactId">
+                <input type="radio" id="contactId" name="category" [checked]="true" value="contactId" (change)="onSearchByChange($event.target.value)">
                 <label for="contactId">Contact Id</label><br>
-                <input type="radio" id="phoneNumber" name="category" value="phoneNumber">
+                <input type="radio" id="phoneNumber" name="category" value="phoneNumber" (change)="onSearchByChange($event.target.value)">
                 <label for="phoneNumber">Phone Number</label><br>
               </form>
     </div>
-    <div class="box-panel" *ngIf="callArray.length > 0">
+    <div class="box-panel" *ngIf="callArray && callArray.length > 0">
         <table>
             <thead>
                 <tr>
@@ -56,5 +56,8 @@
             </tbody>
         </table>
         <ngb-pagination size="sm" [(page)]="currentPage" [pageSize]="pageSize" [collectionSize]="callArray.length" [maxSize]="5"></ngb-pagination>
+    </div>
+    <div *ngIf="callArray.length == 0 && searchStatus">
+        <span>No Log found.!</span>
     </div>
 </div>

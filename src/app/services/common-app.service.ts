@@ -89,7 +89,13 @@ export class CommonAppService {
       map((res:any) => res)
     )
   }
-  public getCallLog(key:any){
+  public getCallLogByContactId(key:any){
+    var url = this.eivrApiEndpoints['getLogByContactId'];
+    return this.httpClient.get(this.serviceBase+url+'?contactId='+key,this.jsonHttpHeader).pipe(
+      map((res:any) => res)
+    )
+  }
+  public getCallLogByPhoneNumber(key:any){
     var url = this.eivrApiEndpoints['getLogByPhoneNumber'];
     return this.httpClient.get(this.serviceBase+url+'?phoneNumber='+key,this.jsonHttpHeader).pipe(
       map((res:any) => res)
