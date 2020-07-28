@@ -1,11 +1,20 @@
 <div class="app-toggle-content">
     <h2>Search</h2>
-
-    <div class="searchbox">
-        <input type="text">
+    <div>
+        <input type="text" [(ngModel)]="searchKey">
+        <button class="btn bg-transparent" style="margin-left: -40px; z-index: 100;" (click)="clearSearch()">
+                <i class="fa fa-times"></i>
+              </button>
+        <button type="button" class="btn btn-primary" (click)="searchCallLog()">Search Call Log</button>
+        <form action="/action_page.php">
+            <p>Please select your search method:</p>
+            <input type="radio" id="contactId" name="category" [checked]="true" value="contactId" (change)="onSearchByChange($event.target.value)">
+            <label for="contactId">Contact Id</label><br>
+            <input type="radio" id="phoneNumber" name="category" value="phoneNumber" (change)="onSearchByChange($event.target.value)">
+            <label for="phoneNumber">Phone Number</label><br>
+        </form>
     </div>
-
-    <div class="box-panel">
+    <div class="box-panel" *ngIf="callArray && callArray.length > 0">
         <table>
             <thead>
                 <tr>
@@ -29,23 +38,26 @@
             <tbody>
                 <tr *ngFor="let call of callArray | slice : (currentPage-1) * pageSize : (currentPage-1) * pageSize + pageSize; let i = index">
                     <td data-label="Phone No">
-                        {{call.PhoneNo}}
+                        {{call.phoneNo}}
                     </td>
                     <td data-label="Contact ID">
-                        {{call.ContactId}}
+                        {{call.contactId}}
                     </td>
                     <td data-label="Call Duration">
-                        {{call.CallDuration}}
+                        {{call.callDuration}}
                     </td>
                     <td data-label="Time Stamp">
-                        {{call.TimeStamp}}
+                        {{call.timeStamp}}
                     </td>
                     <td data-label="Call Health">
-                        {{call.CallHealth}}
+                        {{call.callHealth}}
                     </td>
                 </tr>
             </tbody>
         </table>
         <ngb-pagination size="sm" [(page)]="currentPage" [pageSize]="pageSize" [collectionSize]="callArray.length" [maxSize]="5"></ngb-pagination>
+    </div>
+    <div *ngIf="callArray.length == 0 && searchStatus">
+        <span>No Log found.!</span>
     </div>
 </div>
