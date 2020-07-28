@@ -1,0 +1,37 @@
+input {
+    border: thin solid $nutral-light-color;
+    padding: $default-padding/2 $default-padding*2;
+    @include border-radius($default-padding*5 $null $null $default-padding*5);
+    @include ecs-typo($primary-font-regular, 400, 15px, 37px, $white);
+    &.search-input {
+        background-color: $primary-dark-color;
+        border: none;
+        min-width: $default-unit*250;
+        +.search-btn {
+            background-color: darken($primary-dark-color, 10%);
+            @include border-radius( $null $default-padding*5 $default-padding*5 $null);
+            @include ecs-typo($primary-font-regular, 400, 15px, 37px, $white);
+            padding: $default-padding/2 $default-padding;
+            border: none;
+            &:hover {
+                background-color: darken($primary-dark-color, 5%);
+            }
+        }
+    }
+}
+
+.clear-btn {
+    @include ecs-typo($primary-font-regular, 400, 15px, 15px, rgba($nutral-dark-color, .3));
+    margin-left: $default-margin/2;
+    i {
+        margin-right: $default-margin;
+    }
+    &:hover {
+        color: rgba($nutral-dark-color, .7);
+    }
+}
+
+.eivr-warning {
+    margin-top: $default-margin*2;
+    @include ecs-typo($primary-font-regular, 600, 15px, 15px, $nutral-dark-color);
+}

@@ -70,3 +70,7 @@
         @include border-radius($default-unit*5);
     }
 }
+
+.fa {
+    font-family: 'FontAwesome' !important;
+}

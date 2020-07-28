@@ -13,7 +13,7 @@ table {
                 @include flex(2 2 $full/5);
             }
             &:last-child {
-                @include flex(2 2 $full/5);
+                @include flex(2 2 $full/10);
             }
         }
         td {
@@ -24,7 +24,10 @@ table {
                 @include flex(2 2 $full/5);
             }
             &:last-child {
-                @include flex(2 2 $full/5);
+                @include flex(2 2 $full/10);
+                @include flexbox();
+                @include flex-direction(row);
+                @include justify-content(center);
             }
         }
     }
