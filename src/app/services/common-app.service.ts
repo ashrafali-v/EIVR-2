@@ -23,6 +23,8 @@ export class CommonAppService {
     GetAllToggles:'getAllToggles/',
     GetToggleByKey:'getToggleByKey/',
     SaveToggle:'saveToggle/',
+    getLogByContactId:'getContactId/',
+    getLogByPhoneNumber:'getContactDetailByPhone/'
   }
   constructor(private httpClient: HttpClient) {
     this.componentStatus = new ComponentStatus();
@@ -84,6 +86,12 @@ export class CommonAppService {
   public saveToggle(data:any){
     var url = this.eivrApiEndpoints['SaveToggle'];
     return this.httpClient.post(this.serviceBase+url,data,this.jsonHttpHeader).pipe(
+      map((res:any) => res)
+    )
+  }
+  public getCallLog(key:any){
+    var url = this.eivrApiEndpoints['getLogByPhoneNumber'];
+    return this.httpClient.get(this.serviceBase+url+'?phoneNumber='+key,this.jsonHttpHeader).pipe(
       map((res:any) => res)
     )
   }
