@@ -2,10 +2,37 @@
 ::ng-deep {
     .app-toggle-content {
         h2 {
-            @include ecs-typo($primary-font-regular, 400, 28px, 37px, $nutral-dark-color);
+            @include ecs-typo($primary-font-regular, 400, 20px, 37px, $nutral-dark-color);
             padding: $null;
             padding-bottom: $default-padding;
             margin: $null;
+        }
+        .serach-component {
+            @include flexbox();
+            @include flex-direction(row);
+            @include justify-content(flex-start);
+            @extend .box-panel;
+            +div {
+                margin-top: $default-margin*2;
+            }
+            form {
+                @include align-self(center);
+            }
+            // .search-method {
+            //     @include flexbox();
+            //     @include flex-direction(row);
+            //     @include justify-content(flex-start);
+            //     vertical-align: middle;
+            //     p {
+            //         @include ecs-typo($primary-font-regular, 400, 14px, 14px, $dark);
+            //         margin-right: $default-margin;
+            //     }
+            //     label {
+            //         @include ecs-typo($primary-font-regular, 600, 14px, 14px, $dark);
+            //         margin-left: $default-margin;
+            //         margin-right: $default-margin;
+            //     }
+            // }
         }
     }
 }

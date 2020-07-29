@@ -1,18 +1,23 @@
 <div class="app-toggle-content">
     <h2>Search</h2>
-    <div>
-            <input type="text" [(ngModel)]="searchKey">
-            <button class="btn bg-transparent" style="margin-left: -40px; z-index: 100;" (click)="clearSearch()">
-                <i class="fa fa-times"></i>
-              </button>
-            <button type="button" class="btn btn-primary" (click)="searchCallLog()">Search Call Log</button>
-            <form action="/action_page.php">
+    <div class="serach-component">
+        <form action="/action_page.php">
+            <div class="search-method">
                 <p>Please select your search method:</p>
                 <input type="radio" id="contactId" name="category" [checked]="true" value="contactId" (change)="onSearchByChange($event.target.value)">
-                <label for="contactId">Contact Id</label><br>
+                <label for="contactId">Contact Id</label>
                 <input type="radio" id="phoneNumber" name="category" value="phoneNumber" (change)="onSearchByChange($event.target.value)">
-                <label for="phoneNumber">Phone Number</label><br>
-              </form>
+                <label for="phoneNumber">Phone Number</label>
+            </div>
+        </form>
+        <div class="eivr-search-box">
+            <input type="text" [(ngModel)]="searchKey" class="search-input">
+            <button type="button" class="search-btn" (click)="searchCallLog()">
+                Search Call Log
+            </button>
+            <button (click)="clearSearch()" class="btn bg-transparent clear-btn"><i class="fa fa-times"></i>Clear</button>
+        </div>
+
     </div>
     <div class="box-panel" *ngIf="callArray && callArray.length > 0">
         <table>
@@ -57,7 +62,7 @@
         </table>
         <ngb-pagination size="sm" [(page)]="currentPage" [pageSize]="pageSize" [collectionSize]="callArray.length" [maxSize]="5"></ngb-pagination>
     </div>
-    <div *ngIf="callArray.length == 0 && searchStatus">
+    <div class="eivr-warning" *ngIf="callArray.length == 0 && searchStatus">
         <span>No Log found.!</span>
     </div>
 </div>

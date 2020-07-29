@@ -1,47 +1,47 @@
 <div class="app-toggle-content">
     <h2>View Toggles</h2>
-    <div>
-        <input type="text" [(ngModel)]="toggleKey">
-        <button class="btn bg-transparent" style="margin-left: -40px; z-index: 100;" (click)="claerSearchToggle()">
-            <i class="fa fa-times"></i>
-          </button>
-        <button type="button" class="btn btn-primary" (click)="searchToggle()">Search Toggle</button>
+    <div class="serach-component">
+        <div class="eivr-search-box">
+            <input type="text" [(ngModel)]="toggleKey" class="search-input">
+            <button type="button" class="search-btn" (click)="searchToggle()">Search Toggle</button>
+            <button class="btn bg-transparent clear-btn" (click)="claerSearchToggle()"><i class="fa fa-times"></i>Clear</button>
+        </div>
         <!-- <button type="button" class="btn btn-primary" (click)="createToggle()">Create Toggle</button> -->
     </div>
     <div class="box-panel" *ngIf="toggles$ | async as toggles; else loadingOrError">
         <ng-container *ngIf="toggles.length; else noItems">
-        <table>
-            <thead>
-                <tr>
-                    <th>
-                        Toggle key
-                    </th>
-                    <th>
-                        Toggle value
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let toggle of toggles | slice : (currentPage-1) * pageSize : (currentPage-1) * pageSize + pageSize; let i = index">
-                    <td data-label="Message key">
-                        {{toggle.toggleKey}}
-                    </td>
-                    <td data-label="Message value">
-                        {{toggle.toggleValue}}
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <ngb-pagination *ngIf='toggles.length > 10' size="sm" [(page)]="currentPage" [pageSize]="pageSize" [collectionSize]="toggles.length" [maxSize]="5"></ngb-pagination>
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            Toggle key
+                        </th>
+                        <th>
+                            Toggle value
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let toggle of toggles | slice : (currentPage-1) * pageSize : (currentPage-1) * pageSize + pageSize; let i = index">
+                        <td data-label="Message key">
+                            {{toggle.toggleKey}}
+                        </td>
+                        <td data-label="Message value">
+                            {{toggle.toggleValue}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <ngb-pagination *ngIf='toggles.length > 10' size="sm" [(page)]="currentPage" [pageSize]="pageSize" [collectionSize]="toggles.length" [maxSize]="5"></ngb-pagination>
         </ng-container>
         <ng-template #noItems>No Items found!</ng-template>
     </div>
     <ng-template #loadingOrError>
         <div *ngIf="loadingError$ | async; else loading">
-          Error loading the list of users. Please try again later.
+            Error loading the list of users. Please try again later.
         </div>
         <ng-template #loading>
-          Loading toggles...
+            Loading toggles...
         </ng-template>
     </ng-template>
 </div>

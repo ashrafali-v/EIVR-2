@@ -3,12 +3,12 @@
 </div>
 <div class="app-message-content" *ngIf="!getAllMessagesLoader">
     <h2>View Messages</h2>
-    <div>
-        <input type="text" [(ngModel)]="messageKey">
-        <button class="btn bg-transparent" style="margin-left: -40px; z-index: 100;" (click)="clearSearchMessage()">
-            <i class="fa fa-times"></i>
-          </button>
-        <button type="button" class="btn btn-primary" (click)="searchMessage()">Search Message</button>
+    <div class="serach-component">
+        <div class="eivr-search-box">
+            <input type="text" [(ngModel)]="messageKey" class="search-input">
+            <button type="button" class="search-btn" (click)="searchMessage()">Search Message</button>
+            <button class="btn bg-transparent clear-btn" (click)="clearSearchMessage()"><i class="fa fa-times"></i>Clear</button>
+        </div>
     </div>
     <div class="box-panel">
         <table>
