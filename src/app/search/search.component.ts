@@ -16,6 +16,7 @@ export class SearchComponent implements OnInit {
   searchKey:any = '';
   searchStatus:boolean = false;
   searchBy:string='contactId';
+  userLogInfo:any='';
   private observableSubscriptions = new SubSink();
   constructor(private sharedService: CommonAppService) {
     this.sharedService.setComponentStatus(true,true,true);
@@ -30,10 +31,7 @@ export class SearchComponent implements OnInit {
       if(this.searchBy =='contactId'){
         this.observableSubscriptions.add(this.sharedService.getCallLogByContactId(this.searchKey).subscribe(data => {
           this.searchStatus = true;
-          for(let i in data){
-            var userCallLOg = this.formatCallLog(data[i]);
-            this.callArray.push(userCallLOg);
-          };
+          this.userLogInfo = this.formatCallLog(data[0]);
         }));
       }else{
         this.observableSubscriptions.add(this.sharedService.getCallLogByPhoneNumber(this.searchKey).subscribe(data => {

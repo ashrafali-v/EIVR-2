@@ -19,7 +19,11 @@
         </div>
 
     </div>
-    <div class="box-panel" *ngIf="callArray && callArray.length > 0">
+    <div *ngIf="this.searchBy == 'contactId'">
+        <span>{{userLogInfo.phoneNo}}</span>
+        <div *ngIf="userLogInfo == '' && searchStatus">No user information found.!</div>
+    </div>
+    <div class="box-panel" *ngIf="callArray && callArray.length > 0 && this.searchBy == 'phoneNumber'">
         <table>
             <thead>
                 <tr>
@@ -62,7 +66,7 @@
         </table>
         <ngb-pagination size="sm" [(page)]="currentPage" [pageSize]="pageSize" [collectionSize]="callArray.length" [maxSize]="5"></ngb-pagination>
     </div>
-    <div class="eivr-warning" *ngIf="callArray.length == 0 && searchStatus">
+    <div class="eivr-warning" *ngIf="callArray.length == 0 && searchStatus && this.searchBy == 'phoneNumber'">
         <span>No Log found.!</span>
     </div>
 </div>
