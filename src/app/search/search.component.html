@@ -19,10 +19,44 @@
         </div>
 
     </div>
-    <div *ngIf="this.searchBy == 'contactId'">
-        <span>{{userLogInfo.phoneNo}}</span>
-        <div *ngIf="userLogInfo == '' && searchStatus">No user information found.!</div>
+    <div *ngIf="userLogInfo && userLogInfo != '' && this.searchBy == 'contactId'">
+        <div>
+            <h6>Phone No</h6>
+            <span>{{userLogInfo.phoneNo}}</span>
+        </div>
+        <div>
+            <h6>Time Stamp</h6>
+            <span *ngIf="userLogInfo.timeStamp != null">{{userLogInfo.timeStamp}}</span>
+            <span *ngIf="userLogInfo.timeStamp == null">Null</span>
+        </div>
+        <div>
+            <h6>Account Found</h6>
+            <span>{{userLogInfo.accountFound}}</span>
+        </div>
+        <div>
+            <h6>Error</h6>
+            <span>{{userLogInfo.callError}}</span>
+        </div>
+        <div>
+            <h6>Send to CSR</h6>
+            <span>{{userLogInfo.callCSR}}</span>
+        </div>
+        <div>
+            <h6>Payment Started</h6>
+            <span>{{userLogInfo.paymentStarted}}</span>
+        </div>
+        <div>
+            <h6>Payment Success</h6>
+            <span>{{userLogInfo.paymentSuccess}}</span>
+        </div>
+        <div>
+            <h6>Logs</h6>
+            <p>
+                {{userLogInfo.logs}}
+            </p>
+        </div>
     </div>
+    <div class="eivr-warning" *ngIf="userNotFound && searchStatusContactId">No user information found.!</div>
     <div class="box-panel" *ngIf="callArray && callArray.length > 0 && this.searchBy == 'phoneNumber'">
         <table>
             <thead>
@@ -66,7 +100,7 @@
         </table>
         <ngb-pagination size="sm" [(page)]="currentPage" [pageSize]="pageSize" [collectionSize]="callArray.length" [maxSize]="5"></ngb-pagination>
     </div>
-    <div class="eivr-warning" *ngIf="callArray.length == 0 && searchStatus && this.searchBy == 'phoneNumber'">
+    <div class="eivr-warning" *ngIf="callArray.length == 0 && searchStatusPhoneNumber && this.searchBy == 'phoneNumber'">
         <span>No Log found.!</span>
     </div>
 </div>

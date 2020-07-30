@@ -14,7 +14,9 @@ export class SearchComponent implements OnInit {
   currentPage: any = 1;
   pageSize: number = 10;
   searchKey:any = '';
-  searchStatus:boolean = false;
+  searchStatusContactId:boolean = false;
+  searchStatusPhoneNumber:boolean = false;
+  userNotFound:boolean = false;
   searchBy:string='contactId';
   userLogInfo:any='';
   private observableSubscriptions = new SubSink();
@@ -30,12 +32,21 @@ export class SearchComponent implements OnInit {
     if(this.searchKey != ''){
       if(this.searchBy =='contactId'){
         this.observableSubscriptions.add(this.sharedService.getCallLogByContactId(this.searchKey).subscribe(data => {
-          this.searchStatus = true;
-          this.userLogInfo = this.formatCallLog(data[0]);
+          this.searchStatusContactId = true;
+          this.searchStatusPhoneNumber = false;
+          if(data.length == 0){
+            this.userNotFound = true;
+          }else{
+            this.userNotFound = false;
+          }
+          this.userLogInfo =data[0];
+          console.log(this.userLogInfo);
+          
         }));
       }else{
         this.observableSubscriptions.add(this.sharedService.getCallLogByPhoneNumber(this.searchKey).subscribe(data => {
-          this.searchStatus = true;
+          this.searchStatusPhoneNumber = true;
+          this.searchStatusContactId = false;
           for(let i in data){
             var userCallLOg = this.formatCallLog(data[i]);
             this.callArray.push(userCallLOg);
@@ -47,7 +58,8 @@ export class SearchComponent implements OnInit {
     }
   }
   clearSearch(){
-    this.searchStatus = false;
+    this.searchStatusPhoneNumber = false;
+    this.searchStatusContactId = false;
     if(this.searchKey != ''){
       this.searchKey = '';
       this.callArray.length = 0;
@@ -60,7 +72,7 @@ export class SearchComponent implements OnInit {
     callLog.contactId = log.contactId;
     callLog.phoneNo = log.phoneNo;
     callLog.callDuration = log.endTime - log.startTime;
-    callLog.timeStamp = log.phoneNo;
+    callLog.timeStamp = log.timeStamp?log.timeStamp:'Null';
     callLog.callHealth = !log.callError;
     return callLog;
   }
