@@ -34,5 +34,54 @@
                 }
             }
         }
+        .contactid-search {
+            @include flexbox();
+            @include flex-direction(row);
+            @include flex-wrap(wrap);
+            @include justify-content(flex-start);
+            .tile {
+                @include flex(0 0 $full/4);
+                // margin-bottom: $default-margin*2;
+                &.log {
+                    @include flex(0 0 $full);
+                    label {
+                        margin-left: $default-margin*2;
+                    }
+                    .minhgt {
+                        p {
+                            @include ecs-typo($primary-font-regular, 400, 14px, 19px, $dark);
+                        }
+                        @include device(lg) {
+                            max-height: $default-unit*100;
+                            overflow-y: auto;
+                            padding: $default-padding*2;
+                            background-color: $nutral-light-color;
+                            @include border-radius($default-padding);
+                        }
+                    }
+                }
+                label {
+                    @include ecs-typo($primary-font-regular, 400, 14px, 14px, $dark);
+                    position: relative;
+                    margin-bottom: $default-margin*2;
+                    margin-left: $default-margin*2;
+                    &:before {
+                        content: "";
+                        width: $default-margin*2;
+                        height: $default-unit*2.5;
+                        display: block;
+                        background-color: $primary-color;
+                        position: absolute;
+                        left: $null;
+                        top: $full + 30;
+                    }
+                }
+                h3 {
+                    @include ecs-typo($primary-font-regular, 600, 14px, 14px, $dark);
+                    margin-bottom: $default-margin*2;
+                    margin-left: $default-margin*2;
+                }
+            }
+        }
     }
 }

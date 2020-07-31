@@ -6,7 +6,12 @@ input {
     &.search-input {
         background-color: $primary-dark-color;
         border: none;
-        min-width: $default-unit*250;
+        @include device(lg) {
+            min-width: $default-unit*120;
+        }
+        @include device(xxl) {
+            min-width: $default-unit*250;
+        }
         +.search-btn {
             background-color: darken($primary-dark-color, 10%);
             @include border-radius( $null $default-padding*5 $default-padding*5 $null);
