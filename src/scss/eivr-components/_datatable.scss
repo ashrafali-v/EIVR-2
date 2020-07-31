@@ -27,7 +27,7 @@ table {
                 @include flex(2 2 $full/10);
                 @include flexbox();
                 @include flex-direction(row);
-                @include justify-content(center);
+                @include justify-content(flex-start);
             }
         }
     }
@@ -38,6 +38,7 @@ table {
             background-color: $nutral-light-color;
             border-bottom: thin solid darken($nutral-light-color, 10%);
             margin-bottom: $default-margin*2;
+            padding-right: $default-padding*2;
             th {
                 @include ecs-typo($primary-font-regular, 400, 15px, 17px, $nutral-dark-color);
                 padding: $default-padding*2 $default-padding*2;
@@ -57,7 +58,7 @@ table {
         display: block;
         width: $full;
         overflow-y: auto;
-        max-height: $default-unit*140;
+        max-height: $default-unit*109;
         @include device(mmh) {
             max-height: $default-unit*280;
         }
