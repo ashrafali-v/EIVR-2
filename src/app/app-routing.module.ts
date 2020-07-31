@@ -7,7 +7,7 @@ const routes: Routes = [
   { path: 'messages', loadChildren: () => import('./message/message.module').then(m => m.MessageModule) },
   { path: 'toggles', loadChildren: () => import('./toggle/toggle.module').then(m => m.ToggleModule) },
   { path: 'search', loadChildren: () => import('./search/search.module').then(m => m.SearchModule) },
-  { path: '',redirectTo: '/home',pathMatch: 'full'}
+  { path: '',redirectTo: '/messages',pathMatch: 'full'}
 ];
 
 @NgModule({

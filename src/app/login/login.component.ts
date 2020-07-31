@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit,AfterViewInit  {
   }
   login(formData: any){
     if(formData.userName =='eivr' && formData.userPassword =='123'){
-      this.router.navigate(['home']);
+      this.router.navigate(['messages']);
       this.sharedService.setComponentStatus(true,true,true);   
     }else{
       this.invalidCred = true;
