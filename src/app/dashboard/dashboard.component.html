@@ -1,5 +1,6 @@
 <div class="app-dashboard">
-    <section>
+    <h2>Dashboard</h2>
+    <!-- <section>
         <span *ngIf="totalCallCountToday != null">{{totalCallCountToday}}</span>
         <span *ngIf="totalPaymentCountToday != null">{{totalPaymentCountToday}}</span>
         <span *ngIf="totalCSRCountToday != null">{{totalCSRCountToday}}</span>
@@ -14,5 +15,84 @@
   [yAxis]="showYAxis"
   [legend]="showLegend">
 </ngx-charts-bar-vertical>
-    </section>
+    </section> -->
+
+    <div class="chart-grid">
+        <div class="value-repro">
+            <div class="recived-ivr value-box">
+                <h3>Calls Received <br><b>by IVR</b></h3>
+                <div class="value-text">
+                    <h4>134 +</h4>
+                </div>
+            </div>
+            <div class="direct-ivr value-box">
+                <h3>Calls Made Directly <br><b>to IVR</b></h3>
+                <div class="value-text">
+                    <h4>134 +</h4>
+                </div>
+            </div>
+            <div class="transfered-ivr value-box">
+                <h3>Calls Transferred <br><b>from CRS</b></h3>
+                <div class="value-text">
+                    <h4>134 +</h4>
+                </div>
+            </div>
+        </div>
+        <div class="value-repro">
+            <div class="value-box">
+                <h3>Calls Transferred <br><b>from IVR to CRS</b></h3>
+                <div class="value-text">
+                    <h4>134 +</h4>
+                </div>
+            </div>
+            <div class="value-box">
+                <h3>Calls<br> <b>Completed</b></h3>
+                <div class="value-text">
+                    <h4>134 +</h4>
+                </div>
+            </div>
+        </div>
+        <div class="value-repro">
+            <div class="value-box">
+                <h3><b>Average Duration</b></h3>
+                <div class="value-text">
+                    <h4>134 +</h4>
+                </div>
+            </div>
+            <div class="value-box">
+                <h3>Terminated <br><b>Before Completion</b></h3>
+                <div class="value-text">
+                    <h4>134 +</h4>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="visual-grid">
+        <div class="visual-box">
+            <div class="visual-graph">
+                <h3>No of Payments Processed</h3>
+                <div class="graph-box">
+                    Graph place here
+                </div>
+            </div>
+        </div>
+        <div class="visual-box">
+            <div class="visual-graph">
+                <h3>Amount of Payments Processed</h3>
+                <div class="graph-box">
+                    Graph place here
+                </div>
+            </div>
+        </div>
+        <div class="visual-box">
+            <div class="visual-graph">
+                <h3>No of Payments Denied/Not Completed</h3>
+                <div class="graph-box">
+                    Graph place here
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
