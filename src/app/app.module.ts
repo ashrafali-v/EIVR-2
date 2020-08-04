@@ -14,6 +14,7 @@ import { ViewMessageComponent } from './modals/view-message/view-message.compone
 import { DeleteMessageComponent } from './modals/delete-message/delete-message.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CreateToggleComponent } from './modals/create-toggle/create-toggle.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +33,7 @@ import { CreateToggleComponent } from './modals/create-toggle/create-toggle.comp
     FormsModule,
     BrowserAnimationsModule,
     NgbModule,
+    NgxChartsModule,
     ToastrModule.forRoot({
       closeButton: true}),
   ],
