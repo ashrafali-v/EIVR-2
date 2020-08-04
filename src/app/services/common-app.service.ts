@@ -24,7 +24,11 @@ export class CommonAppService {
     GetToggleByKey:'getToggleByKey/',
     SaveToggle:'saveToggle/',
     getLogByContactId:'getContactId/',
-    getLogByPhoneNumber:'getContactDetailByPhone/'
+    getLogByPhoneNumber:'getContactDetailByPhone/',
+    SystemHealth:'health/',
+    TodayCallCount:'getTodayCallCount/',
+    TodayPayment:'getTodayPaymentCount/',
+    TodayCSRCount:'getTodayCSRCount/'
   }
   constructor(private httpClient: HttpClient) {
     this.componentStatus = new ComponentStatus();
@@ -98,6 +102,30 @@ export class CommonAppService {
   public getCallLogByPhoneNumber(key:any){
     var url = this.eivrApiEndpoints['getLogByPhoneNumber'];
     return this.httpClient.get(this.serviceBase+url+'?phoneNumber='+key,this.jsonHttpHeader).pipe(
+      map((res:any) => res)
+    )
+  }
+  public getSystemHealth(){
+    var url = this.eivrApiEndpoints['SystemHealth'];
+    return this.httpClient.get(this.serviceBase+url,this.jsonHttpHeader).pipe(
+      map((res:any) => res)
+    )
+  }
+  public getTodayCallCount(){
+    var url = this.eivrApiEndpoints['TodayCallCount'];
+    return this.httpClient.get(this.serviceBase+url,this.jsonHttpHeader).pipe(
+      map((res:any) => res)
+    )
+  }
+  public getTodayPayment(){
+    var url = this.eivrApiEndpoints['TodayPayment'];
+    return this.httpClient.get(this.serviceBase+url,this.jsonHttpHeader).pipe(
+      map((res:any) => res)
+    )
+  }
+  public getTodayCSRCount(){
+    var url = this.eivrApiEndpoints['TodayCSRCount'];
+    return this.httpClient.get(this.serviceBase+url,this.jsonHttpHeader).pipe(
       map((res:any) => res)
     )
   }

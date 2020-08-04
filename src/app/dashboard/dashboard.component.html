@@ -1,1 +1,18 @@
-<p>dashboard works!</p>
+<div class="app-dashboard">
+    <section>
+        <span *ngIf="totalCallCountToday != null">{{totalCallCountToday}}</span>
+        <span *ngIf="totalPaymentCountToday != null">{{totalPaymentCountToday}}</span>
+        <span *ngIf="totalCSRCountToday != null">{{totalCSRCountToday}}</span>
+    </section>
+    <section>
+        <ngx-charts-bar-vertical
+  [view]="view"
+  [scheme]="colorScheme"
+  [results]="single"
+  [gradient]="gradient"
+  [xAxis]="showXAxis"
+  [yAxis]="showYAxis"
+  [legend]="showLegend">
+</ngx-charts-bar-vertical>
+    </section>
+</div>
