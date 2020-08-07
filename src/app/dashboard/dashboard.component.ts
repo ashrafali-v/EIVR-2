@@ -24,13 +24,16 @@ export class DashboardComponent implements OnInit,OnDestroy {
   showYAxis = true;
   gradient = false;
   showLegend = true;
+  legendPosition='below';
   showXAxisLabel = true;
   xAxisLabel = 'Country';
   showYAxisLabel = true;
   yAxisLabel = 'Population';
+  groupPadding = 10;
+  barPadding = 4;
 
   colorScheme = {
-    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+    domain: ['#fd7e14', '#020B7A', '#dc3545']
   };
 
   constructor(private sharedService: CommonAppService) { 
@@ -38,19 +41,127 @@ export class DashboardComponent implements OnInit,OnDestroy {
   }
 
   ngOnInit(): void {
-    this.view = [320, 200];
+    this.view = [700, 200];
     var single = [
       {
         "name": "Germany",
-        "value": 8940000
+        "series": [
+          {
+            "name": "2010",
+            "value": 73
+          },
+          {
+            "name": "2011",
+            "value": 89
+          },
+          {
+            "name": "2012",
+            "value": 69
+          }
+        ]
       },
+    
       {
         "name": "USA",
-        "value": 5000000
+        "series": [
+          {
+            "name": "2010",
+            "value": 50
+          },
+          {
+            "name": "2011",
+            "value": 15
+          },
+          {
+            "name": "2012",
+            "value": 35
+          }
+        ]
       },
       {
         "name": "France",
-        "value": 7200000
+        "series": [
+          {
+            "name": "2010",
+            "value": 30
+          },
+          {
+            "name": "2011",
+            "value": 27
+          },
+          {
+            "name": "2012",
+            "value": 47
+          }
+        ]
+      },
+      {
+        "name": "Belgium",
+        "series": [
+          {
+            "name": "2010",
+            "value":55
+          },
+          {
+            "name": "2011",
+            "value": 35
+          },
+          {
+            "name": "2012",
+            "value": 60
+          }
+        ]
+      },
+      {
+        "name": "Holand",
+        "series": [
+          {
+            "name": "2010",
+            "value": 50
+          },
+          {
+            "name": "2011",
+            "value": 58
+          },
+          {
+            "name": "2012",
+            "value": 32
+          }
+        ]
+      },
+      {
+        "name": "Turkey",
+        "series": [
+          {
+            "name": "2010",
+            "value": 58
+          },
+          {
+            "name": "2011",
+            "value": 39
+          },
+          {
+            "name": "2012",
+            "value": 25
+          }
+        ]
+      },
+      {
+        "name": "Italy",
+        "series": [
+          {
+            "name": "2010",
+            "value": 58
+          },
+          {
+            "name": "2011",
+            "value": 39
+          },
+          {
+            "name": "2012",
+            "value": 25
+          }
+        ]
       }
     ];
     this.errorObject = null;
