@@ -1,0 +1,24 @@
+.nav {
+    &.nav-tabs {
+        @include flexbox();
+        @include flex-direction(row);
+        @include justify-content(flex-start);
+        border: none;
+        li {
+            border: none;
+            a {
+                @include ecs-typo($primary-font-regular, 600, 13px, 18px, rgba($primary-dark-color, .5));
+                text-transform: uppercase;
+                text-align: center;
+                width: $default-unit*95;
+                // width: $full;
+                display: block;
+                padding: $default-padding*1.5 $default-padding;
+                &.active {
+                    background-color: $primary-dark-color;
+                    color: $white;
+                }
+            }
+        }
+    }
+}

@@ -13,7 +13,7 @@
                 @include flex(2 0 auto);
                 background-color: $primary-dark-color;
                 align-self: stretch;
-                height: calc(#{$full} - #{$default-unit*40});
+                height: calc(#{$full} - 80px);
                 max-width: $default-unit*130;
                 width: $full;
                 position: fixed;

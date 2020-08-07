@@ -1,18 +1,18 @@
-import { Component, OnInit,OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonAppService } from '../services/common-app.service';
-import { switchMap,takeUntil,catchError } from 'rxjs/operators'
-import { timer,Subject,of } from 'rxjs';
+import { switchMap, takeUntil, catchError } from 'rxjs/operators'
+import { timer, Subject, of } from 'rxjs';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit,OnDestroy {
-  systemHaelth$:any;
-  totalCallCountToday:any;
-  totalPaymentCountToday:any;
-  totalCSRCountToday:number;
-  errorObject:any;
+export class DashboardComponent implements OnInit, OnDestroy {
+  systemHaelth$: any;
+  totalCallCountToday: any;
+  totalPaymentCountToday: any;
+  totalCSRCountToday: number;
+  errorObject: any;
   private killTrigger: Subject<void> = new Subject();
   single: any[];
   multi: any[];
@@ -24,20 +24,20 @@ export class DashboardComponent implements OnInit,OnDestroy {
   showYAxis = true;
   gradient = false;
   showLegend = true;
-  legendPosition='below';
+  legendPosition = 'below';
   showXAxisLabel = true;
   xAxisLabel = 'Country';
   showYAxisLabel = true;
   yAxisLabel = 'Population';
-  groupPadding = 10;
-  barPadding = 4;
+  groupPadding = 15;
+  barPadding = 0;
 
   colorScheme = {
     domain: ['#fd7e14', '#020B7A', '#dc3545']
   };
 
-  constructor(private sharedService: CommonAppService) { 
-    this.sharedService.setComponentStatus(true,true,true);
+  constructor(private sharedService: CommonAppService) {
+    this.sharedService.setComponentStatus(true, true, true);
   }
 
   ngOnInit(): void {
@@ -60,7 +60,7 @@ export class DashboardComponent implements OnInit,OnDestroy {
           }
         ]
       },
-    
+
       {
         "name": "USA",
         "series": [
@@ -100,7 +100,7 @@ export class DashboardComponent implements OnInit,OnDestroy {
         "series": [
           {
             "name": "2010",
-            "value":55
+            "value": 55
           },
           {
             "name": "2011",
@@ -165,19 +165,19 @@ export class DashboardComponent implements OnInit,OnDestroy {
       }
     ];
     this.errorObject = null;
-    timer(0,5*60*1000).pipe(
+    timer(0, 5 * 60 * 1000).pipe(
       takeUntil(this.killTrigger),
       switchMap(() => this.sharedService.getTodayCallCount()),
       catchError(error => of('Error'))
     ).subscribe(result => this.totalCallCountToday = result);
 
-    timer(0,5*60*1000).pipe(
+    timer(0, 5 * 60 * 1000).pipe(
       takeUntil(this.killTrigger),
       switchMap(() => this.sharedService.getTodayPayment()),
       catchError(error => of('Error'))
     ).subscribe(result => this.totalPaymentCountToday = result);
 
-    timer(0,5*60*1000).pipe(
+    timer(0, 5 * 60 * 1000).pipe(
       takeUntil(this.killTrigger),
       switchMap(() => this.sharedService.getTodayCSRCount()),
       catchError(error => of('Error'))
