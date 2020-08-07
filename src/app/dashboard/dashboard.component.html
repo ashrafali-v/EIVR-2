@@ -1,22 +1,5 @@
 <div class="app-dashboard">
     <h2>Dashboard</h2>
-    <!-- <section>
-        <span *ngIf="totalCallCountToday != null">{{totalCallCountToday}}</span>
-        <span *ngIf="totalPaymentCountToday != null">{{totalPaymentCountToday}}</span>
-        <span *ngIf="totalCSRCountToday != null">{{totalCSRCountToday}}</span>
-    </section>
-    <section>
-        <ngx-charts-bar-vertical
-  [view]="view"
-  [scheme]="colorScheme"
-  [results]="single"
-  [gradient]="gradient"
-  [xAxis]="showXAxis"
-  [yAxis]="showYAxis"
-  [legend]="showLegend">
-</ngx-charts-bar-vertical>
-    </section> -->
-
     <div class="chart-grid">
         <div class="value-repro">
             <div class="recived-ivr value-box">
@@ -68,31 +51,91 @@
 
         </div>
     </div>
-    <div class="visual-grid">
-        <div class="visual-box">
-            <div class="visual-graph">
-                <h3>No of Payments Processed</h3>
-                <div class="graph-box">
-                    Graph place here
+    <ul class="nav nav-tabs">
+        <li><a class="active" data-toggle="tab" href="#payments">Payments</a></li>
+        <li><a data-toggle="tab" href="#calls">calls</a></li>
+    </ul>
+    <select name="period-select" id="select-interval">
+        <option value="1">Daily</option>
+        <option value="2">Weekly</option>
+        <option value="3">Weekly</option>
+    </select>
+    <div class="tab-content">
+        <div id="payments" class="tab-pane active">
+            <div class="visual-grid">
+                <div class="visual-box">
+                    <div class="visual-graph">
+                        <h3>No of Payments Processed</h3>
+                        <div class="graph-box">
+                            <ngx-charts-bar-vertical-2d
+                            [scheme]="colorScheme"
+                            [results]="single"
+                            [gradient]="gradient"
+                            [xAxis]="showXAxis"
+                            [yAxis]="showYAxis"
+                            [legend]="showLegend"
+                            [legendPosition]="legendPosition"
+                            [groupPadding]="groupPadding"
+                            [barPadding]="barPadding">
+                            </ngx-charts-bar-vertical-2d>
+                        </div>
+                    </div>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-graph">
+                        <h3>Amount of Payments Processed</h3>
+                        <div class="graph-box">
+                            Tab 1
+                        </div>
+                    </div>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-graph">
+                        <h3>No of Payments Denied/Not Completed</h3>
+                        <div class="graph-box">
+                            Tab 1
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="visual-box">
-            <div class="visual-graph">
-                <h3>Amount of Payments Processed</h3>
-                <div class="graph-box">
-                    Graph place here
+        <div id="calls" class="tab-pane fade">
+            <div class="visual-grid">
+                <div class="visual-box">
+                    <div class="visual-graph">
+                        <h3>No of Payments Processed</h3>
+                        <div class="graph-box">
+                            <ngx-charts-bar-vertical-2d
+                            [scheme]="colorScheme"
+                            [results]="single"
+                            [gradient]="gradient"
+                            [xAxis]="showXAxis"
+                            [yAxis]="showYAxis"
+                            [legend]="showLegend"
+                            [legendPosition]="legendPosition"
+                            [groupPadding]="groupPadding"
+                            [barPadding]="barPadding">
+                            </ngx-charts-bar-vertical-2d>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="visual-box">
-            <div class="visual-graph">
-                <h3>No of Payments Denied/Not Completed</h3>
-                <div class="graph-box">
-                    Graph place here
+                <div class="visual-box">
+                    <div class="visual-graph">
+                        <h3>Amount of Payments Processed</h3>
+                        <div class="graph-box">
+                            Tab 2
+                        </div>
+                    </div>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-graph">
+                        <h3>No of Payments Denied/Not Completed</h3>
+                        <div class="graph-box">
+                            Tab 2
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
