@@ -21,10 +21,11 @@
                 @include flex-direction(row);
                 @include justify-content(flex-start);
                 @include flex(1 1 auto);
-                background-color: $primary-color;
+                background-color: $primary-dark-color;
                 margin: $null $default-margin;
                 &:first-child {
                     margin-left: $null;
+                    @extend .theam-success;
                 }
                 &:last-child {
                     margin-right: $null;
@@ -35,10 +36,11 @@
                     text-transform: uppercase;
                 }
                 .value-box {
-                    @include flex(0 0 auto);
+                    @include flex(1 1 auto);
                     @include flexbox();
-                    @include flex-direction(column);
+                    @include flex-direction(row);
                     @include justify-content(space-between);
+                    @include align-items(center);
                     // width: $full/3;
                     border: thin solid rgba($white, 0.5);
                     border-top: none;
@@ -49,12 +51,31 @@
                     &:last-child {
                         border-right: none;
                     }
-                    .value-text {
+                    .value-contetnt {
+                        @include flexbox();
+                        @include flex-direction(column);
+                        @include justify-content(center);
                         h4 {
-                            @include ecs-typo($primary-font-regular, 400, 24px, 18px, $white);
-                            padding: $default-padding*2;
-                            padding-top: $null;
+                            @include ecs-typo($primary-font-regular, 700, 13px, 18px, $white);
+                            padding: $null $default-padding*2;
+                            padding-bottom: $default-padding;
                         }
+                        p {
+                            @include ecs-typo($primary-font-regular, 400, 13px, 18px, $white);
+                            padding: $default-padding*2;
+                            padding-bottom: $null;
+                        }
+                        .value-text {
+                            h3 {
+                                @include ecs-typo($primary-font-regular, 700, 30px, 18px, $white);
+                                padding: $default-padding*2;
+                                padding-top: $default-padding;
+                                text-transform: uppercase;
+                            }
+                        }
+                    }
+                    .figure {
+                        margin-right: $default-margin*2;
                     }
                 }
             }
@@ -62,25 +83,109 @@
         .visual-grid {
             @include flexbox();
             @include flex-direction(row);
+            @include justify-content(space-between);
+            @include flex-wrap(wrap);
             margin-top: $default-margin*2;
             .visual-box {
                 @include flex(1 1 auto);
                 background-color: $white;
-                margin: $null $default-margin;
+                margin-bottom: $default-margin*2;
+                // margin: $null $default-margin;
+                &.half-width {
+                    @include flex(0 0 calc(#{$full / 2} - 10px));
+                    width: calc(#{$full / 2} - 10px);
+                }
+                &.one-third-width {
+                    @include flex(0 0 calc(#{$full / 3} - 10px));
+                    width: calc(#{$full / 3} - 10px);
+                }
                 &:first-child {
-                    margin-left: $null;
+                    // margin-left: $null;
                 }
                 &:last-child {
-                    margin-right: $null;
+                    // margin-right: $null;
                 }
-                h3 {
-                    @include ecs-typo($primary-font-regular, 400, 13px, 18px, $primary-dark-color);
-                    padding: $default-padding*2;
-                    text-transform: uppercase;
+                .visual-graph {
+                    @include flexbox();
+                    @include flex-direction(column);
+                    @include justify-content(space-between);
+                    h3 {
+                        @include ecs-typo($primary-font-regular, 700, 13px, 18px, $primary-dark-color);
+                        padding: $default-padding*2;
+                        text-transform: uppercase;
+                        text-align: center;
+                    }
+                    .graph-box {
+                        // @include ecs-typo($primary-font-regular, 400, 13px, 18px, $primary-dark-color);
+                        padding: $default-padding*2 $null;
+                        margin: $null $default-margin*2;
+                        // height: $default-unit*175;
+                    }
+                    .filter-note {
+                        @include flexbox();
+                        @include flex-direction(row);
+                        @include justify-content(space-between);
+                        @include flex-wrap(wrap);
+                        margin: $null $default-margin*3.5 $default-margin*2;
+                        h5 {
+                            @include ecs-typo($primary-font-regular, 400, 13px, 18px, $primary-dark-color);
+                            b {
+                                @include ecs-typo($primary-font-regular, 700, 13px, 18px, $primary-dark-color);
+                            }
+                        }
+                        ul {
+                            @include flexbox();
+                            @include flex-direction(row);
+                            @include justify-content(space-between);
+                            @include align-self(flex-end);
+                            li {
+                                @include ecs-typo($primary-font-regular, 400, 13px, 18px, $primary-dark-color);
+                                margin-right: $default-margin;
+                                &:last-child {
+                                    margin-right: $null;
+                                }
+                                &.graph-bar-credit {
+                                    span {
+                                        background-color: $secondary-color;
+                                    }
+                                }
+                                &.graph-bar-debit {
+                                    span {
+                                        background-color: $primary-dark-color;
+                                    }
+                                }
+                                &.graph-bar-echeck {
+                                    span {
+                                        background-color: $theme-1;
+                                    }
+                                }
+                                span {
+                                    width: $default-unit*5;
+                                    height: $default-unit*5;
+                                    display: inline-block;
+                                    margin-right: $default-margin;
+                                }
+                            }
+                        }
+                    }
                 }
-                .graph-box {
-                    @include ecs-typo($primary-font-regular, 400, 13px, 18px, $primary-dark-color);
-                    padding: $default-padding*2;
+            }
+        }
+        .eivr-tabtrigger {
+            margin-top: $default-margin;
+            border-bottom: $primary-dark-color 5px solid;
+            @include flexbox();
+            @include flex-direction(row);
+            @include justify-content(flex-start);
+            .day-filter {
+                background-color: $primary-dark-color;
+                @include ecs-typo($primary-font-regular, 400, 13px, 18px, $white);
+                padding: $default-padding*1.35 $default-padding;
+                @include align-self(flex-end);
+                border: none;
+                width: $default-unit*65;
+                option {
+                    padding: $default-padding*1.35 $default-padding;
                 }
             }
         }

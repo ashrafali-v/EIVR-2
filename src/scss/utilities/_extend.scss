@@ -13,5 +13,12 @@
         margin-left: auto;
         margin-right: auto;
     }
+}
 
+.theam-success {
+    background-color: $theme-success;
+}
+
+.theam-danger {
+    background-color: $theme-danger;
 }
