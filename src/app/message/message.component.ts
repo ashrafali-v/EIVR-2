@@ -6,6 +6,8 @@ import { ToastrService } from 'ngx-toastr';
 import { UpdateMessageComponent } from '../modals/update-message/update-message.component'
 import { ViewMessageComponent } from '../modals/view-message/view-message.component';
 import { DeleteMessageComponent } from '../modals/delete-message/delete-message.component';
+import { Subject,of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-message',
@@ -13,20 +15,28 @@ import { DeleteMessageComponent } from '../modals/delete-message/delete-message.
   styleUrls: ['./message.component.scss']
 })
 export class MessageComponent implements OnInit, OnDestroy {
-  messages: any;
+  messages$: any = [];
   getAllMessagesLoader: boolean = true;
   currentPage: any = 1;
   pageSize: number = 10;
   messageKey:any ='';
+  loadingError$ = new Subject<boolean>();
   private observableSubscriptions = new SubSink();
   constructor(private sharedService: CommonAppService, private modalService: NgbModal, public toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.sharedService.setComponentStatus(true,true,true);
-    this.observableSubscriptions.add(this.sharedService.getAllMessages().subscribe(data => {
-      this.getAllMessagesLoader = false;
-      this.messages = data;
-    }));
+    this.messages$ =  this.sharedService.getAllMessages().pipe(
+      catchError((error) =>{
+        console.error('error loading the list of messages', error);
+        this.loadingError$.next(true);
+        return of();
+      })
+    );
+    // this.observableSubscriptions.add(this.sharedService.getAllMessages().subscribe(data => {
+    //   this.getAllMessagesLoader = false;
+    //   this.messages = data;
+    // }));
   }
   ngOnDestroy() {
     this.observableSubscriptions.unsubscribe();
@@ -88,8 +98,8 @@ export class MessageComponent implements OnInit, OnDestroy {
     deleteMessageModalRef.componentInstance.emitService.subscribe((result) => {
       if (result) {
         console.log(result);
-        var index = this.messages.findIndex(x => x.messageKey == message.messageKey);
-        this.messages.splice(index,1);
+        var index = this.messages$.findIndex(x => x.messageKey == message.messageKey);
+        this.messages$.splice(index,1);
         deleteMessageModalRef.close();
       }
     }, (reason) => {
@@ -98,10 +108,10 @@ export class MessageComponent implements OnInit, OnDestroy {
   }
   searchMessage(){
     console.log(this.messageKey);
-    this.messages.length = 0;
+    this.messages$.length = 0;
     if(this.messageKey != ''){
       this.observableSubscriptions.add(this.sharedService.getMessage(this.messageKey).subscribe(data => {
-        this.messages = data;
+        this.messages$ = data;
       }));
     }else{
       return false;
@@ -112,7 +122,7 @@ export class MessageComponent implements OnInit, OnDestroy {
       this.messageKey = '';
       this.observableSubscriptions.add(this.sharedService.getAllMessages().subscribe(data => {
         this.getAllMessagesLoader = false;
-        this.messages = data;
+        this.messages$ = data;
       }));
     }else {
       return false;

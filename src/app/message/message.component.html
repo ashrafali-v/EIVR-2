@@ -1,7 +1,4 @@
-<div *ngIf="getAllMessagesLoader">
-    loading...
-</div>
-<div class="app-message-content" *ngIf="!getAllMessagesLoader">
+<div class="app-message-content">
     <h2>View Messages</h2>
     <div class="serach-component">
         <div class="eivr-search-box">
@@ -10,42 +7,49 @@
             <button class="btn bg-transparent clear-btn" (click)="clearSearchMessage()"><i class="fa fa-times"></i>Clear</button>
         </div>
     </div>
-    <div class="box-panel">
-        <table>
-            <thead>
-                <tr>
-                    <th>
-                        Message key
-                    </th>
-                    <th>
-                        Message value
-                    </th>
-                    <th>Actions
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let message of messages | slice : (currentPage-1) * pageSize : (currentPage-1) * pageSize + pageSize; let i = index">
-                    <td data-label="Message key">
-                        {{message.messageKey}}
-                    </td>
-                    <td data-label="Message value">
-                        {{message.messageText}}
-                    </td>
-                    <td width="150px" data-label="Actions">
-                        <button type="button" (click)="messageInfo(message)" title="View Message">
-                            <img alt="Information" src="../../assets/infromation.svg" alt="">
-                        </button>
-                        <!-- <button type="button" (click)="editMessage(message)">
-                            <img alt="Edit Message" src="../../assets/edit.svg" alt="">
-                        </button>
-                        <button type="button" (click)="deleteMessage(message,i)">
-                            <img alt="Delete Message" src="../../assets/delete.svg" alt="">
-                        </button> -->
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <ngb-pagination size="sm" [(page)]="currentPage" [pageSize]="pageSize" [collectionSize]="messages.length" [maxSize]="5"></ngb-pagination>
+    <div class="box-panel" *ngIf="messages$ | async as messages; else loadingOrError">
+        <ng-container *ngIf="messages.length;else noItems">
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            Message key
+                        </th>
+                        <th>
+                            Message value
+                        </th>
+                        <th>Actions
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let message of messages | slice : (currentPage-1) * pageSize : (currentPage-1) * pageSize + pageSize; let i = index">
+                        <td data-label="Message key">
+                            {{message.messageKey}}
+                        </td>
+                        <td data-label="Message value">
+                            {{message.messageText}}
+                        </td>
+                        <td width="150px" data-label="Actions">
+                            <button type="button" (click)="messageInfo(message)" title="View Message">
+                                <img alt="Information" src="../../assets/infromation.svg" alt="">
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <ngb-pagination size="sm" [(page)]="currentPage" [pageSize]="pageSize" [collectionSize]="messages.length" [maxSize]="5"></ngb-pagination>
+        </ng-container>
+        <ng-template #noItems>
+            No Items found.!
+        </ng-template>
     </div>
+    <ng-template #loadingOrError>
+        <div *ngIf="loadingError$ | async; else loading">
+            Error loading the list of messages. Please try again later.
+        </div>
+        <ng-template #loading>
+            Loading messages...
+        </ng-template>
+    </ng-template>
 </div>

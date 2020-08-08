@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonAppService } from '../services/common-app.service';
-import { catchError } from 'rxjs/operators';
+import { catchError,retry } from 'rxjs/operators';
 import { Subject,of } from 'rxjs';
 import { SubSink } from 'subsink';
 import { ToastrService } from 'ngx-toastr';
@@ -23,11 +23,12 @@ export class ToggleComponent implements OnInit {
   loadingError$ = new Subject<boolean>();
   ngOnInit(): void {
     this.toggles$ = this.sharedService.getAllToggles().pipe(
-      catchError((error) => {
+      catchError(error => {
         console.error('error loading the list of users', error);
         this.loadingError$.next(true);
         return of();
-      })
+      }),
+      retry(2)
     );
   }
   enableToggle(event:any){
