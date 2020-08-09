@@ -187,7 +187,7 @@
                         <h3>TOTAL CALLS RECIVED</h3>
                         <ng-container *ngIf="!loaderCallsTab; else loading">
                             <div class="graph-box">
-                                <ngx-charts-bar-vertical-2d [scheme]="paymentChartsColorScheme" [results]="totalCallsRecieved" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [legendPosition]="legendPosition" [groupPadding]="groupPadding" [barPadding]="barPadding">
+                                <ngx-charts-bar-vertical-2d [scheme]="totalCallsRecievedColorScheme" [results]="totalCallsRecieved" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [legendPosition]="legendPosition" [groupPadding]="groupPadding" [barPadding]="barPadding">
                                 </ngx-charts-bar-vertical-2d>
                             </div>
                             <div class="filter-note">
@@ -235,7 +235,7 @@
                         <h3>CALLS COMPLETED</h3>
                         <ng-container *ngIf="!loaderCallsTab; else loading">
                             <div class="graph-box">
-                                <ngx-charts-bar-vertical [results]="totalCallsTransferedIvrToCsr" [scheme]="callsTransferedIvrToCsrColorSceme" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis">
+                                <ngx-charts-bar-vertical [results]="totalCallsTransferedIvrToCsr" [scheme]="callsCompletedColorSceme" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis">
                                 </ngx-charts-bar-vertical>
                             </div>
                             <div class="filter-note">
@@ -259,7 +259,7 @@
                         <h3>AVERAGE DURATION OF CALLS</h3>
                         <ng-container *ngIf="!loaderCallsTab; else loading">
                             <div class="graph-box">
-                                <ngx-charts-bar-vertical [results]="totalCallsTransferedIvrToCsr" [scheme]="callsTransferedIvrToCsrColorSceme" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis">
+                                <ngx-charts-bar-vertical [results]="totalCallsTransferedIvrToCsr" [scheme]="averageDurationColorSceme" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis">
                                 </ngx-charts-bar-vertical>
                             </div>
                             <div class="filter-note">

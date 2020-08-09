@@ -59,6 +59,15 @@ export class DashboardComponent implements OnInit, OnDestroy {
   callsTransferedIvrToCsrColorSceme = {
     domain: ['#dc3545']
   };
+  totalCallsRecievedColorScheme = {
+    domain: ['#fdc724', '#020B7A']
+  };
+  callsCompletedColorSceme = {
+    domain: ['#81e8f9']
+  };
+  averageDurationColorSceme = {
+    domain: ['#47e586']
+  };
   constructor(private sharedService: CommonAppService) {
     this.sharedService.setComponentStatus(true, true, true);
   }
@@ -182,10 +191,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
             {
               "name": "2011",
               "value": 89
-            },
-            {
-              "name": "2012",
-              "value": 69
             }
           ]
         },
@@ -200,10 +205,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
             {
               "name": "2011",
               "value": 25
-            },
-            {
-              "name": "2012",
-              "value": 30
             }
           ]
         },
@@ -217,10 +218,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
             {
               "name": "2011",
               "value": 45
-            },
-            {
-              "name": "2012",
-              "value": 25
             }
           ]
         }
@@ -236,10 +233,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
             {
               "name": "2011",
               "value": 89
-            },
-            {
-              "name": "2012",
-              "value": 69
             }
           ]
         },
@@ -254,10 +247,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
             {
               "name": "2011",
               "value": 25
-            },
-            {
-              "name": "2012",
-              "value": 30
             }
           ]
         },
@@ -271,10 +260,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
             {
               "name": "2011",
               "value": 45
-            },
-            {
-              "name": "2012",
-              "value": 25
             }
           ]
         },
@@ -288,10 +273,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
             {
               "name": "2011",
               "value": 15
-            },
-            {
-              "name": "2012",
-              "value": 35
             }
           ]
         }
@@ -410,10 +391,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
               {
                 "name": "2011",
                 "value": 89
-              },
-              {
-                "name": "2012",
-                "value": 69
               }
             ]
           },
@@ -428,10 +405,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
               {
                 "name": "2011",
                 "value": 25
-              },
-              {
-                "name": "2012",
-                "value": 30
               }
             ]
           },
@@ -445,10 +418,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
               {
                 "name": "2011",
                 "value": 45
-              },
-              {
-                "name": "2012",
-                "value": 25
               }
             ]
           },
@@ -462,10 +431,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
               {
                 "name": "2011",
                 "value": 15
-              },
-              {
-                "name": "2012",
-                "value": 35
               }
             ]
           }
