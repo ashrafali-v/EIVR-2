@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonAppService } from '../services/common-app.service';
 import { DashboardService } from '../services/dashboard.service';
-import { switchMap, takeUntil, catchError,delay,take,map } from 'rxjs/operators'
-import { timer, Subject, of,forkJoin,combineLatest,interval  } from 'rxjs';
+import { switchMap, takeUntil, catchError, delay, take, map } from 'rxjs/operators'
+import { timer, Subject, of, forkJoin, combineLatest, interval } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
 
 @Component({
@@ -20,10 +20,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
   single: any[];
   multi: any[];
   view: any[];
-  loaderPaymentsTab:boolean = true;
-  loaderCallsTab:boolean = true;
-  isError:boolean = false;
-  period:any;
+  loaderPaymentsTab: boolean = true;
+  loaderCallsTab: boolean = true;
+  isError: boolean = false;
+  period: any;
   /*---- Chart options----*/
   showXAxis = true;
   showYAxis = true;
@@ -38,7 +38,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   barPadding = 0;
   /*---- Chart options----*/
   /*-----Chart array declarations-------*/
-  forkJoinArray:any = [];
+  forkJoinArray: any = [];
   noOfPaymentsProcessed: any;
   amountOfPaymentsProcessed: any;
   noOfPaymentsDenied: any;
@@ -54,19 +54,19 @@ export class DashboardComponent implements OnInit, OnDestroy {
     domain: ['#fd7e14', '#020B7A', '#dc3545']
   };
   totalTextMessagesColorScheme = {
-    domain: ['#0CC474', '#dc3545']
+    domain: ['#0CC474', '#EF4444']
   };
   callsTransferedIvrToCsrColorSceme = {
-    domain: ['#dc3545']
+    domain: ['#EF4460']
   };
   totalCallsRecievedColorScheme = {
-    domain: ['#fdc724', '#020B7A']
+    domain: ['#fd7e14', '#020B7A']
   };
   callsCompletedColorSceme = {
-    domain: ['#81e8f9']
+    domain: ['#47CEF9']
   };
   averageDurationColorSceme = {
-    domain: ['#47e586']
+    domain: ['#0CC474']
   };
   constructor(private sharedService: CommonAppService) {
     this.sharedService.setComponentStatus(true, true, true);
@@ -74,17 +74,17 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.view = [700, 200];
-    const noOfPaymentsProcessed$ =  this.sharedService.getAllToggles().pipe(catchError(error =>of(undefined)));
-    const amountOfPaymentsProcessed$ =  this.sharedService.getAllToggles().pipe(catchError(error =>of(undefined)));
-    const noOfPaymentsDenied$ =  this.sharedService.getAllToggles().pipe(catchError(error =>of(undefined)));
-    const totalNoOfTextMessages$ =  this.sharedService.getAllToggles().pipe(catchError(error =>of(undefined)));
+    const noOfPaymentsProcessed$ = this.sharedService.getAllToggles().pipe(catchError(error => of(undefined)));
+    const amountOfPaymentsProcessed$ = this.sharedService.getAllToggles().pipe(catchError(error => of(undefined)));
+    const noOfPaymentsDenied$ = this.sharedService.getAllToggles().pipe(catchError(error => of(undefined)));
+    const totalNoOfTextMessages$ = this.sharedService.getAllToggles().pipe(catchError(error => of(undefined)));
 
     const example = forkJoin(
       //of('World').pipe(delay(3000)),
-      noOfPaymentsProcessed$,amountOfPaymentsProcessed$,noOfPaymentsDenied$,totalNoOfTextMessages$
+      noOfPaymentsProcessed$, amountOfPaymentsProcessed$, noOfPaymentsDenied$, totalNoOfTextMessages$
     );
 
-    example.subscribe(([noOfPaymentsProcessed,amountOfPaymentsProcessed,noOfPaymentsDenied,totalNoOfTextMessages])=>{
+    example.subscribe(([noOfPaymentsProcessed, amountOfPaymentsProcessed, noOfPaymentsDenied, totalNoOfTextMessages]) => {
       this.loaderPaymentsTab = false;
       noOfPaymentsProcessed = [
         {
@@ -100,7 +100,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
             }
           ]
         },
-  
+
         {
           "name": "USA",
           "series": [
@@ -194,7 +194,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
             }
           ]
         },
-  
+
         {
           "name": "27 TUE",
           "series": [
@@ -236,7 +236,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
             }
           ]
         },
-  
+
         {
           "name": "27 TUE",
           "series": [
@@ -291,7 +291,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
             }
           ]
         },
-  
+
         {
           "name": "27 TUE",
           "series": [
@@ -358,7 +358,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     ).subscribe(result => this.totalCSRCountToday = result);
 
     function yAxisTickFormatting(value) {
-        return this.currencyTickFormatting(value);
+      return this.currencyTickFormatting(value);
     }
   }
   ngOnDestroy() {
@@ -367,18 +367,18 @@ export class DashboardComponent implements OnInit, OnDestroy {
   currencyTickFormatting(value) {
     return '$' + value.toLocaleString();
   }
-  onSelectTab(){
-    if(this.loaderCallsTab){
-      const totalCallsRecieved$ =  this.sharedService.getAllToggles().pipe(catchError(error =>of(undefined)));
-      const totalCallsTransferedIvrToCsr$ =  this.sharedService.getAllToggles().pipe(catchError(error =>of(undefined)));
-      const callsCompleted$ =  this.sharedService.getAllToggles().pipe(catchError(error =>of(undefined)));
-      const averageDurationOfCalls$ =  this.sharedService.getAllToggles().pipe(catchError(error =>of(undefined)));
-      const callsTerminatedBeforeCompletion$ =  this.sharedService.getAllToggles().pipe(catchError(error =>of(undefined)));
+  onSelectTab() {
+    if (this.loaderCallsTab) {
+      const totalCallsRecieved$ = this.sharedService.getAllToggles().pipe(catchError(error => of(undefined)));
+      const totalCallsTransferedIvrToCsr$ = this.sharedService.getAllToggles().pipe(catchError(error => of(undefined)));
+      const callsCompleted$ = this.sharedService.getAllToggles().pipe(catchError(error => of(undefined)));
+      const averageDurationOfCalls$ = this.sharedService.getAllToggles().pipe(catchError(error => of(undefined)));
+      const callsTerminatedBeforeCompletion$ = this.sharedService.getAllToggles().pipe(catchError(error => of(undefined)));
 
       const example = forkJoin(
-        totalCallsRecieved$,totalCallsTransferedIvrToCsr$,callsCompleted$,averageDurationOfCalls$,callsTerminatedBeforeCompletion$
+        totalCallsRecieved$, totalCallsTransferedIvrToCsr$, callsCompleted$, averageDurationOfCalls$, callsTerminatedBeforeCompletion$
       );
-      example.subscribe(([totalCallsRecieved,totalCallsTransferedIvrToCsr,callsCompleted,averageDurationOfCalls,callsTerminatedBeforeCompletion])=>{
+      example.subscribe(([totalCallsRecieved, totalCallsTransferedIvrToCsr, callsCompleted, averageDurationOfCalls, callsTerminatedBeforeCompletion]) => {
         this.loaderCallsTab = false;
         totalCallsRecieved = [
           {
@@ -394,7 +394,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
               }
             ]
           },
-    
+
           {
             "name": "27 TUE",
             "series": [
@@ -438,20 +438,20 @@ export class DashboardComponent implements OnInit, OnDestroy {
         totalCallsTransferedIvrToCsr = [
           {
             "name": "27 MON",
-            "value":10
+            "value": 10
           },
-    
+
           {
             "name": "28 TUE",
-            "value":15
+            "value": 15
           },
           {
             "name": "29 WED",
-            "value":30
+            "value": 30
           },
           {
             "name": "30 THU",
-            "value":17
+            "value": 17
           }
         ];
         Object.assign(this, { totalCallsRecieved });
@@ -463,10 +463,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
   }
   //event handler for the select element's change event
-  selectChangeHandler (event: any) {
+  selectChangeHandler(event: any) {
     //update the ui
     this.period = event.target.value;
     console.log(this.period);
-    
+
   }
 }

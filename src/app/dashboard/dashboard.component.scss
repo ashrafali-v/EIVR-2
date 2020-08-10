@@ -25,7 +25,6 @@
                 margin: $null $default-margin;
                 &:first-child {
                     margin-left: $null;
-                    @extend .theam-success;
                 }
                 &:last-child {
                     margin-right: $null;
@@ -50,6 +49,18 @@
                     }
                     &:last-child {
                         border-right: none;
+                    }
+                    &.health-good {
+                        // background-color: $primary-dark-color;
+                        @extend .theam-success;
+                    }
+                    &.health-avarage {
+                        // background-color: $primary-dark-color;
+                        @extend .theam-avarage;
+                    }
+                    &.health-bad {
+                        // background-color: $primary-dark-color;
+                        @extend .theam-danger;
                     }
                     .value-contetnt {
                         @include flexbox();
@@ -127,6 +138,12 @@
                         @include justify-content(space-between);
                         @include flex-wrap(wrap);
                         margin: $null $default-margin*3.5 $default-margin*2;
+                        @include device(lg) {
+                            margin: $null $default-margin*1.5 $default-margin*2;
+                        }
+                        @include device(xxl) {
+                            margin: $null $default-margin*3.5 $default-margin*2;
+                        }
                         h5 {
                             @include ecs-typo($primary-font-regular, 400, 13px, 18px, $primary-dark-color);
                             b {
@@ -164,6 +181,12 @@
                                     height: $default-unit*5;
                                     display: inline-block;
                                     margin-right: $default-margin;
+                                    @include device(lg) {
+                                        margin-right: $default-margin/2;
+                                    }
+                                    @include device(xxl) {
+                                        margin-right: $default-margin;
+                                    }
                                 }
                             }
                         }

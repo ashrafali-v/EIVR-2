@@ -1,8 +1,9 @@
 @import '../../scss/eivr-master';
 ::ng-deep {
     h2 {
+        background-color: #f2f2f4;
         &.logo {
-            @include ecs-typo($primary-font-regular, 700, 25px, 37px, $white);
+            @include ecs-typo($primary-font-regular, 500, 16px, 37px, #4eacac);
             padding: $default-padding $default-padding*2;
             transition: font-size .1s ease-out .7s;
             img {
