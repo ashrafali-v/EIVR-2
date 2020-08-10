@@ -93,7 +93,7 @@ export class DashboardService {
     )
   }
   public getToatlTextMessages(){
-    var url = this.eivrApiEndpoints['GetTextGeneratedtest'];
+    var url = this.eivrApiEndpoints['GetTextGenerated'];
     return this.httpClient.get(this.serviceBase+url+this.queryParams, this.jsonHttpHeader).pipe(
       map((res:any) => res)
     )
@@ -108,7 +108,7 @@ export class DashboardService {
     )
   }
   public getCallsTransferedCSR(){
-    var url = this.eivrApiEndpoints['GetCallTransferedCSRtest'];
+    var url = this.eivrApiEndpoints['GetCallTransferedCSR'];
     return this.httpClient.get(this.serviceBase+url+this.queryParams, this.jsonHttpHeader).pipe(
       map((res:any) => res)
     )
@@ -126,7 +126,7 @@ export class DashboardService {
     )
   }
   public getCallTerminated(){
-    var url = this.eivrApiEndpoints['GetCallsTerminatedtest'];
+    var url = this.eivrApiEndpoints['GetCallsTerminated'];
     return this.httpClient.get(this.serviceBase+url+this.queryParams, this.jsonHttpHeader).pipe(
       map((res:any) => res)
     )

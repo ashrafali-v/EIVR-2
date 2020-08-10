@@ -188,8 +188,8 @@
                         <h3>Total Number of Text Messages</h3>
                         <ng-container *ngIf="!loaderPaymentsTab; else loading">
                             <div class="graph-box">
-                                <ngx-charts-bar-vertical-2d [scheme]="totalTextMessagesColorScheme" [results]="totalNoOfTextMessages" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [groupPadding]="groupPadding" [barPadding]="barPadding">
-                                </ngx-charts-bar-vertical-2d>
+                                <ngx-charts-bar-vertical [scheme]="totalTextMessagesColorScheme" [results]="totalNoOfTextMessages" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis">
+                                </ngx-charts-bar-vertical>
                             </div>
                             <div class="filter-note">
                                 <h5>2020 <b>27JUL</b> - <b>02AUG</b></h5>
