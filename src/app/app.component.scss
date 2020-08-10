@@ -18,6 +18,7 @@
                 width: $full;
                 position: fixed;
                 transition: all .9s ease-in-out;
+                height: $full;
             }
             .content-wrapper {
                 @include flex(0 0 auto);
@@ -58,6 +59,7 @@
             }
             app-footer {
                 @include flex(10 0 $full);
+                z-index: 99;
             }
             &.menu-hide {
                 app-aside {

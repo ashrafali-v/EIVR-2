@@ -4,7 +4,8 @@ app-footer {
     margin-top: auto;
     @include flexbox();
     @include flex-direction(row);
-    @include justify-content(space-between);
+    // @include justify-content(space-between);
+    @include justify-content(center);
     padding: $default-padding*2;
     p {
         @include ecs-typo($primary-font-regular, 400, 15px, 37px, $nutral-dark-color);
