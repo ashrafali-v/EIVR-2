@@ -63,13 +63,14 @@
     </div>
     <div class="eivr-tabtrigger">
         <ul class="nav nav-tabs">
-            <li><a class="active" data-toggle="tab" href="#payments">Payments</a></li>
-            <li><a data-toggle="tab" href="#calls">calls</a></li>
+            <li><a class="active" data-toggle="tab" href="#payments" (click)="onSelectTab()">Payments</a></li>
+            <li><a data-toggle="tab" href="#calls" (click)="onSelectTab()">calls</a></li>
         </ul>
-        <select name="period-select" id="select-interval" class="day-filter">
-            <option value="1">Daily</option>
-            <option value="2">Weekly</option>
-            <option value="3">Weekly</option>
+        <select name="period-select" id="select-interval" class="day-filter" (change)="selectChangeHandler($event)">
+            <option value="daily">Daily</option>
+            <option value="weekly">Weekly</option>
+            <option value="monthly">Monthly</option>
+            <option value="annualy">Annualy</option>
         </select>
     </div>
 
@@ -78,90 +79,228 @@
         <div id="payments" class="tab-pane active">
             <div class="visual-grid">
                 <div class="visual-box half-width">
-                    <div class="visual-graph ">
+                    <div class="visual-graph" *ngIf="noOfPaymentsProcessed != undefined || loaderPaymentsTab;else loadingError">
                         <h3>No of Payments Processed</h3>
-                        <div class="graph-box">
-                            <ngx-charts-bar-vertical-2d [scheme]="colorScheme" [results]="single" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [groupPadding]="groupPadding" [barPadding]="barPadding">
-                            </ngx-charts-bar-vertical-2d>
-                        </div>
-                        <div class="filter-note">
-                            <h5>2020 <b>27JUL</b> - <b>02AUG</b></h5>
-                            <ul class="graph-bar-notes">
-                                <li class="graph-bar-credit"><span></span>Credit Card</li>
-                                <li class="graph-bar-debit"><span></span>Debit Card</li>
-                                <li class="graph-bar-echeck"><span></span>Other Payments</li>
-                            </ul>
-                        </div>
+                        <ng-container *ngIf="!loaderPaymentsTab; else loading">
+                            <div class="graph-box">
+                                <ngx-charts-bar-vertical-2d [scheme]="paymentChartsColorScheme" [results]="noOfPaymentsProcessed" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [groupPadding]="groupPadding" [barPadding]="barPadding">
+                                </ngx-charts-bar-vertical-2d>
+                            </div>
+                            <div class="filter-note">
+                                <h5>2020 <b>27JUL</b> - <b>02AUG</b></h5>
+                                <ul class="graph-bar-notes">
+                                    <li class="graph-bar-credit"><span></span>Credit Card</li>
+                                    <li class="graph-bar-debit"><span></span>Debit Card</li>
+                                </ul>
+                            </div>
+                        </ng-container>
+                        <ng-template  #loading>
+                            Chart is loading...
+                        </ng-template>
                     </div>
+                    <ng-template #loadingError>
+                        Error loading the chart. Please try again later.
+                    </ng-template>
                 </div>
                 <div class="visual-box half-width">
-                    <div class="visual-graph">
+                    <div class="visual-graph" *ngIf="amountOfPaymentsProcessed != undefined || loaderPaymentsTab;else loadingError">
                         <h3>Amount of Payments Processed</h3>
-                        <div class="graph-box">
-                            Tab 1
-                        </div>
+                        <ng-container *ngIf="!loaderPaymentsTab; else loading">
+                            <div class="graph-box">
+                                <ngx-charts-bar-vertical-2d [scheme]="paymentChartsColorScheme" [results]="amountOfPaymentsProcessed" [yAxisTickFormatting]="currencyTickFormatting" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [groupPadding]="groupPadding" [barPadding]="barPadding">
+                                    <ng-template #tooltipTemplate let-model="model">
+                                        <p>{{model.name}}</p>
+                                        <p class="ecs-tooltip">${{model.value | json}}</p>
+                                    </ng-template>
+                                </ngx-charts-bar-vertical-2d>
+                            </div>
+                            <div class="filter-note">
+                                <h5>2020 <b>27JUL</b> - <b>02AUG</b></h5>
+                                <ul class="graph-bar-notes">
+                                    <li class="graph-bar-credit"><span></span>Credit Card</li>
+                                    <li class="graph-bar-debit"><span></span>Debit Card</li>
+                                </ul>
+                            </div>
+                        </ng-container>
+                        <ng-template #loading>
+                            Chart is loading...
+                        </ng-template>
                     </div>
+                    <ng-template #loadingError>
+                        Error loading the chart. Please try again later.
+                    </ng-template>
                 </div>
                 <div class="visual-box half-width">
-                    <div class="visual-graph">
+                    <div class="visual-graph" *ngIf="noOfPaymentsDenied != undefined || loaderPaymentsTab;else loadingError">
                         <h3>No of Payments Denied/Not Completed</h3>
-                        <div class="graph-box">
-                            Tab 1
-                        </div>
+                        <ng-container *ngIf="!loaderPaymentsTab; else loading">
+                            <div class="graph-box">
+                                <ngx-charts-bar-vertical-2d [scheme]="paymentChartsColorScheme" [results]="noOfPaymentsDenied" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [groupPadding]="groupPadding" [barPadding]="barPadding">
+                                </ngx-charts-bar-vertical-2d>
+                            </div>
+                            <div class="filter-note">
+                                <h5>2020 <b>27JUL</b> - <b>02AUG</b></h5>
+                                <ul class="graph-bar-notes">
+                                    <li class="graph-bar-credit"><span></span>Credit Card</li>
+                                    <li class="graph-bar-debit"><span></span>Debit Card</li>
+                                </ul>
+                            </div>
+                        </ng-container>
+                        <ng-template #loading>
+                            Chart is loading...
+                        </ng-template>
                     </div>
+                    <ng-template #loadingError>
+                        Error loading the chart. Please try again later.
+                    </ng-template>
                 </div>
                 <div class="visual-box half-width">
-                    <div class="visual-graph">
+                    <div class="visual-graph" *ngIf="totalNoOfTextMessages != undefined || loaderPaymentsTab;else loadingError">
                         <h3>Total Number of Text Messages</h3>
-                        <div class="graph-box">
-                            Tab 1
-                        </div>
+                        <ng-container *ngIf="!loaderPaymentsTab; else loading">
+                            <div class="graph-box">
+                                <ngx-charts-bar-vertical-2d [scheme]="totalTextMessagesColorScheme" [results]="totalNoOfTextMessages" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [groupPadding]="groupPadding" [barPadding]="barPadding">
+                                </ngx-charts-bar-vertical-2d>
+                            </div>
+                            <div class="filter-note">
+                                <h5>2020 <b>27JUL</b> - <b>02AUG</b></h5>
+                                <ul class="graph-bar-notes">
+                                    <li class="graph-bar-credit"><span></span>Generated</li>
+                                    <li class="graph-bar-debit"><span></span>Rejected</li>
+                                </ul>
+                            </div>
+                        </ng-container>
+                        <ng-template #loading>
+                            Chart is loading...
+                        </ng-template>
                     </div>
+                    <ng-template  #loadingError>
+                        Error loading the chart. Please try again later.
+                    </ng-template>
                 </div>
             </div>
         </div>
         <div id="calls" class="tab-pane fade">
             <div class="visual-grid">
                 <div class="visual-box half-width">
-                    <div class="visual-graph">
+                    <div class="visual-graph" *ngIf="totalCallsRecieved != undefined || loaderCallsTab;else loadingError">
                         <h3>TOTAL CALLS RECIVED</h3>
-                        <div class="graph-box">
-                            <ngx-charts-bar-vertical-2d [scheme]="colorScheme" [results]="single" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [legendPosition]="legendPosition" [groupPadding]="groupPadding" [barPadding]="barPadding">
-                            </ngx-charts-bar-vertical-2d>
-                        </div>
+                        <ng-container *ngIf="!loaderCallsTab; else loading">
+                            <div class="graph-box">
+                                <ngx-charts-bar-vertical-2d [scheme]="totalCallsRecievedColorScheme" [results]="totalCallsRecieved" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [legendPosition]="legendPosition" [groupPadding]="groupPadding" [barPadding]="barPadding">
+                                </ngx-charts-bar-vertical-2d>
+                            </div>
+                            <div class="filter-note">
+                                <h5>2020 <b>27JUL</b> - <b>02AUG</b></h5>
+                                <ul class="graph-bar-notes">
+                                    <li class="graph-bar-credit"><span></span>Generated</li>
+                                    <li class="graph-bar-debit"><span></span>Rejected</li>
+                                </ul>
+                            </div>
+                        </ng-container>
+                        <ng-template #loading>
+                            Chart is loading...
+                        </ng-template>
                     </div>
+                    <ng-template  #loadingError>
+                        Error loading the chart. Please try again later.
+                    </ng-template>
                 </div>
                 <div class="visual-box half-width">
-                    <div class="visual-graph">
+                    <div class="visual-graph" *ngIf="totalCallsRecieved != undefined || loaderCallsTab;else loadingError">
                         <h3>TOTAL CALLS TRANSFERRED IVR TO CSR</h3>
-                        <div class="graph-box">
-                            Tab 2
-                        </div>
+                        <ng-container *ngIf="!loaderCallsTab; else loading">
+                            <div class="graph-box">
+                                <ngx-charts-bar-vertical [results]="totalCallsTransferedIvrToCsr" [scheme]="callsTransferedIvrToCsrColorSceme" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis">
+                                </ngx-charts-bar-vertical>
+                            </div>
+                            <div class="filter-note">
+                                <h5>2020 <b>27JUL</b> - <b>02AUG</b></h5>
+                                <ul class="graph-bar-notes">
+                                    <li class="graph-bar-credit"><span></span>Generated</li>
+                                    <li class="graph-bar-debit"><span></span>Rejected</li>
+                                </ul>
+                            </div>
+                        </ng-container>
+                        <ng-template #loading>
+                            Chart is loading...
+                        </ng-template>
                     </div>
+                    <ng-template  #loadingError>
+                        Error loading the chart. Please try again later.
+                    </ng-template>
                 </div>
                 <div class="visual-box one-third-width">
-                    <div class="visual-graph">
+                    <div class="visual-graph" *ngIf="totalCallsRecieved != undefined || loaderCallsTab;else loadingError">
                         <h3>CALLS COMPLETED</h3>
-                        <div class="graph-box">
-                            Tab 2
-                        </div>
+                        <ng-container *ngIf="!loaderCallsTab; else loading">
+                            <div class="graph-box">
+                                <ngx-charts-bar-vertical [results]="totalCallsTransferedIvrToCsr" [scheme]="callsCompletedColorSceme" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis">
+                                </ngx-charts-bar-vertical>
+                            </div>
+                            <div class="filter-note">
+                                <h5>2020 <b>27JUL</b> - <b>02AUG</b></h5>
+                                <ul class="graph-bar-notes">
+                                    <li class="graph-bar-credit"><span></span>Generated</li>
+                                    <li class="graph-bar-debit"><span></span>Rejected</li>
+                                </ul>
+                            </div>
+                        </ng-container>
+                        <ng-template #loading>
+                            Chart is loading...
+                        </ng-template>
                     </div>
+                    <ng-template  #loadingError>
+                        Error loading the chart. Please try again later.
+                    </ng-template>
                 </div>
                 <div class="visual-box one-third-width">
-                    <div class="visual-graph">
+                    <div class="visual-graph" *ngIf="totalCallsRecieved != undefined || loaderCallsTab;else loadingError">
                         <h3>AVERAGE DURATION OF CALLS</h3>
-                        <div class="graph-box">
-                            Tab 2
-                        </div>
+                        <ng-container *ngIf="!loaderCallsTab; else loading">
+                            <div class="graph-box">
+                                <ngx-charts-bar-vertical [results]="totalCallsTransferedIvrToCsr" [scheme]="averageDurationColorSceme" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis">
+                                </ngx-charts-bar-vertical>
+                            </div>
+                            <div class="filter-note">
+                                <h5>2020 <b>27JUL</b> - <b>02AUG</b></h5>
+                                <ul class="graph-bar-notes">
+                                    <li class="graph-bar-credit"><span></span>Generated</li>
+                                    <li class="graph-bar-debit"><span></span>Rejected</li>
+                                </ul>
+                            </div>
+                        </ng-container>
+                        <ng-template #loading>
+                            Chart is loading...
+                        </ng-template>
                     </div>
+                    <ng-template  #loadingError>
+                        Error loading the chart. Please try again later.
+                    </ng-template>
                 </div>
                 <div class="visual-box one-third-width">
-                    <div class="visual-graph">
+                    <div class="visual-graph" *ngIf="totalCallsRecieved != undefined || loaderCallsTab;else loadingError">
                         <h3>CALLS TERMINATED BEFORE COMPLETION</h3>
-                        <div class="graph-box">
-                            Tab 2
-                        </div>
+                        <ng-container *ngIf="!loaderCallsTab; else loading">
+                            <div class="graph-box">
+                                <ngx-charts-bar-vertical [results]="totalCallsTransferedIvrToCsr" [scheme]="callsTransferedIvrToCsrColorSceme" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis">
+                                </ngx-charts-bar-vertical>
+                            </div>
+                            <div class="filter-note">
+                                <h5>2020 <b>27JUL</b> - <b>02AUG</b></h5>
+                                <ul class="graph-bar-notes">
+                                    <li class="graph-bar-credit"><span></span>Generated</li>
+                                    <li class="graph-bar-debit"><span></span>Rejected</li>
+                                </ul>
+                            </div>
+                        </ng-container>
+                        <ng-template #loading>
+                            Chart is loading...
+                        </ng-template>
                     </div>
+                    <ng-template  #loadingError>
+                        Error loading the chart. Please try again later.
+                    </ng-template>
                 </div>
             </div>
         </div>
