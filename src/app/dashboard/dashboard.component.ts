@@ -49,7 +49,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
   averageDurationOfCalls: any;
   callsTerminatedBeforeCompletion: any;
   /*-----Chart array declarations-------*/
-
   paymentChartsColorScheme = {
     domain: ['#fd7e14', '#020B7A', '#dc3545']
   };
@@ -73,6 +72,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.sharedService.getTotalCalls().subscribe(data=>{
+      console.log(data);
+      
+    });
     this.view = [700, 200];
     const noOfPaymentsProcessed$ =  this.sharedService.getAllToggles().pipe(catchError(error =>of(undefined)));
     const amountOfPaymentsProcessed$ =  this.sharedService.getAllToggles().pipe(catchError(error =>of(undefined)));
@@ -339,6 +342,12 @@ export class DashboardComponent implements OnInit, OnDestroy {
     });
 
     this.errorObject = null;
+    timer(0, 5 * 60 * 1000).pipe(
+      takeUntil(this.killTrigger),
+      switchMap(() => this.sharedService.getSystemHealth()),
+      catchError(error => of('Error'))
+    ).subscribe(result => console.log(result));
+
     timer(0, 5 * 60 * 1000).pipe(
       takeUntil(this.killTrigger),
       switchMap(() => this.sharedService.getTodayCallCount()),
