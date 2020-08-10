@@ -31,15 +31,15 @@
                 </div>
             </div> -->
             <!-- system health health-bad -->
-            <div class="recived-ivr value-box health-bad">
+            <div class="recived-ivr value-box health-{{healthStatus}}">
                 <div class="value-contetnt">
                     <p>SYSTEM HEALTH</p>
                     <div class="value-text">
-                        <h3>Red</h3>
+                        <h3>{{health}}</h3>
                     </div>
                 </div>
                 <div class="figure">
-                    <img src="../../assets/icons/health-bad@2x.png" alt="">
+                    <img src="../../assets/icons/health-{{healthStatus}}@2x.png" alt="">
                 </div>
             </div>
 
@@ -50,7 +50,7 @@
                     <p>Total Calls</p>
                     <h4>Recived</h4>
                     <div class="value-text">
-                        <h3>134 +</h3>
+                        <h3>{{totalCallCountToday}}</h3>
                     </div>
                 </div>
                 <div class="figure">
@@ -65,7 +65,7 @@
                     <p>TOTAL NUMBER OF</p>
                     <h4>PAYMENTS</h4>
                     <div class="value-text">
-                        <h3>134 +</h3>
+                        <h3>{{totalPaymentCountToday}}</h3>
                     </div>
                 </div>
                 <div class="figure">
@@ -80,7 +80,7 @@
                     <p>TOTAL PAY</p>
                     <h4>AMOUNT</h4>
                     <div class="value-text">
-                        <h3>134 +</h3>
+                        <h3>$ {{totalCSRCountToday | thousandSuff}}</h3>
                     </div>
                 </div>
                 <div class="figure">
@@ -92,14 +92,14 @@
     </div>
     <div class="eivr-tabtrigger">
         <ul class="nav nav-tabs">
-            <li><a class="active" data-toggle="tab" href="#payments" (click)="onSelectTab()">Payments</a></li>
-            <li><a data-toggle="tab" href="#calls" (click)="onSelectTab()">calls</a></li>
+            <li><a class="active" data-toggle="tab" href="#payments" (click)="onSelectTab('payment')">Payments</a></li>
+            <li><a data-toggle="tab" href="#calls" (click)="onSelectTab('calls')">calls</a></li>
         </ul>
         <select name="period-select" id="select-interval" class="day-filter" (change)="selectChangeHandler($event)">
-            <option value="daily">Daily</option>
-            <option value="weekly">Weekly</option>
-            <option value="monthly">Monthly</option>
-            <option value="annualy">Annualy</option>
+            <option value="DAILY">Daily</option>
+            <option value="WEEKLY">Weekly</option>
+            <option value="MONTHLY">Monthly</option>
+            <option value="ANNUALLY">Annually</option>
         </select>
     </div>
 
@@ -236,7 +236,7 @@
                     </ng-template>
                 </div>
                 <div class="visual-box half-width">
-                    <div class="visual-graph" *ngIf="totalCallsRecieved != undefined || loaderCallsTab;else loadingError">
+                    <div class="visual-graph" *ngIf="totalCallsTransferedIvrToCsr != undefined || loaderCallsTab;else loadingError">
                         <h3>TOTAL CALLS TRANSFERRED IVR TO CSR</h3>
                         <ng-container *ngIf="!loaderCallsTab; else loading">
                             <div class="graph-box">
@@ -260,11 +260,11 @@
                     </ng-template>
                 </div>
                 <div class="visual-box one-third-width">
-                    <div class="visual-graph" *ngIf="totalCallsRecieved != undefined || loaderCallsTab;else loadingError">
+                    <div class="visual-graph" *ngIf="callsCompleted != undefined || loaderCallsTab;else loadingError">
                         <h3>CALLS COMPLETED</h3>
                         <ng-container *ngIf="!loaderCallsTab; else loading">
                             <div class="graph-box">
-                                <ngx-charts-bar-vertical [results]="totalCallsTransferedIvrToCsr" [scheme]="callsCompletedColorSceme" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis">
+                                <ngx-charts-bar-vertical [results]="callsCompleted" [scheme]="callsCompletedColorSceme" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis">
                                 </ngx-charts-bar-vertical>
                             </div>
                             <div class="filter-note">
@@ -284,11 +284,11 @@
                     </ng-template>
                 </div>
                 <div class="visual-box one-third-width">
-                    <div class="visual-graph" *ngIf="totalCallsRecieved != undefined || loaderCallsTab;else loadingError">
+                    <div class="visual-graph" *ngIf="averageDurationOfCalls != undefined || loaderCallsTab;else loadingError">
                         <h3>AVERAGE DURATION OF CALLS</h3>
                         <ng-container *ngIf="!loaderCallsTab; else loading">
                             <div class="graph-box">
-                                <ngx-charts-bar-vertical [results]="totalCallsTransferedIvrToCsr" [scheme]="averageDurationColorSceme" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis">
+                                <ngx-charts-bar-vertical [results]="averageDurationOfCalls" [scheme]="averageDurationColorSceme" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis">
                                 </ngx-charts-bar-vertical>
                             </div>
                             <div class="filter-note">
@@ -308,11 +308,11 @@
                     </ng-template>
                 </div>
                 <div class="visual-box one-third-width">
-                    <div class="visual-graph" *ngIf="totalCallsRecieved != undefined || loaderCallsTab;else loadingError">
+                    <div class="visual-graph" *ngIf="callsTerminatedBeforeCompletion != undefined || loaderCallsTab;else loadingError">
                         <h3>CALLS TERMINATED BEFORE COMPLETION</h3>
                         <ng-container *ngIf="!loaderCallsTab; else loading">
                             <div class="graph-box">
-                                <ngx-charts-bar-vertical [results]="totalCallsTransferedIvrToCsr" [scheme]="callsTransferedIvrToCsrColorSceme" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis">
+                                <ngx-charts-bar-vertical [results]="callsTerminatedBeforeCompletion" [scheme]="callsTransferedIvrToCsrColorSceme" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis">
                                 </ngx-charts-bar-vertical>
                             </div>
                             <div class="filter-note">

@@ -16,7 +16,7 @@ export class CommonAppService {
   asideSatus:boolean =true;
   footerSatus:boolean=true;
   componentStatus: any;
-  serviceBase = 'https://prod.schoolguard360.com/eivr/dashboard/';
+  serviceBase = 'https://d1y2d7gwuud31v.cloudfront.net:443/eivr/dashboard/';
   eivrApiEndpoints = {
     GetAllMessages:'getAllMessages/',
     GetMessageByKey:'getMessageByKey/',
@@ -25,23 +25,13 @@ export class CommonAppService {
     GetToggleByKey:'getToggleByKey/',
     SaveToggle:'saveToggle/',
     getLogByContactId:'getContactId/',
-    getLogByPhoneNumber:'getContactDetailByPhone/',
-    SystemHealth:'health/',
-    TodayCallCount:'getTodayCallCount/',
-    TodayPayment:'getTodayPaymentCount/',
-    TodayCSRCount:'getTodayCSRCount/',
-    TotalCalls:'getTotalCalls/'
+    getLogByPhoneNumber:'getContactDetailByPhone/'
   }
   constructor(private httpClient: HttpClient) {
     this.componentStatus = new ComponentStatus();
     this.jsonHttpHeader = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
-      })
-    }
-    this.textHttpHeader = {
-      headers: new HttpHeaders({
-        'Content-Type': 'text'
       })
     }
   }
@@ -109,36 +99,6 @@ export class CommonAppService {
   public getCallLogByPhoneNumber(key:any){
     var url = this.eivrApiEndpoints['getLogByPhoneNumber'];
     return this.httpClient.get(this.serviceBase+url+'?phoneNumber='+key,this.jsonHttpHeader).pipe(
-      map((res:any) => res)
-    )
-  }
-  public getSystemHealth(){
-    var url = this.eivrApiEndpoints['SystemHealth'];
-    return this.httpClient.get(this.serviceBase+url,this.textHttpHeader).pipe(
-      map((res:any) => res)
-    )
-  }
-  public getTodayCallCount(){
-    var url = this.eivrApiEndpoints['TodayCallCount'];
-    return this.httpClient.get(this.serviceBase+url,this.jsonHttpHeader).pipe(
-      map((res:any) => res)
-    )
-  }
-  public getTodayPayment(){
-    var url = this.eivrApiEndpoints['TodayPayment'];
-    return this.httpClient.get(this.serviceBase+url,this.jsonHttpHeader).pipe(
-      map((res:any) => res)
-    )
-  }
-  public getTodayCSRCount(){
-    var url = this.eivrApiEndpoints['TodayCSRCount'];
-    return this.httpClient.get(this.serviceBase+url,this.jsonHttpHeader).pipe(
-      map((res:any) => res)
-    )
-  }
-  public getTotalCalls(){
-    var url = this.eivrApiEndpoints['TotalCalls'];
-    return this.httpClient.get(this.serviceBase+url+'?frequency=DAILY&count=4', this.jsonHttpHeader).pipe(
       map((res:any) => res)
     )
   }

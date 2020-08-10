@@ -5,8 +5,9 @@ import { DashboardComponent } from './dashboard.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { ThousandSuffixesPipe } from './dashboard.component';
 @NgModule({
-  declarations: [DashboardComponent],
+  declarations: [DashboardComponent,ThousandSuffixesPipe],
   imports: [
     CommonModule,
     DashboardRoutingModule,

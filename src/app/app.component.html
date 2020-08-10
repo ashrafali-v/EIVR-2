@@ -1,4 +1,4 @@
-<div [className]="toggleClass ? 'eivr-baselayout' : 'eivr-baselayout menu-hide'">
+<div [className]="toggleClass ? 'eivr-baselayout' : 'eivr-baselayout menu-hide'" *ngIf="responsiveStatus;else responsiveError">
     <app-aside *ngIf="isAside"></app-aside>
     <div class="content-wrapper login-inherits">
         <app-header *ngIf="isHeader"></app-header>
@@ -7,3 +7,6 @@
     <app-footer *ngIf="isFooter"></app-footer>
 
 </div>
+<ng-template #responsiveError>
+    Responsive is not working on this screen size.
+</ng-template>
