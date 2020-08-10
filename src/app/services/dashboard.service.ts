@@ -46,7 +46,6 @@ export class DashboardService {
   }
   public setQueryParams(freq:any,count:any){
     this.queryParams = '?frequency='+freq+'&count='+count;
-    console.log(this.queryParams);
   }
   public getSystemHealth(){
     var url = this.eivrApiEndpoints['SystemHealth'];

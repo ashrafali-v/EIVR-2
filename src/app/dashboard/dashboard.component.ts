@@ -578,8 +578,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
   onSelectTab(tab:any) {
     this.tabSelection = tab;
-    console.log(this.tabSelection);
-    
     if (this.loaderCallsTab) {
       this.getCallsData();
     }
@@ -591,8 +589,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
   selectChangeHandler(event: any) {
     //update the ui
     this.period = event.target.value;
-    console.log(this.period);
-    console.log(this.tabSelection);
     var count = 4;
     this.dashboardService.setQueryParams(this.period,count);
     if(this.tabSelection == 'payment'){
