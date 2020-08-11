@@ -21,7 +21,7 @@
                         <div *ngIf="userPassword.errors.required"> This field cannot be empty</div>
                     </div>
                 </section>
-                <div *ngIf="invalidCred">user name or password is not correct</div>
+                <div class="alert alert-danger" *ngIf="invalidCred">user name or password is not correct</div>
                 <a href="#">Forgot Password?</a>
                 <input [disabled]="isLoginInProgress" type="button" value="Login" [disabled]="loginForm.invalid" (click)="login(loginForm.value)">
             </form>

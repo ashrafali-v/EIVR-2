@@ -1,7 +1,7 @@
-// @import '../../scss/eivr-master';
+@import '../../scss/eivr-master';
 ::ng-deep {
-    // .login-inherits {
-    //     margin-left: 0px !important;
-    //     max-width: inherit !important;
-    // }
+    .login-inherits {
+        margin-left: $null !important;
+        max-width: $full !important;
+    }
 }
