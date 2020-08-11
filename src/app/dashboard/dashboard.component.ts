@@ -89,7 +89,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     domain: ['#fd7e14', '#020B7A', '#dc3545']
   };
   totalTextMessagesColorScheme = {
-    domain: ['#0CC474', '#EF4444']
+    domain: ['#0CC474']
   };
   callsTransferedIvrToCsrColorSceme = {
     domain: ['#EF4460']

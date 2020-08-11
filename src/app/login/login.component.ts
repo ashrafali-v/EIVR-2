@@ -18,6 +18,9 @@ export class LoginComponent implements OnInit,AfterViewInit  {
     this.sharedService.setComponentStatus(false,false,false);
   }
   ngOnInit(): void {
+    if (localStorage.getItem('AccessToken') !== null) {
+      this.router.navigate(['/dashboard']);
+    }
   }
   ngAfterViewInit(){
     /*Get form value chnage event of  loginForm*/

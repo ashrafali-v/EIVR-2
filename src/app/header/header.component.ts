@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
   }
   signOut(){
     this.sharedService.setComponentStatus(false,false,false);
+    localStorage.removeItem('AccessToken');
     this.router.navigate(['/login'])
   }
   toggleMenu(){
