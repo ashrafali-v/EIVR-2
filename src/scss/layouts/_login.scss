@@ -79,6 +79,7 @@
 }
 
 .login-inherits {
-    margin-left: $null !important;
-    max-width: $full !important;
+    max-width: calc(#{$full} - #{$default-unit*130});
+    width: $full;
+    margin-left: $default-unit*130;
 }
