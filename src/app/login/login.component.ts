@@ -12,6 +12,8 @@ export class LoginComponent implements OnInit,AfterViewInit  {
   userName:any='';
   password:any='';
   invalidCred:boolean = false;
+  isLoginInProgress:boolean = false;
+  loginFailed:any;
   constructor(private router: Router,private sharedService: CommonAppService) { 
     this.sharedService.setComponentStatus(false,false,false);
   }
@@ -24,11 +26,21 @@ export class LoginComponent implements OnInit,AfterViewInit  {
     })
   }
   login(formData: any){
-    if(formData.userName =='eivr' && formData.userPassword =='123'){
-      this.router.navigate(['dashboard']);
-      this.sharedService.setComponentStatus(true,true,true);   
-    }else{
-      this.invalidCred = true;
-    }
+    this.isLoginInProgress = true;
+    this.sharedService.getUserLogin(formData.userName,formData.userPassword).subscribe(data=>{
+      this.loginSuccess(data);
+      this.sharedService.setComponentStatus(true,true,true);  
+    },err=>{
+      this.loginError(err);
+    });
+  }
+  loginSuccess(token:any):void{
+    localStorage.AccessToken = token;
+    this.isLoginInProgress = false;
+    this.router.navigate(['dashboard']);
+  }
+  loginError(error:any):void{
+    this.isLoginInProgress = false;
+    this.invalidCred = true;
   }
 }
