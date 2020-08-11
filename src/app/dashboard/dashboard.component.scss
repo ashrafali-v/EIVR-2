@@ -176,6 +176,21 @@
                                         background-color: $theme-1;
                                     }
                                 }
+                                &.graph-bar-generated {
+                                    span {
+                                        background-color: $theme-success;
+                                    }
+                                }
+                                &.graph-bar-rejected {
+                                    span {
+                                        background-color: $theme-danger;
+                                    }
+                                }
+                                &.graph-bar-transfered {
+                                    span {
+                                        background-color: $theme-danger;
+                                    }
+                                }
                                 span {
                                     width: $default-unit*5;
                                     height: $default-unit*5;
