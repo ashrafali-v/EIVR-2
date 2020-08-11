@@ -15,6 +15,7 @@ import { DeleteMessageComponent } from './modals/delete-message/delete-message.c
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CreateToggleComponent } from './modals/create-toggle/create-toggle.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { HttpInterceptorProviders } from '../app/httpInterceptors/interceptor.providers';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +38,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     ToastrModule.forRoot({
       closeButton: true}),
   ],
-  providers: [],
+  providers: [HttpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
