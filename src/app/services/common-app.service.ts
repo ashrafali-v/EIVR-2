@@ -1,6 +1,6 @@
 import { Injectable,Output,EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { map, filter, catchError, mergeMap } from 'rxjs/operators';
+import { map} from 'rxjs/operators';
 import { ComponentStatus } from '../model/component.status';
 import { Observable } from 'rxjs';
 
@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 export class CommonAppService {
   @Output() OnChange: EventEmitter<any> = new EventEmitter();
   @Output() Ontoggle: EventEmitter<any> = new EventEmitter();
+  @Output() OnLoggedIn: EventEmitter<any> = new EventEmitter();
   jsonHttpHeader: any;
   textHttpHeader: any;
   headerSatus:boolean = true;
@@ -112,5 +113,11 @@ export class CommonAppService {
     return this.httpClient.get(this.serviceBase+url+'?phoneNumber='+key,this.jsonHttpHeader).pipe(
       map((res:any) => res)
     )
+  }
+  setLoggedInStatus(status:boolean){
+    this.OnLoggedIn.emit(status);
+  }
+  public getLoggedInStatus(): Observable<any> {
+    return this.OnLoggedIn;
   }
 }

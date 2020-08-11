@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit,AfterViewInit  {
   loginSuccess(token:any):void{
     localStorage.AccessToken = token;
     this.isLoginInProgress = false;
+    this.sharedService.setLoggedInStatus(true);
     this.router.navigate(['dashboard']);
   }
   loginError(error:any):void{
