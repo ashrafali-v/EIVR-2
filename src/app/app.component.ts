@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,OnInit,HostListener } from '@angular/core';
 import { CommonAppService } from '../app/services/common-app.service';
 import { Router }  from "@angular/router";
 @Component({
@@ -12,6 +12,8 @@ export class AppComponent implements OnInit {
   isAside:boolean = false;
   isFooter:boolean = false;
   toggleClass:boolean = true;
+  screenWidth: number;
+  responsiveStatus:boolean = true;
   constructor(private sharedService: CommonAppService,public router: Router) { 
     this.sharedService.getComponentStatus().subscribe(
       data => {
@@ -23,6 +25,15 @@ export class AppComponent implements OnInit {
         data => {
           this.toggleClass = data;
         });
+  }
+  @HostListener('window:resize', ['$event'])
+  getScreenSize(event?) {
+    this.screenWidth = window.innerWidth;
+    if (this.screenWidth < 970) {
+      this.responsiveStatus = false;
+    }else{
+      this.responsiveStatus = true;
+    }
   }
   ngOnInit(): void {
   }

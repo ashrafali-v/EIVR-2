@@ -53,9 +53,12 @@
             <div class="tile log">
                 <label>Logs</label>
                 <div class="minhgt">
-                    <p>
+                    <ul>
+                        <li *ngFor="let logs of userLogInfo.logs">{{logs}}</li>
+                    </ul>
+                    <!-- <p>
                         {{userLogInfo.logs}}
-                    </p>
+                    </p> -->
                 </div>
 
             </div>
