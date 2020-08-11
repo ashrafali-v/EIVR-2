@@ -71,6 +71,9 @@
                     width: $full;
                     margin-left: $default-unit*37.5;
                     transition: all .9s ease-in-out;
+                    // &.login-inherits {
+                    //     margin-left: $null !important;
+                    // }
                     app-header {
                         max-width: calc(#{$full} - #{$default-unit*37.5});
                         transition: all .9s ease-in-out;

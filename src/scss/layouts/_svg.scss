@@ -1,0 +1,18 @@
+::ng-deep {
+    svg {
+        text {
+            @include ecs-typo($primary-font-regular, 500, 13px, 37px, $primary-dark-color);
+            font-size: $default-unit*6.5 !important;
+            fill: $primary-dark-color;
+        }
+        &.ngx-charts {
+            .grid-panel {
+                &.odd {
+                    rect {
+                        fill: none !important;
+                    }
+                }
+            }
+        }
+    }
+}

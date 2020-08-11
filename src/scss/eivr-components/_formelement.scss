@@ -40,3 +40,15 @@ input {
     margin-top: $default-margin*2;
     @include ecs-typo($primary-font-regular, 600, 15px, 15px, $nutral-dark-color);
 }
+
+.alert-danger {
+    background-color: $transparent-bg;
+    padding: $null;
+    border: none;
+    max-width: $full - 20;
+    width: $full;
+    display: block;
+    margin: $null auto;
+    margin-bottom: $default-margin*2;
+    @include ecs-typo($primary-font-regular, 400, 12px, 15px, $theme-danger);
+}
