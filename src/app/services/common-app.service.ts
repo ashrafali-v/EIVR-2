@@ -18,6 +18,7 @@ export class CommonAppService {
   componentStatus: any;
   serviceBase = 'https://d1y2d7gwuud31v.cloudfront.net:443/eivr/dashboard/';
   eivrApiEndpoints = {
+    UserLogin:'login/',
     GetAllMessages:'getAllMessages/',
     GetMessageByKey:'getMessageByKey/',
     SaveMessage:'saveMessages/',
@@ -34,6 +35,16 @@ export class CommonAppService {
         'Content-Type': 'application/json'
       })
     }
+    this.textHttpHeader = {
+      headers: new HttpHeaders({'Content-Type': 'application/json',  accept: 'text/plain'}),
+      responseType: 'text'
+    }
+  }
+  public getUserLogin(userNmae:any,password:any){
+    var url = this.eivrApiEndpoints['UserLogin'];
+    return this.httpClient.get(this.serviceBase+url+'?username='+userNmae+'&password='+password, this.textHttpHeader).pipe(
+      map((res:any) => res)
+    )
   }
   public getAllMessages(){
     var url = this.eivrApiEndpoints['GetAllMessages'];
