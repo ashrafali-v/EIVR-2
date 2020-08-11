@@ -38,6 +38,11 @@
                         text-align: center;
                     }
                     form {
+                        section {
+                            @include flexbox();
+                            @include flex-direction(column);
+                            @include justify-content(center);
+                        }
                         input {
                             display: block;
                             width: $full;
@@ -48,7 +53,8 @@
                             background-color: $transparent-bg;
                             max-width: $full - 20;
                             margin: $null auto;
-                            margin-bottom: $default-margin*2;
+                            margin-bottom: $default-margin;
+                            @include ecs-typo($primary-font-regular, 400, 16px, 37px, $primary-dark-color);
                             &[type=button] {
                                 display: table;
                                 border: none;
@@ -61,6 +67,7 @@
                             display: block;
                             max-width: $full - 20;
                             margin: $null auto;
+                            margin-top: $default-margin;
                             margin-bottom: $default-margin*2;
                             text-align: left;
                         }
@@ -69,4 +76,9 @@
             }
         }
     }
+}
+
+.login-inherits {
+    margin-left: $null !important;
+    max-width: $full !important;
 }
