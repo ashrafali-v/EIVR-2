@@ -18,6 +18,9 @@ export class LoginComponent implements OnInit,AfterViewInit  {
     this.sharedService.setComponentStatus(false,false,false);
   }
   ngOnInit(): void {
+    if (localStorage.getItem('AccessToken') !== null) {
+      this.router.navigate(['/dashboard']);
+    }
   }
   ngAfterViewInit(){
     /*Get form value chnage event of  loginForm*/
@@ -37,6 +40,7 @@ export class LoginComponent implements OnInit,AfterViewInit  {
   loginSuccess(token:any):void{
     localStorage.AccessToken = token;
     this.isLoginInProgress = false;
+    this.sharedService.setLoggedInStatus(true);
     this.router.navigate(['dashboard']);
   }
   loginError(error:any):void{

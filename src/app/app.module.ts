@@ -16,6 +16,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CreateToggleComponent } from './modals/create-toggle/create-toggle.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { HttpInterceptorProviders } from '../app/httpInterceptors/interceptor.providers';
+import { UserLogComponent } from './modals/user-log/user-log.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +27,7 @@ import { HttpInterceptorProviders } from '../app/httpInterceptors/interceptor.pr
     ViewMessageComponent,
     DeleteMessageComponent,
     CreateToggleComponent,
+    UserLogComponent,
   ],
   imports: [
     BrowserModule,

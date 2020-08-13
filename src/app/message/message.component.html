@@ -18,7 +18,11 @@
                         <th>
                             Message value
                         </th>
-                        <th>Actions
+                        <th>
+                            Message flow
+                        </th>
+                        <th>
+                            Actions
                         </th>
                     </tr>
                 </thead>
@@ -29,6 +33,9 @@
                         </td>
                         <td data-label="Message value">
                             {{message.messageText}}
+                        </td>
+                        <td data-label="Message value">
+                            {{message.messageFlow}}
                         </td>
                         <td width="150px" data-label="Actions">
                             <button type="button" (click)="messageInfo(message)" title="View Message">

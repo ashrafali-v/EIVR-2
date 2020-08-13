@@ -1,6 +1,6 @@
 <div [className]="toggleClass ? 'eivr-baselayout' : 'eivr-baselayout menu-hide'" *ngIf="responsiveStatus;else responsiveError">
     <app-aside *ngIf="isAside"></app-aside>
-    <div class="content-wrapper login-inherits">
+    <div [className]="isLoggedIn ? 'content-wrapper' : 'content-wrapper login-inherits'">
         <app-header *ngIf="isHeader"></app-header>
         <router-outlet></router-outlet>
     </div>

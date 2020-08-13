@@ -19,15 +19,26 @@
                         <th>
                             Toggle value
                         </th>
+                        <th>
+                            Toggle info
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let toggle of toggles | slice : (currentPage-1) * pageSize : (currentPage-1) * pageSize + pageSize; let i = index">
-                        <td data-label="Message key">
+                        <td>
                             {{toggle.toggleKey}}
                         </td>
-                        <td data-label="Message value">
+                        <td>
                             {{toggle.toggleValue}}
+                        </td>
+                        <td>
+                            <ng-template *ngIf="toggle.toggleInfo != null;else nullValue">
+                                {{toggle.toggleInfo}}
+                            </ng-template>
+                            <ng-template #nullValue>
+                                --
+                            </ng-template>
                         </td>
                     </tr>
                 </tbody>

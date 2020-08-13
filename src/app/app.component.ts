@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
   toggleClass:boolean = true;
   screenWidth: number;
   responsiveStatus:boolean = true;
+  isLoggedIn:boolean = true;
   constructor(private sharedService: CommonAppService,public router: Router) { 
     this.sharedService.getComponentStatus().subscribe(
       data => {
@@ -21,10 +22,12 @@ export class AppComponent implements OnInit {
         this.isAside = data.aside;
         this.isFooter = data.footer;
       });
-      this.sharedService.getMenuToggle().subscribe(
-        data => {
-          this.toggleClass = data;
-        });
+      this.sharedService.getMenuToggle().subscribe(data => {
+        this.toggleClass = data;
+      });
+      this.sharedService.getLoggedInStatus().subscribe(data => {
+        this.isLoggedIn = data;
+      });
   }
   @HostListener('window:resize', ['$event'])
   getScreenSize(event?) {
