@@ -71,9 +71,6 @@
             <thead>
                 <tr>
                     <th>
-                        Phone Number
-                    </th>
-                    <th>
                         Contact ID
                     </th>
                     <th>
@@ -89,9 +86,6 @@
             </thead>
             <tbody>
                 <tr *ngFor="let call of callArray | slice : (currentPage-1) * pageSize : (currentPage-1) * pageSize + pageSize; let i = index">
-                    <td data-label="Phone No">
-                        {{call.phoneNo}}
-                    </td>
                     <td data-label="Contact ID">
                         {{call.contactId}}
                     </td>
