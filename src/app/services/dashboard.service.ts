@@ -18,7 +18,7 @@ export class DashboardService {
     SystemHealth:'health/',
     TodayCallCount:'getTodayCallCount/',
     TodayPayment:'getTodayPaymentCount/',
-    TodayCSRCount:'getTodayCSRCount/',
+    TodayCSRCount:'getTodayPaymentAmount/',
     PaymentsProcessed:'getPaymentProcessed/',
     PaymentsAmountProcessed:'getPaymentAmount/',
     PaymentsDenied:'getPaymentDeclined/',

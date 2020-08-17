@@ -4,10 +4,15 @@
         <form action="/action_page.php">
             <div class="search-method">
                 <p>Please select your search method:</p>
-                <input type="radio" id="contactId" name="category" [checked]="true" value="contactId" (change)="onSearchByChange($event.target.value)">
+                <select name="selectBy" id="selectBy" (change)="onSearchByChange($event.target.value)">
+                    <option value="contactId">Contact Id</option>
+                    <option value="phoneNumber">Phone Number</option>
+                    <option value="accountNumber">Account Number</option>
+                </select>
+                <!-- <input type="radio" id="contactId" name="category" [checked]="true" value="contactId" (change)="onSearchByChange($event.target.value)">
                 <label for="contactId">Contact Id</label>
                 <input type="radio" id="phoneNumber" name="category" value="phoneNumber" (change)="onSearchByChange($event.target.value)">
-                <label for="phoneNumber">Phone Number</label>
+                <label for="phoneNumber">Phone Number</label> -->
             </div>
         </form>
         <div class="eivr-search-box">
@@ -52,6 +57,7 @@
             </div>
             <div class="tile log">
                 <label>Logs</label>
+                <button type="button" title="View Log" (click)="viewUserLog(userLogInfo.logs)"><img _ngcontent-ppj-c188="" alt="" src="../../assets/infromation.svg"></button>
                 <div class="minhgt">
                     <ul>
                         <li *ngFor="let logs of userLogInfo.logs">{{logs}}</li>
@@ -87,7 +93,7 @@
             <tbody>
                 <tr *ngFor="let call of callArray | slice : (currentPage-1) * pageSize : (currentPage-1) * pageSize + pageSize; let i = index">
                     <td data-label="Contact ID">
-                        {{call.contactId}}
+                       <a (click)="getUserLog(call.contactId)">{{call.contactId}}</a>
                     </td>
                     <td data-label="Call Duration">
                         {{call.callDuration}}
@@ -104,6 +110,46 @@
         <ngb-pagination size="sm" [(page)]="currentPage" [pageSize]="pageSize" [collectionSize]="callArray.length" [maxSize]="5"></ngb-pagination>
     </div>
     <div class="eivr-warning" *ngIf="callArray.length == 0 && searchStatusPhoneNumber && this.searchBy == 'phoneNumber'">
+        <span>No Log found.!</span>
+    </div>
+    <div class="box-panel" *ngIf="accountByArray && accountByArray.length > 0 && this.searchBy == 'accountNumber'">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        Contact ID
+                    </th>
+                    <th>
+                        Account No
+                    </th>
+                    <th>
+                        Phone No
+                    </th>
+                    <th>
+                        Time Stamp
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let call of accountByArray | slice : (currentPage-1) * pageSize : (currentPage-1) * pageSize + pageSize; let i = index">
+                    <td data-label="Contact ID">
+                       <a (click)="getUserLog(call.contactId)">{{call.contactId}}</a>
+                    </td>
+                    <td data-label="Call Duration">
+                        {{call.accountNo}}
+                    </td>
+                    <td data-label="Time Stamp">
+                        {{call.phoneNo}}
+                    </td>
+                    <td data-label="Call Health">
+                        {{call.timestamp}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <ngb-pagination size="sm" [(page)]="currentPage" [pageSize]="pageSize" [collectionSize]="accountByArray.length" [maxSize]="5"></ngb-pagination>
+    </div>
+    <div class="eivr-warning" *ngIf="accountByArray.length == 0 && searchStatusAccountNumber && this.searchBy == 'accountNumber'">
         <span>No Log found.!</span>
     </div>
 </div>

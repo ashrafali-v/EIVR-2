@@ -8,7 +8,5 @@ export class MainLayoutComponent implements OnInit{
   constructor() { }
 
   ngOnInit(): void {
-    console.log('home');
-    
   }
 }
