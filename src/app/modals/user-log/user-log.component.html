@@ -5,7 +5,7 @@
     </button>
 </div>
 <div class="modal-body">
-    <div  *ngIf="userLogInfo$ | async as userLogInfoArray; else loadingOrError">
+    <div *ngIf="userLogInfo$ | async as userLogInfoArray; else loadingOrError">
         <ng-container *ngIf="userLogInfoArray.length; else noItems">
             <div class="box-panel contactid-search" *ngFor="let userLogInfo of userLogInfoArray">
                 <div class="tile">
@@ -47,7 +47,7 @@
                             {{userLogInfo.logs}}
                         </p> -->
                     </div>
-        
+
                 </div>
             </div>
         </ng-container>
@@ -62,6 +62,6 @@
         </ng-template>
     </ng-template>
 </div>
-<div class="modal-footer">
+<!-- <div class="modal-footer">
     <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Close</button>
-</div>
+</div> -->
