@@ -13,7 +13,7 @@ import {CreateToggleComponent} from '../modals/create-toggle/create-toggle.compo
 })
 export class ToggleComponent implements OnInit {
   private observableSubscriptions = new SubSink();
-  public scrollbarOptions = { axis: 'y', theme: '3d-dark' };
+  public scrollbarOptions = { axis: 'y', theme: 'dark-3' };
   constructor(private sharedService: CommonAppService,private modalService: NgbModal,public toastService: ToastrService) { 
     this.sharedService.setComponentStatus(true,true,true);
   }

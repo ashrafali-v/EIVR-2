@@ -24,7 +24,7 @@ export class SearchComponent implements OnInit {
   userLogInfo:any='';
   accountByArray:any=[];
   private observableSubscriptions = new SubSink();
-  public scrollbarOptions = { axis: 'y', theme: '3d-dark' };
+  public scrollbarOptions = { axis: 'y', theme: 'dark-3' };
   constructor(private sharedService: CommonAppService,private modalService: NgbModal) {
     this.sharedService.setComponentStatus(true,true,true);
    }

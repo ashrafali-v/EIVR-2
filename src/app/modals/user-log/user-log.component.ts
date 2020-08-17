@@ -14,7 +14,7 @@ export class UserLogComponent implements OnInit {
   @Input() contactId: string;
   userLogInfo$:any;
   loadingError$ = new Subject<boolean>();
-  public scrollbarOptions = { axis: 'y', theme: '3d-dark' };
+  public scrollbarOptions = { axis: 'y', theme: 'dark-3' };
   constructor(private sharedService: CommonAppService,public activeModal: NgbActiveModal) { }
 
   ngOnInit(): void {

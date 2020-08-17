@@ -22,7 +22,7 @@ export class MessageComponent implements OnInit, OnDestroy {
   messageKey:any ='';
   loadingError$ = new Subject<boolean>();
   private observableSubscriptions = new SubSink();
-  public scrollbarOptions = { axis: 'y', theme: '3d-dark' };
+  public scrollbarOptions = { axis: 'y', theme: 'dark-3' };
   constructor(private sharedService: CommonAppService, private modalService: NgbModal, public toastr: ToastrService) {
     this.sharedService.setComponentStatus(true,true,true);
    }
