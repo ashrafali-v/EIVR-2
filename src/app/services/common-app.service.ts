@@ -66,8 +66,6 @@ export class CommonAppService {
   public saveMessage(message:any){
     var url = this.eivrApiEndpoints['SaveMessage'];
     var data = {"messageKey":message.messageKey,"messageText":message.messageText};
-    console.log(data);
-    
     return this.httpClient.post(this.serviceBase+url,data,this.jsonHttpHeader).pipe(
       map((res:any) => res)
     )

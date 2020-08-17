@@ -32,7 +32,6 @@ export class SearchComponent implements OnInit {
   }
   searchCallLog(){
     this.callArray.length = 0;
-    console.log(this.searchBy);
     if(this.searchKey != ''){
       if(this.searchBy =='contactId'){
         this.observableSubscriptions.add(this.sharedService.getCallLogByContactId(this.searchKey).subscribe(data => {
@@ -45,8 +44,6 @@ export class SearchComponent implements OnInit {
             this.userNotFound = false;
           }
           this.userLogInfo =data[0];
-          console.log(this.userLogInfo);
-          
         }));
       }else if(this.searchBy =='phoneNumber'){
         this.observableSubscriptions.add(this.sharedService.getCallLogByPhoneNumber(this.searchKey).subscribe(data => {
@@ -63,13 +60,7 @@ export class SearchComponent implements OnInit {
           this.searchStatusAccountNumber = true;
           this.searchStatusPhoneNumber = false;
           this.searchStatusContactId = false;
-          this.accountByArray = data;
-          // for(let i in data){
-          //   var userCallLOg = this.formatCallLog(data[i]);
-          //   this.callArray.push(userCallLOg);
-          // };
-          console.log(this.callArray);
-          
+          this.accountByArray = data; 
         }));
       }
     }else{
@@ -96,7 +87,6 @@ export class SearchComponent implements OnInit {
     return callLog;
   }
   onSearchByChange(radioValue:any){
-    console.log(radioValue);
     this.searchBy = radioValue;
   }
   getUserLog(contactId:any){
