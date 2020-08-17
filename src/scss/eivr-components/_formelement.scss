@@ -56,7 +56,7 @@ input {
 select {
     background-color: $primary-dark-color;
     @include ecs-typo($primary-font-regular, 400, 13px, 18px, $white);
-    padding: $default-padding*1.35 $default-padding;
+    padding: $default-padding*1.45 $default-padding;
     @include align-self(flex-end);
     border: none;
     width: $default-unit*65;

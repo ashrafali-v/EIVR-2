@@ -23,7 +23,7 @@
                 @include flex-direction(row);
                 @include justify-content(flex-start);
                 vertical-align: middle;
-                margin-right: $default-margin*2;
+                // margin-right: $default-margin*2;
                 p {
                     @include ecs-typo($primary-font-regular, 400, 13px, 23px, $dark);
                     margin-right: $default-margin;
@@ -36,9 +36,12 @@
                     margin-right: $default-margin;
                 }
                 select {
-                    // @include border-radius(22px)
+                    @include border-radius(22px 0 0 22px);
                     width: inherit;
                 }
+            }
+            .search-input {
+                @include border-radius( 0px);
             }
         }
         .box-panel {

@@ -19,4 +19,14 @@
             }
         }
     }
+    .nav {
+        li {
+            a {
+                img {
+                    width: $default-unit*8;
+                    display: inline-block;
+                }
+            }
+        }
+    }
 }
