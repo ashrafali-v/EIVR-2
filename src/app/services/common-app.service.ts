@@ -131,7 +131,7 @@ export class CommonAppService {
   public getPaymentList(){
     var date = this.todayDate();
     var url = this.eivrApiEndpoints['PaymentList'];
-    return this.httpClient.get(this.serviceBase+url+'?dateString='+date, this.jsonHttpHeader).pipe(
+    return this.httpClient.get(this.serviceBase+url+'?dateString='+'8/16/2020', this.jsonHttpHeader).pipe(
       map((res:any) => res)
     )
   }
