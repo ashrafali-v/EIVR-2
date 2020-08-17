@@ -18,7 +18,6 @@ export class CreateToggleComponent implements OnInit {
   ngOnInit(): void {
   }
   createToggle(value:any){
-    console.log(value);
     this.sharedService.saveToggle(value).subscribe(data=>{
       this.emitService.next(value)
     });

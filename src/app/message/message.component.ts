@@ -42,7 +42,6 @@ export class MessageComponent implements OnInit, OnDestroy {
     this.observableSubscriptions.unsubscribe();
   }
   editMessage(message: any) {
-    console.log(message);
     this.observableSubscriptions.add(this.sharedService.getMessage(message.messageKey).subscribe(data => {
       const updateMessageModalRef = this.modalService.open(UpdateMessageComponent, {
         ariaLabelledBy: "modal-basic-title",
@@ -59,7 +58,6 @@ export class MessageComponent implements OnInit, OnDestroy {
           message.messageText = result;
           updateMessageModalRef.close();
           this.sharedService.saveMessage(message).subscribe(data => {
-            console.log(data);
             this.toastr.success("Message updated successfully", "Success");
           }, err => {
             console.log(err);
@@ -72,7 +70,6 @@ export class MessageComponent implements OnInit, OnDestroy {
     }));
   }
   messageInfo(data: any) {
-    console.log(data);
     const messageInfoModalRef = this.modalService.open(ViewMessageComponent, {
       ariaLabelledBy: "modal-basic-title",
       size: "lg",
@@ -97,7 +94,6 @@ export class MessageComponent implements OnInit, OnDestroy {
     deleteMessageModalRef.componentInstance.messageKey = message.messageKey;
     deleteMessageModalRef.componentInstance.emitService.subscribe((result) => {
       if (result) {
-        console.log(result);
         var index = this.messages$.findIndex(x => x.messageKey == message.messageKey);
         this.messages$.splice(index,1);
         deleteMessageModalRef.close();
@@ -107,7 +103,6 @@ export class MessageComponent implements OnInit, OnDestroy {
     });
   }
   searchMessage(){
-    console.log(this.messageKey);
     this.messages$.length = 0;
     if(this.messageKey != ''){
       this.observableSubscriptions.add(this.sharedService.getMessage(this.messageKey).subscribe(data => {

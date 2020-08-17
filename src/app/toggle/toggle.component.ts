@@ -36,7 +36,6 @@ export class ToggleComponent implements OnInit {
     
   }
   searchToggle(){
-    console.log(this.toggleKey);
     this.toggles$.length = 0;
     if(this.toggleKey != ''){
       this.toggles$ = this.sharedService.searchToggle(this.toggleKey).pipe(
