@@ -26,6 +26,12 @@ table {
                 @include flex-direction(row);
                 @include justify-content(flex-start);
             }
+            a {
+                cursor: pointer;
+                &:hover {
+                    color: lighten($primary-dark-color, 10%);
+                }
+            }
         }
     }
     thead {

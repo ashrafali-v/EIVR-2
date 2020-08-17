@@ -52,3 +52,18 @@ input {
     margin-bottom: $default-margin*2;
     @include ecs-typo($primary-font-regular, 400, 12px, 15px, $theme-danger);
 }
+
+select {
+    background-color: $primary-dark-color;
+    @include ecs-typo($primary-font-regular, 400, 13px, 18px, $white);
+    padding: $default-padding*1.35 $default-padding;
+    @include align-self(flex-end);
+    border: none;
+    width: $default-unit*65;
+    option {
+        padding: $default-padding*1.35 $default-padding;
+        display: block;
+        line-height: 24px;
+        ;
+    }
+}
