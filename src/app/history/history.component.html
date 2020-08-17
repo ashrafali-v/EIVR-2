@@ -6,9 +6,6 @@
                 <thead>
                     <tr>
                         <th>
-                            Unique Id
-                        </th>
-                        <th>
                             Contact Id
                         </th>
                         <th>
@@ -27,18 +24,12 @@
                             Selected Account
                         </th>
                         <th>
-                            Timestamp
-                        </th>
-                        <th>
                             TransId
                         </th>
                     </tr>
                 </thead>
                 <tbody malihu-scrollbar [scrollbarOptions]="scrollbarOptions">
                     <tr *ngFor="let payment of payments | slice : (currentPage-1) * pageSize : (currentPage-1) * pageSize + pageSize; let i = index">
-                        <td>
-                            {{payment.uniqueId}}
-                        </td>
                         <td>
                             {{payment.contactId}}
                         </td>
@@ -56,9 +47,6 @@
                         </td>
                         <td>
                             {{payment.selectedAccount}}
-                        </td>
-                        <td>
-                            {{payment.timestamp}}
                         </td>
                         <td>
                             {{payment.transId}}
