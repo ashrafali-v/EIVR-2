@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   toggleClass:boolean = true;
   screenWidth: number;
   responsiveStatus:boolean = true;
-  isLoggedIn:boolean = true;
+  isLoggedIn:boolean = false;
   constructor(private sharedService: CommonAppService,public router: Router) { 
     this.sharedService.getComponentStatus().subscribe(
       data => {
