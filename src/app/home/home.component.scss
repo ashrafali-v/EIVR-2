@@ -1,0 +1,21 @@
+@import '../../scss/eivr-master';
+::ng-deep {
+    .banner-bg {
+        height: calc(#{$full} - 80px);
+        .img-ratio {
+            @include aspect-ratio(9, 9);
+            @include device(lg) {
+                @include aspect-ratio(16, 9.9);
+            }
+            @include device(xxl) {
+                @include aspect-ratio(16, 9);
+            }
+            .img-src {
+                background-size: cover;
+                @include device(lg) {
+                    background-position: bottom center;
+                }
+            }
+        }
+    }
+}

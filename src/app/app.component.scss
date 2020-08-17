@@ -29,6 +29,7 @@
                 width: $full;
                 margin-left: $default-unit*130;
                 transition: all .9s ease-in-out;
+                height: calc(#{$full} - 80px);
                 app-header {
                     @include flex(0 0 auto);
                 }

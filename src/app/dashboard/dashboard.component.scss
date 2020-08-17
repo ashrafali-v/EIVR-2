@@ -87,6 +87,10 @@
                     }
                     .figure {
                         margin-right: $default-margin*2;
+                        max-width: $default-unit*50;
+                        img {
+                            width: $full;
+                        }
                     }
                 }
             }
