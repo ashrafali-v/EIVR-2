@@ -56,6 +56,12 @@
                     padding: $default-padding*2;
                     margin-top: $default-unit*27.5;
                 }
+                app-history {
+                    // display: none;
+                    @include flex(1 0 auto);
+                    padding: $default-padding*2;
+                    margin-top: $default-unit*27.5;
+                }
             }
             app-footer {
                 @include flex(10 0 $full);

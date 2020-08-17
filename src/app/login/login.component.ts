@@ -30,8 +30,8 @@ export class LoginComponent implements OnInit,AfterViewInit  {
   }
   login(formData: any){
     this.isLoginInProgress = true;
-    this.sharedService.getUserLogin(formData.userName,formData.userPassword).subscribe(data=>{
-      this.loginSuccess(data);
+    this.sharedService.getUserLogin(formData.userName,formData.userPassword).subscribe(result=>{
+      this.loginSuccess(result.data);
       this.sharedService.setComponentStatus(true,true,true);  
     },err=>{
       this.loginError(err);

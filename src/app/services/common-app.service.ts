@@ -17,6 +17,8 @@ export class CommonAppService {
   asideSatus:boolean =true;
   footerSatus:boolean=true;
   componentStatus: any;
+  day:any;
+  month:any;
   serviceBase = 'https://d1y2d7gwuud31v.cloudfront.net:443/eivr/dashboard/';
   eivrApiEndpoints = {
     UserLogin:'login/',
@@ -26,8 +28,10 @@ export class CommonAppService {
     GetAllToggles:'getAllToggles/',
     GetToggleByKey:'getToggleByKey/',
     SaveToggle:'saveToggle/',
-    getLogByContactId:'getContactId/',
-    getLogByPhoneNumber:'getContactDetailByPhone/'
+    GetLogByContactId:'getContactId/',
+    GetLogByPhoneNumber:'getContactDetailByPhone/',
+    GetLogByAccountNumber:'getAccountByNo/',
+    PaymentList:'paymentList/'
   }
   constructor(private httpClient: HttpClient) {
     this.componentStatus = new ComponentStatus();
@@ -43,7 +47,7 @@ export class CommonAppService {
   }
   public getUserLogin(userNmae:any,password:any){
     var url = this.eivrApiEndpoints['UserLogin'];
-    return this.httpClient.get(this.serviceBase+url+'?username='+userNmae+'&password='+password, this.textHttpHeader).pipe(
+    return this.httpClient.get(this.serviceBase+url+'?username='+userNmae+'&password='+password, this.jsonHttpHeader).pipe(
       map((res:any) => res)
     )
   }
@@ -103,14 +107,20 @@ export class CommonAppService {
     )
   }
   public getCallLogByContactId(key:any){
-    var url = this.eivrApiEndpoints['getLogByContactId'];
+    var url = this.eivrApiEndpoints['GetLogByContactId'];
     return this.httpClient.get(this.serviceBase+url+'?contactId='+key,this.jsonHttpHeader).pipe(
       map((res:any) => res)
     )
   }
   public getCallLogByPhoneNumber(key:any){
-    var url = this.eivrApiEndpoints['getLogByPhoneNumber'];
+    var url = this.eivrApiEndpoints['GetLogByPhoneNumber'];
     return this.httpClient.get(this.serviceBase+url+'?phoneNumber='+key,this.jsonHttpHeader).pipe(
+      map((res:any) => res)
+    )
+  }
+  public getCallLogByAccountNumber(key:any){
+    var url = this.eivrApiEndpoints['GetLogByAccountNumber'];
+    return this.httpClient.get(this.serviceBase+url+'?accountNo='+key,this.jsonHttpHeader).pipe(
       map((res:any) => res)
     )
   }
@@ -119,5 +129,29 @@ export class CommonAppService {
   }
   public getLoggedInStatus(): Observable<any> {
     return this.OnLoggedIn;
+  }
+  public getPaymentList(){
+    var date = this.todayDate();
+    var url = this.eivrApiEndpoints['PaymentList'];
+    return this.httpClient.get(this.serviceBase+url+'?dateString='+date, this.jsonHttpHeader).pipe(
+      map((res:any) => res)
+    )
+  }
+  public todayDate(){
+    var today = new Date();
+    this.day = today.getDate();
+    this.month = today.getMonth()+1; 
+    var yyyy = today.getFullYear();
+    // if(this.day<10) 
+    // {
+    //     this.day=this.day;
+    // } 
+    // if(this.month<10) 
+    // {
+    //     this.month='0'+this.month;
+    // } 
+    var todayDate = this.month+'/'+this.day+'/'+yyyy;
+    console.log(today);
+    return todayDate;
   }
 }

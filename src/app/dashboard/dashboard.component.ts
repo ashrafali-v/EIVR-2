@@ -149,7 +149,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       takeUntil(this.killTrigger),
       switchMap(() => this.dashboardService.getTodayCSRCount()),
       catchError(error => of('Error'))
-    ).subscribe(result => this.totalCSRCountToday = result);
+    ).subscribe(result =>{console.log(result); this.totalCSRCountToday = result.data});
 
     function yAxisTickFormatting(value) {
       return this.currencyTickFormatting(value);

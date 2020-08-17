@@ -17,6 +17,7 @@ import { CreateToggleComponent } from './modals/create-toggle/create-toggle.comp
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { HttpInterceptorProviders } from '../app/httpInterceptors/interceptor.providers';
 import { UserLogComponent } from './modals/user-log/user-log.component';
+import { ViewLogComponent } from './modals/view-log/view-log.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +29,7 @@ import { UserLogComponent } from './modals/user-log/user-log.component';
     DeleteMessageComponent,
     CreateToggleComponent,
     UserLogComponent,
+    ViewLogComponent,
   ],
   imports: [
     BrowserModule,
