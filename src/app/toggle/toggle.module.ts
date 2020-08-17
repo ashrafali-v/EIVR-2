@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
 import { ToastrService } from 'ngx-toastr';
-
+import { MalihuScrollbarModule } from 'ngx-malihu-scrollbar';
 @NgModule({
   declarations: [ToggleComponent],
   imports: [
@@ -14,7 +14,8 @@ import { ToastrService } from 'ngx-toastr';
     ToggleRoutingModule,
     FormsModule,
     NgbModule,
-    ToastrModule
+    ToastrModule,
+    MalihuScrollbarModule.forRoot()
   ],providers:[
     ToastrService
   ]
