@@ -58,7 +58,7 @@
             <div class="tile log">
                 <label>Logs</label>
                 <button type="button" title="View Log" (click)="viewUserLog(userLogInfo.logs)"><img _ngcontent-ppj-c188="" alt="" src="../../assets/infromation.svg"></button>
-                <div class="minhgt">
+                <div class="minhgt" malihu-scrollbar [scrollbarOptions]="scrollbarOptions">
                     <ul>
                         <li *ngFor="let logs of userLogInfo.logs">{{logs}}</li>
                     </ul>
@@ -90,7 +90,7 @@
                     </th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody malihu-scrollbar [scrollbarOptions]="scrollbarOptions">
                 <tr *ngFor="let call of callArray | slice : (currentPage-1) * pageSize : (currentPage-1) * pageSize + pageSize; let i = index">
                     <td data-label="Contact ID">
                        <a (click)="getUserLog(call.contactId)">{{call.contactId}}</a>
@@ -130,7 +130,7 @@
                     </th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody malihu-scrollbar [scrollbarOptions]="scrollbarOptions">
                 <tr *ngFor="let call of accountByArray | slice : (currentPage-1) * pageSize : (currentPage-1) * pageSize + pageSize; let i = index">
                     <td data-label="Contact ID">
                        <a (click)="getUserLog(call.contactId)">{{call.contactId}}</a>

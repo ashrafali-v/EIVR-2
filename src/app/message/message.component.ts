@@ -22,10 +22,12 @@ export class MessageComponent implements OnInit, OnDestroy {
   messageKey:any ='';
   loadingError$ = new Subject<boolean>();
   private observableSubscriptions = new SubSink();
-  constructor(private sharedService: CommonAppService, private modalService: NgbModal, public toastr: ToastrService) { }
+  public scrollbarOptions = { axis: 'y', theme: '3d-dark' };
+  constructor(private sharedService: CommonAppService, private modalService: NgbModal, public toastr: ToastrService) {
+    this.sharedService.setComponentStatus(true,true,true);
+   }
 
   ngOnInit(): void {
-    this.sharedService.setComponentStatus(true,true,true);
     this.messages$ =  this.sharedService.getAllMessages().pipe(
       catchError((error) =>{
         console.error('error loading the list of messages', error);

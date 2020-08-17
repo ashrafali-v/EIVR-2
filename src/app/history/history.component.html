@@ -34,7 +34,7 @@
                         </th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody malihu-scrollbar [scrollbarOptions]="scrollbarOptions">
                     <tr *ngFor="let payment of payments | slice : (currentPage-1) * pageSize : (currentPage-1) * pageSize + pageSize; let i = index">
                         <td>
                             {{payment.uniqueId}}

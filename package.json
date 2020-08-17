@@ -26,6 +26,7 @@
     "@swimlane/ngx-charts": "^14.0.0",
     "bootstrap": "^4.5.0",
     "jquery": "^3.5.1",
+    "ngx-malihu-scrollbar": "^9.0.0",
     "ngx-toastr": "^12.1.0",
     "rxjs": "~6.5.4",
     "subsink": "^1.0.1",
