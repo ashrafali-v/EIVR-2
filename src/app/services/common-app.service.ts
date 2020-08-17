@@ -1,6 +1,6 @@
-import { Injectable,Output,EventEmitter } from '@angular/core';
+import { Injectable, Output, EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { map} from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { ComponentStatus } from '../model/component.status';
 import { Observable } from 'rxjs';
 
@@ -13,25 +13,25 @@ export class CommonAppService {
   @Output() OnLoggedIn: EventEmitter<any> = new EventEmitter();
   jsonHttpHeader: any;
   textHttpHeader: any;
-  headerSatus:boolean = true;
-  asideSatus:boolean =true;
-  footerSatus:boolean=true;
+  headerSatus: boolean = true;
+  asideSatus: boolean = true;
+  footerSatus: boolean = true;
   componentStatus: any;
-  day:any;
-  month:any;
+  day: any;
+  month: any;
   serviceBase = 'https://d1y2d7gwuud31v.cloudfront.net:443/eivr/dashboard/';
   eivrApiEndpoints = {
-    UserLogin:'login/',
-    GetAllMessages:'getAllMessages/',
-    GetMessageByKey:'getMessageByKey/',
-    SaveMessage:'saveMessages/',
-    GetAllToggles:'getAllToggles/',
-    GetToggleByKey:'getToggleByKey/',
-    SaveToggle:'saveToggle/',
-    GetLogByContactId:'getContactId/',
-    GetLogByPhoneNumber:'getContactDetailByPhone/',
-    GetLogByAccountNumber:'getAccountByNo/',
-    PaymentList:'paymentList/'
+    UserLogin: 'login/',
+    GetAllMessages: 'getAllMessages/',
+    GetMessageByKey: 'getMessageByKey/',
+    SaveMessage: 'saveMessages/',
+    GetAllToggles: 'getAllToggles/',
+    GetToggleByKey: 'getToggleByKey/',
+    SaveToggle: 'saveToggle/',
+    GetLogByContactId: 'getContactId/',
+    GetLogByPhoneNumber: 'getContactDetailByPhone/',
+    GetLogByAccountNumber: 'getAccountByNo/',
+    PaymentList: 'paymentList/'
   }
   constructor(private httpClient: HttpClient) {
     this.componentStatus = new ComponentStatus();
@@ -41,36 +41,36 @@ export class CommonAppService {
       })
     }
     this.textHttpHeader = {
-      headers: new HttpHeaders({'Content-Type': 'application/json',  accept: 'text/plain'}),
+      headers: new HttpHeaders({ 'Content-Type': 'application/json', accept: 'text/plain' }),
       responseType: 'text'
     }
   }
-  public getUserLogin(userNmae:any,password:any){
+  public getUserLogin(userNmae: any, password: any) {
     var url = this.eivrApiEndpoints['UserLogin'];
-    return this.httpClient.get(this.serviceBase+url+'?username='+userNmae+'&password='+password, this.jsonHttpHeader).pipe(
-      map((res:any) => res)
+    return this.httpClient.get(this.serviceBase + url + '?username=' + userNmae + '&password=' + password, this.jsonHttpHeader).pipe(
+      map((res: any) => res)
     )
   }
-  public getAllMessages(){
+  public getAllMessages() {
     var url = this.eivrApiEndpoints['GetAllMessages'];
-    return this.httpClient.get(this.serviceBase+url, this.jsonHttpHeader).pipe(
-      map((res:any) => res)
+    return this.httpClient.get(this.serviceBase + url, this.jsonHttpHeader).pipe(
+      map((res: any) => res)
     )
   }
-  public getMessage(key:any){
-    var url = this.eivrApiEndpoints['GetMessageByKey']+'?messageKey='+key;
-    return this.httpClient.get(this.serviceBase+url, this.jsonHttpHeader).pipe(
-      map((res:any) => res)
+  public getMessage(key: any) {
+    var url = this.eivrApiEndpoints['GetMessageByKey'] + '?messageKey=' + key;
+    return this.httpClient.get(this.serviceBase + url, this.jsonHttpHeader).pipe(
+      map((res: any) => res)
     )
   }
-  public saveMessage(message:any){
+  public saveMessage(message: any) {
     var url = this.eivrApiEndpoints['SaveMessage'];
-    var data = {"messageKey":message.messageKey,"messageText":message.messageText};
-    return this.httpClient.post(this.serviceBase+url,data,this.jsonHttpHeader).pipe(
-      map((res:any) => res)
+    var data = { "messageKey": message.messageKey, "messageText": message.messageText };
+    return this.httpClient.post(this.serviceBase + url, data, this.jsonHttpHeader).pipe(
+      map((res: any) => res)
     )
   }
-  setComponentStatus(header:boolean,aside:boolean,footer:boolean){
+  setComponentStatus(header: boolean, aside: boolean, footer: boolean) {
 
     this.componentStatus.header = header;
     this.componentStatus.aside = aside;
@@ -80,65 +80,65 @@ export class CommonAppService {
   public getComponentStatus(): Observable<any> {
     return this.OnChange;
   }
-  setMenuToggle(status:boolean){
+  setMenuToggle(status: boolean) {
     this.Ontoggle.emit(status);
   }
   public getMenuToggle(): Observable<any> {
     return this.Ontoggle;
   }
-  public getAllToggles(){
+  public getAllToggles() {
     var url = this.eivrApiEndpoints['GetAllToggles'];
-    return this.httpClient.get(this.serviceBase+url, this.jsonHttpHeader).pipe(
-      map((res:any) => res)
+    return this.httpClient.get(this.serviceBase + url, this.jsonHttpHeader).pipe(
+      map((res: any) => res)
     )
   }
-  public searchToggle(key:any){
+  public searchToggle(key: any) {
     var url = this.eivrApiEndpoints['GetToggleByKey'];
-    return this.httpClient.get(this.serviceBase+url+'?toggleKey='+key, this.jsonHttpHeader).pipe(
-      map((res:any) => res)
+    return this.httpClient.get(this.serviceBase + url + '?toggleKey=' + key, this.jsonHttpHeader).pipe(
+      map((res: any) => res)
     )
   }
-  public saveToggle(data:any){
+  public saveToggle(data: any) {
     var url = this.eivrApiEndpoints['SaveToggle'];
-    return this.httpClient.post(this.serviceBase+url,data,this.jsonHttpHeader).pipe(
-      map((res:any) => res)
+    return this.httpClient.post(this.serviceBase + url, data, this.jsonHttpHeader).pipe(
+      map((res: any) => res)
     )
   }
-  public getCallLogByContactId(key:any){
+  public getCallLogByContactId(key: any) {
     var url = this.eivrApiEndpoints['GetLogByContactId'];
-    return this.httpClient.get(this.serviceBase+url+'?contactId='+key,this.jsonHttpHeader).pipe(
-      map((res:any) => res)
+    return this.httpClient.get(this.serviceBase + url + '?contactId=' + key, this.jsonHttpHeader).pipe(
+      map((res: any) => res)
     )
   }
-  public getCallLogByPhoneNumber(key:any){
+  public getCallLogByPhoneNumber(key: any) {
     var url = this.eivrApiEndpoints['GetLogByPhoneNumber'];
-    return this.httpClient.get(this.serviceBase+url+'?phoneNumber='+key,this.jsonHttpHeader).pipe(
-      map((res:any) => res)
+    return this.httpClient.get(this.serviceBase + url + '?phoneNumber=' + key, this.jsonHttpHeader).pipe(
+      map((res: any) => res)
     )
   }
-  public getCallLogByAccountNumber(key:any){
+  public getCallLogByAccountNumber(key: any) {
     var url = this.eivrApiEndpoints['GetLogByAccountNumber'];
-    return this.httpClient.get(this.serviceBase+url+'?accountNo='+key,this.jsonHttpHeader).pipe(
-      map((res:any) => res)
+    return this.httpClient.get(this.serviceBase + url + '?accountNo=' + key, this.jsonHttpHeader).pipe(
+      map((res: any) => res)
     )
   }
-  setLoggedInStatus(status:boolean){
+  setLoggedInStatus(status: boolean) {
     this.OnLoggedIn.emit(status);
   }
   public getLoggedInStatus(): Observable<any> {
     return this.OnLoggedIn;
   }
-  public getPaymentList(){
+  public getPaymentList() {
     var date = this.todayDate();
     var url = this.eivrApiEndpoints['PaymentList'];
-    return this.httpClient.get(this.serviceBase+url+'?dateString='+date, this.jsonHttpHeader).pipe(
-      map((res:any) => res)
+    return this.httpClient.get(this.serviceBase + url + '?dateString=' + '8/16/2020', this.jsonHttpHeader).pipe(
+      map((res: any) => res)
     )
   }
-  public todayDate(){
+  public todayDate() {
     var today = new Date();
     this.day = today.getDate();
-    this.month = today.getMonth()+1; 
+    this.month = today.getMonth() + 1;
     var yyyy = today.getFullYear();
     // if(this.day<10) 
     // {
@@ -148,7 +148,7 @@ export class CommonAppService {
     // {
     //     this.month='0'+this.month;
     // } 
-    var todayDate = this.month+'/'+this.day+'/'+yyyy;
+    var todayDate = this.month + '/' + this.day + '/' + yyyy;
     console.log(today);
     return todayDate;
   }
