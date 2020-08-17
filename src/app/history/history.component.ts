@@ -12,6 +12,7 @@ export class HistoryComponent implements OnInit {
   loadingError$ = new Subject<boolean>();
   currentPage: any = 1;
   pageSize: number = 10;
+  public scrollbarOptions = { axis: 'y', theme: '3d-dark' };
   constructor(private sharedService: CommonAppService) { this.sharedService.setComponentStatus(true,true,true); }
 
   ngOnInit(): void {

@@ -18,6 +18,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { HttpInterceptorProviders } from '../app/httpInterceptors/interceptor.providers';
 import { UserLogComponent } from './modals/user-log/user-log.component';
 import { ViewLogComponent } from './modals/view-log/view-log.component';
+import { MalihuScrollbarModule } from 'ngx-malihu-scrollbar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +42,7 @@ import { ViewLogComponent } from './modals/view-log/view-log.component';
     NgxChartsModule,
     ToastrModule.forRoot({
       closeButton: true}),
+    MalihuScrollbarModule.forRoot()
   ],
   providers: [HttpInterceptorProviders],
   bootstrap: [AppComponent]
