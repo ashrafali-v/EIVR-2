@@ -1,5 +1,5 @@
 .box-panel {
-    padding: $default-padding*2.5;
+    padding: $default-padding*1.5;
     background-color: $white;
     @include box-shadow($default-unit*2, $default-unit, $default-unit*6, $default-unit/2, rgba($dark, .05), $inset: false);
 }
