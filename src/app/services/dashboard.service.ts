@@ -13,7 +13,7 @@ export class DashboardService {
   componentStatus: any;
   queryParamObject:any ={"frequency":"DAILY","count":4};
   queryParams:any;
-  serviceBase = 'https://d1y2d7gwuud31v.cloudfront.net:443/eivr/dashboard/';
+  serviceBase = 'https://dbtyc7vkc3gw7.cloudfront.net/eivr/dashboard/';
   eivrApiEndpoints = {
     SystemHealth:'health/',
     TodayCallCount:'getTodayCallCount/',

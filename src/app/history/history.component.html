@@ -1,5 +1,5 @@
 <div class="app-toggle-content">
-    <h2>View Toggles</h2>
+    <h2>View History</h2>
     <div class="box-panel" *ngIf="paymentList$ | async as payments; else loadingOrError">
         <ng-container *ngIf="payments.length; else noItems">
             <table>
@@ -72,10 +72,10 @@
     </div>
     <ng-template #loadingOrError>
         <div *ngIf="loadingError$ | async; else loading">
-            Error loading the list of users. Please try again later.
+            Error loading the history. Please try again later.
         </div>
         <ng-template #loading>
-            Loading toggles...
+            Loading history...
         </ng-template>
     </ng-template>
 </div>
