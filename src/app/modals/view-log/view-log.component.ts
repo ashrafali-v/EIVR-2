@@ -9,7 +9,7 @@ export class ViewLogComponent implements OnInit {
   @Input() modalTitle: string;
   @Input() modalDescription: string;
   @Input() logs: any;
-  public scrollbarOptions = { axis: 'y', theme: '3d-dark' };
+  public scrollbarOptions = { axis: 'y', theme: 'dark-3' };
   constructor(public activeModal: NgbActiveModal) { }
   ngOnInit(): void {
   }
