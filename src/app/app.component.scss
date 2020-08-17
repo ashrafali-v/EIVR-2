@@ -28,8 +28,9 @@
                 max-width: calc(#{$full} - #{$default-unit*130});
                 width: $full;
                 margin-left: $default-unit*130;
+                margin-bottom: $default-margin*8;
                 transition: all .9s ease-in-out;
-                height: calc(#{$full} - 80px);
+                // height: calc(#{$full} - 80px);
                 app-header {
                     @include flex(0 0 auto);
                 }
@@ -67,6 +68,9 @@
             app-footer {
                 @include flex(10 0 $full);
                 z-index: 99;
+                position: fixed;
+                bottom: $null;
+                width: $full;
             }
             &.menu-hide {
                 app-aside {

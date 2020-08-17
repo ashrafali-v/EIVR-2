@@ -1,11 +1,15 @@
 @import '../../scss/eivr-master';
 ::ng-deep {
+    app-home {
+        height: $full;
+    }
     .banner-bg {
-        height: calc(#{$full} - 80px);
+        // height: calc(#{$full} - 80px);
+        height: $full;
         .img-ratio {
-            @include aspect-ratio(9, 9);
             @include device(lg) {
-                @include aspect-ratio(16, 9.9);
+                @include aspect-ratio(1.78, 1);
+                height: $full;
             }
             @include device(xxl) {
                 @include aspect-ratio(16, 9);
