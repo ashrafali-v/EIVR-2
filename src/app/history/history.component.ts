@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonAppService } from '../services/common-app.service';
 import { catchError,retry } from 'rxjs/operators';
 import { Subject,of } from 'rxjs';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { UserLogComponent } from '../modals/user-log/user-log.component';
 @Component({
   selector: 'app-history',
   templateUrl: './history.component.html',
@@ -13,7 +15,7 @@ export class HistoryComponent implements OnInit {
   currentPage: any = 1;
   pageSize: number = 10;
   public scrollbarOptions = { axis: 'y', theme: '3d-dark' };
-  constructor(private sharedService: CommonAppService) { this.sharedService.setComponentStatus(true,true,true); }
+  constructor(private sharedService: CommonAppService,private modalService: NgbModal) { this.sharedService.setComponentStatus(true,true,true); }
 
   ngOnInit(): void {
     this.paymentList$ = this.sharedService.getPaymentList().pipe(
@@ -24,6 +26,17 @@ export class HistoryComponent implements OnInit {
       }),
       retry(2)
     );
+  }
+  getUserLog(contactId:any){
+    const messageInfoModalRef = this.modalService.open(UserLogComponent, {
+      ariaLabelledBy: "modal-basic-title",
+      size: "xl",
+      scrollable: true,
+      backdrop: 'static'
+    });
+    messageInfoModalRef.componentInstance.modalTitle = "View User Info";
+    messageInfoModalRef.componentInstance.modalDescription = "View userlog description";
+    messageInfoModalRef.componentInstance.contactId = contactId; 
   }
 
 }

@@ -97,7 +97,7 @@ export class SearchComponent implements OnInit {
       scrollable: true,
       backdrop: 'static'
     });
-    messageInfoModalRef.componentInstance.modalTitle = "View User Log";
+    messageInfoModalRef.componentInstance.modalTitle = "View User Info";
     messageInfoModalRef.componentInstance.modalDescription = "View userlog description";
     messageInfoModalRef.componentInstance.contactId = contactId; 
   }
@@ -108,7 +108,7 @@ export class SearchComponent implements OnInit {
       scrollable: true,
       backdrop: 'static'
     });
-    messageInfoModalRef.componentInstance.modalTitle = "View User Log";
+    messageInfoModalRef.componentInstance.modalTitle = "View Log";
     messageInfoModalRef.componentInstance.modalDescription = "View userlog description";
     messageInfoModalRef.componentInstance.logs = userLog; 
   }

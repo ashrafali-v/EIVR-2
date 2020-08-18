@@ -19,7 +19,8 @@ export class CommonAppService {
   componentStatus: any;
   day: any;
   month: any;
-  serviceBase = 'https://d1y2d7gwuud31v.cloudfront.net:443/eivr/dashboard/';
+ // serviceBase = 'https://dbtyc7vkc3gw7.cloudfront.net/eivr/dashboard/';
+ serviceBase = 'https://d1y2d7gwuud31v.cloudfront.net/eivr/dashboard/';
   eivrApiEndpoints = {
     UserLogin: 'login/',
     GetAllMessages: 'getAllMessages/',
@@ -131,7 +132,7 @@ export class CommonAppService {
   public getPaymentList() {
     var date = this.todayDate();
     var url = this.eivrApiEndpoints['PaymentList'];
-    return this.httpClient.get(this.serviceBase + url + '?dateString=' + '8/16/2020', this.jsonHttpHeader).pipe(
+    return this.httpClient.get(this.serviceBase + url + '?dateString=' + date, this.jsonHttpHeader).pipe(
       map((res: any) => res)
     )
   }

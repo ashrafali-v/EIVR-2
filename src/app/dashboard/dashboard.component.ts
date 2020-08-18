@@ -44,6 +44,7 @@ export class ThousandSuffixesPipe implements PipeTransform {
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit, OnDestroy {
+  update$: Subject<any> = new Subject();
   systemHaelth$: any;
   totalCallCountToday: any;
   totalPaymentCountToday: any;
@@ -211,6 +212,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   //event handler for the select element's change event
   selectChangeHandler(event: any) {
     //update the ui
+    this.update$.next(true);
     this.period = event.target.value;
     var count = 4;
     this.dashboardService.setQueryParams(this.period,count);
