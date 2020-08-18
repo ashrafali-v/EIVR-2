@@ -19,7 +19,8 @@ export class CommonAppService {
   componentStatus: any;
   day: any;
   month: any;
-  serviceBase = 'https://dbtyc7vkc3gw7.cloudfront.net/eivr/dashboard/';
+ // serviceBase = 'https://dbtyc7vkc3gw7.cloudfront.net/eivr/dashboard/';
+ serviceBase = 'https://d1y2d7gwuud31v.cloudfront.net/eivr/dashboard/';
   eivrApiEndpoints = {
     UserLogin: 'login/',
     GetAllMessages: 'getAllMessages/',
