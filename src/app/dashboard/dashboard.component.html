@@ -111,7 +111,7 @@
                     <div class="visual-graph" *ngIf="noOfPaymentsProcessed != undefined || loaderPaymentsTab;else loadingError">
                         <h3>No of Payments Processed</h3>
                         <ng-container *ngIf="!loaderPaymentsTab; else loading">
-                            <div class="graph-box" style="max-height: 35vh">
+                            <div class="graph-box">
                                 <ngx-charts-bar-vertical-2d [scheme]="paymentChartsColorScheme" [results]="noOfPaymentsProcessed" [roundDomains]="true" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [groupPadding]="groupPadding" [barPadding]="barPadding">
                                 </ngx-charts-bar-vertical-2d>
                             </div>
@@ -136,7 +136,8 @@
                         <h3>Amount of Payments Processed</h3>
                         <ng-container *ngIf="!loaderPaymentsTab; else loading">
                             <div class="graph-box">
-                                <ngx-charts-bar-vertical-2d [scheme]="paymentChartsColorScheme" [results]="amountOfPaymentsProcessed" [roundDomains]="true" [yAxisTickFormatting]="currencyTickFormatting" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [groupPadding]="groupPadding" [barPadding]="barPadding">
+                                <ngx-charts-bar-vertical-2d [scheme]="paymentChartsColorScheme" [results]="amountOfPaymentsProcessed" [roundDomains]="true" [yAxisTickFormatting]="currencyTickFormatting" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [groupPadding]="groupPadding"
+                                    [barPadding]="barPadding">
                                     <ng-template #tooltipTemplate let-model="model">
                                         <p>{{model.name}}</p>
                                         <p class="ecs-tooltip">${{model.value | json}}</p>

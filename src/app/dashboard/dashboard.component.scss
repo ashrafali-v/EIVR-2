@@ -134,7 +134,8 @@
                         // @include ecs-typo($primary-font-regular, 400, 13px, 18px, $primary-dark-color);
                         padding: $default-padding*2 $null;
                         margin: $null $default-margin*2;
-                        // height: $default-unit*175;
+                        height: $default-unit*125;
+                        margin-bottom: $default-margin*4;
                     }
                     .filter-note {
                         @include flexbox();

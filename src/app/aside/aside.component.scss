@@ -29,4 +29,8 @@
             }
         }
     }
+    .footer-text {
+        @include ecs-typo($primary-font-regular, 500, 14px, 37px, $white);
+        text-align: center;
+    }
 }
