@@ -11,6 +11,8 @@
             // @include align-items(flex-end);
             app-aside {
                 @include flex(2 0 auto);
+                @include flexbox();
+                @include flex-direction(column);
                 background-color: $primary-dark-color;
                 align-self: stretch;
                 height: calc(#{$full} - 80px);
@@ -28,7 +30,7 @@
                 max-width: calc(#{$full} - #{$default-unit*130});
                 width: $full;
                 margin-left: $default-unit*130;
-                margin-bottom: $default-margin*8;
+                // margin-bottom: $default-margin*2;
                 transition: all .9s ease-in-out;
                 // height: calc(#{$full} - 80px);
                 app-header {
