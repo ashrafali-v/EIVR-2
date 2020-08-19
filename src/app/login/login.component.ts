@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit,AfterViewInit  {
   }
   ngOnInit(): void {
     if (localStorage.getItem('AccessToken') !== null) {
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/home']);
     }
   }
   ngAfterViewInit(){
@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit,AfterViewInit  {
     localStorage.AccessToken = token;
     this.isLoginInProgress = false;
     this.sharedService.setLoggedInStatus(true);
-    this.router.navigate(['dashboard']);
+    this.router.navigate(['home']);
   }
   loginError(error:any):void{
     this.isLoginInProgress = false;

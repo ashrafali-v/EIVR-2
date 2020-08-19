@@ -41,11 +41,17 @@
                             <button type="button" (click)="messageInfo(message)" title="View Message">
                                 <img alt="Information" src="../../assets/infromation.svg" alt="">
                             </button>
+                            <button type="button" (click)="editMessage(message)" title="Edit Message">
+                                <img alt="Edit Message" src="../../assets/edit.svg" alt="">
+                            </button>
+                            <!-- <button type="button" (click)="deleteMessage(message,i)">
+                                <img alt="Delete Message" src="../../assets/delete.svg" alt="">
+                            </button> -->
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <ngb-pagination size="sm" [(page)]="currentPage" [pageSize]="pageSize" [collectionSize]="messages.length" [maxSize]="5"></ngb-pagination>
+            <ngb-pagination *ngIf='messages.length > 10' size="sm" [(page)]="currentPage" [pageSize]="pageSize" [collectionSize]="messages.length" [maxSize]="5"></ngb-pagination>
         </ng-container>
         <ng-template #noItems>
             No Items found.!
