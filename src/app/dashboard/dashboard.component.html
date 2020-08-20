@@ -138,10 +138,6 @@
                             <div class="graph-box">
                                 <ngx-charts-bar-vertical-2d [scheme]="paymentChartsColorScheme" [results]="amountOfPaymentsProcessed" [roundDomains]="true" [yAxisTickFormatting]="currencyTickFormatting" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [groupPadding]="groupPadding"
                                     [barPadding]="barPadding">
-                                    <ng-template #tooltipTemplate let-model="model">
-                                        <p>{{model.name}}</p>
-                                        <p class="ecs-tooltip">${{model.value | json}}</p>
-                                    </ng-template>
                                 </ngx-charts-bar-vertical-2d>
                             </div>
                             <div class="filter-note">
@@ -213,7 +209,7 @@
             <div class="visual-grid">
                 <div class="visual-box half-width">
                     <div class="visual-graph" *ngIf="totalCallsRecieved != undefined || loaderCallsTab;else loadingError">
-                        <h3>TOTAL CALLS RECIVED</h3>
+                        <h3>TOTAL CALLS RECEIVED</h3>
                         <ng-container *ngIf="!loaderCallsTab; else loading">
                             <div class="graph-box">
                                 <ngx-charts-bar-vertical-2d [scheme]="totalCallsRecievedColorScheme" [results]="totalCallsRecieved" [roundDomains]="true" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [legendPosition]="legendPosition" [groupPadding]="groupPadding" [barPadding]="barPadding">
@@ -285,10 +281,13 @@
                 </div>
                 <div class="visual-box one-third-width">
                     <div class="visual-graph" *ngIf="averageDurationOfCalls != undefined || loaderCallsTab;else loadingError">
-                        <h3>AVERAGE DURATION OF CALLS</h3>
+                        <h3>AVERAGE DURATION OF CALLS (seconds)</h3>
                         <ng-container *ngIf="!loaderCallsTab; else loading">
                             <div class="graph-box">
                                 <ngx-charts-bar-vertical [results]="averageDurationOfCalls" [roundDomains]="true" [scheme]="averageDurationColorSceme" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis">
+                                    <!-- <ng-template #tooltipTemplate let-model="model">
+                                        <p>{{model.name}} {{model.value | json}} sec</p>
+                                    </ng-template> -->
                                 </ngx-charts-bar-vertical>
                             </div>
                             <div class="filter-note">
