@@ -48,7 +48,7 @@
             <div class="value-box">
                 <div class="value-contetnt">
                     <p>Total Calls</p>
-                    <h4>Recived</h4>
+                    <h4>Received</h4>
                     <div class="value-text">
                         <h3>{{totalCallCountToday}}</h3>
                     </div>
@@ -255,7 +255,7 @@
                         Error loading the chart. Please try again later.
                     </ng-template>
                 </div>
-                <div class="visual-box one-third-width">
+                <!-- <div class="visual-box one-third-width">
                     <div class="visual-graph" *ngIf="callsCompleted != undefined || loaderCallsTab;else loadingError">
                         <h3>CALLS COMPLETED</h3>
                         <ng-container *ngIf="!loaderCallsTab; else loading">
@@ -265,10 +265,6 @@
                             </div>
                             <div class="filter-note">
                                 <h5>2020</h5>
-                                <!-- <ul class="graph-bar-notes">
-                                    <li class="graph-bar-generated"><span></span>Generated</li>
-                                    <li class="graph-bar-rejected"><span></span>Rejected</li>
-                                </ul> -->
                             </div>
                         </ng-container>
                         <ng-template #loading>
@@ -278,8 +274,8 @@
                     <ng-template #loadingError>
                         Error loading the chart. Please try again later.
                     </ng-template>
-                </div>
-                <div class="visual-box one-third-width">
+                </div> -->
+                <div class="visual-box half-width">
                     <div class="visual-graph" *ngIf="averageDurationOfCalls != undefined || loaderCallsTab;else loadingError">
                         <h3>AVERAGE DURATION OF CALLS (seconds)</h3>
                         <ng-container *ngIf="!loaderCallsTab; else loading">
@@ -306,7 +302,7 @@
                         Error loading the chart. Please try again later.
                     </ng-template>
                 </div>
-                <div class="visual-box one-third-width">
+                <!-- <div class="visual-box one-third-width">
                     <div class="visual-graph" *ngIf="callsTerminatedBeforeCompletion != undefined || loaderCallsTab;else loadingError">
                         <h3>CALLS TERMINATED BEFORE COMPLETION</h3>
                         <ng-container *ngIf="!loaderCallsTab; else loading">
@@ -316,10 +312,6 @@
                             </div>
                             <div class="filter-note">
                                 <h5>2020</h5>
-                                <!-- <ul class="graph-bar-notes">
-                                    <li class="graph-bar-credit"><span></span>Generated</li>
-                                    <li class="graph-bar-debit"><span></span>Rejected</li>
-                                </ul> -->
                             </div>
                         </ng-container>
                         <ng-template #loading>
@@ -329,7 +321,7 @@
                     <ng-template #loadingError>
                         Error loading the chart. Please try again later.
                     </ng-template>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
