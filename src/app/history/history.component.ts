@@ -20,9 +20,16 @@ export class HistoryComponent implements OnInit {
   public scrollbarOptions = { axis: 'y', theme: '3d-dark' };
   model: NgbDateStruct;
   placement = 'bottom';
+  maxDate:any;
   constructor(private sharedService: CommonAppService,private modalService: NgbModal) { this.sharedService.setComponentStatus(true,true,true); }
 
   ngOnInit(): void {
+    const current = new Date();
+    this.maxDate = {
+      year: current.getFullYear(),
+      month: current.getMonth() + 1,
+      day: current.getDate()
+    };
     this.getPayementsList('today');
   }
   getUserLog(contactId:any){
@@ -52,7 +59,7 @@ export class HistoryComponent implements OnInit {
     );
   }
   public todayDate() {
-    var today = new Date();
+    const today = new Date();
     this.day = today.getDate();
     this.month = today.getMonth() + 1;
     var yyyy = today.getFullYear();

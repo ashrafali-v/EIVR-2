@@ -3,7 +3,7 @@
     <form class="form-inline">
         <div class="form-group">
           <div class="input-group">
-            <input class="form-control" placeholder="yyyy-mm-dd"
+            <input class="form-control" placeholder="yyyy-mm-dd" [maxDate]="maxDate"
                    name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker"
                    [placement]="placement" (ngModelChange)="getPayementsList('custom')" [positionTarget]="buttonEl">
             <div class="input-group-append">
