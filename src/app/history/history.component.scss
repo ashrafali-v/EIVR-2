@@ -1,6 +1,6 @@
 @import '../../scss/eivr-master';
 ::ng-deep {
-    .app-toggle-content {
+    .app-history-content {
         h2 {
             @include ecs-typo($primary-font-regular, 400, 20px, 37px, $nutral-dark-color);
             padding: $null;
@@ -12,27 +12,54 @@
             @include flex-direction(row);
             @include justify-content(flex-start);
             @extend .box-panel;
+            width: $full;
             +div {
                 margin-top: $default-margin*2;
             }
-            form {
-                @include align-self(center);
+            .eivr-search-box {
+                position: relative;
+                @include flexbox();
+                @include flex-direction(row);
+                @include justify-content(flex-start);
+                p {
+                    vertical-align: middle;
+                    @include align-self(center);
+                    @include ecs-typo($primary-font-regular, 400, 15px, 23px, $dark);
+                    margin-right: $default-margin;
+                }
+                .search-input {
+                    min-width: inherit;
+                    max-width: $default-unit*80;
+                    @include placeholder {
+                        @include ecs-typo($primary-font-regular, 400, 15px, 37px, $white);
+                    }
+                }
+                .calender {
+                    background-color: darken($primary-dark-color, 10%);
+                    @include border-radius( $null $default-padding*5 $default-padding*5 $null);
+                    @include ecs-typo($primary-font-regular, 400, 15px, 37px, $white);
+                    padding: $default-padding/2 $default-padding*2;
+                    border: none;
+                    &:hover {
+                        background-color: darken($primary-dark-color, 5%);
+                    }
+                }
             }
-            // .search-method {
-            //     @include flexbox();
-            //     @include flex-direction(row);
-            //     @include justify-content(flex-start);
-            //     vertical-align: middle;
-            //     p {
-            //         @include ecs-typo($primary-font-regular, 400, 14px, 14px, $dark);
-            //         margin-right: $default-margin;
-            //     }
-            //     label {
-            //         @include ecs-typo($primary-font-regular, 600, 14px, 14px, $dark);
-            //         margin-left: $default-margin;
-            //         margin-right: $default-margin;
-            //     }
-            // }
+        }
+        ngb-datepicker-month {
+            .ngb-dp-weekday {
+                @include ecs-typo($primary-font-regular, 700, 15px, 37px, $primary-dark-color);
+                font-style: normal;
+            }
+        }
+        ngb-datepicker {
+            transform: none !important;
+            top: $full !important;
+            left: inherit !important;
+            right: $null !important;
+            .btn-link {
+                color: $primary-dark-color;
+            }
         }
     }
 }
