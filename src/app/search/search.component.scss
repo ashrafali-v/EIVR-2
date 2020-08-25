@@ -25,10 +25,10 @@
                 vertical-align: middle;
                 // margin-right: $default-margin*2;
                 p {
-                    @include ecs-typo($primary-font-regular, 400, 13px, 23px, $dark);
+                    @include ecs-typo($primary-font-regular, 400, 15px, 23px, $dark);
                     margin-right: $default-margin;
-                    align-self: center;
-                    text-transform: uppercase;
+                    @include align-self(center);
+                    // text-transform: uppercase;
                 }
                 label {
                     @include ecs-typo($primary-font-regular, 600, 13px, 23px, $dark);
