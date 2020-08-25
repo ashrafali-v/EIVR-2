@@ -122,12 +122,15 @@ export class DashboardComponent implements OnInit, OnDestroy {
         case 'HEALTHY':
           this.health = 'HEALTHY';
           this.healthStatus = 'good';
+          break;
         case 'WARNING':
           this.health = 'WARNING';
           this.healthStatus = 'avarage';
+          break;
         case 'ERROR':
           this.health = 'ERROR';
           this.healthStatus = 'bad';
+          break;
         default:
           this.health = 'HEALTHY';
           this.healthStatus = 'good';

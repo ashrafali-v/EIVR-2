@@ -17,8 +17,6 @@ export class CommonAppService {
   asideSatus: boolean = true;
   footerSatus: boolean = true;
   componentStatus: any;
-  day: any;
-  month: any;
  // serviceBase = 'https://dbtyc7vkc3gw7.cloudfront.net/eivr/dashboard/';
  serviceBase = 'https://d1y2d7gwuud31v.cloudfront.net/eivr/dashboard/';
   eivrApiEndpoints = {
@@ -66,7 +64,7 @@ export class CommonAppService {
   }
   public saveMessage(message: any) {
     var url = this.eivrApiEndpoints['SaveMessage'];
-    var data = { "messageKey": message.messageKey, "messageText": message.messageText };
+    var data = { "messageKey": message.messageKey, "messageText": message.messageText,"messageFlow":message.messageFlow };
     return this.httpClient.post(this.serviceBase + url, data, this.jsonHttpHeader).pipe(
       map((res: any) => res)
     )
@@ -129,28 +127,10 @@ export class CommonAppService {
   public getLoggedInStatus(): Observable<any> {
     return this.OnLoggedIn;
   }
-  public getPaymentList() {
-    var date = this.todayDate();
+  public getPaymentList(date:any) {
     var url = this.eivrApiEndpoints['PaymentList'];
     return this.httpClient.get(this.serviceBase + url + '?dateString=' + date, this.jsonHttpHeader).pipe(
       map((res: any) => res)
     )
-  }
-  public todayDate() {
-    var today = new Date();
-    this.day = today.getDate();
-    this.month = today.getMonth() + 1;
-    var yyyy = today.getFullYear();
-    // if(this.day<10) 
-    // {
-    //     this.day=this.day;
-    // } 
-    // if(this.month<10) 
-    // {
-    //     this.month='0'+this.month;
-    // } 
-    var todayDate = this.month + '/' + this.day + '/' + yyyy;
-    console.log(today);
-    return todayDate;
   }
 }

@@ -28,6 +28,12 @@ export class MessageComponent implements OnInit, OnDestroy {
    }
 
   ngOnInit(): void {
+    this.getAllMessages();
+  }
+  ngOnDestroy() {
+    this.observableSubscriptions.unsubscribe();
+  }
+  getAllMessages(){
     this.messages$ =  this.sharedService.getAllMessages().pipe(
       catchError((error) =>{
         console.error('error loading the list of messages', error);
@@ -35,15 +41,9 @@ export class MessageComponent implements OnInit, OnDestroy {
         return of();
       })
     );
-    // this.observableSubscriptions.add(this.sharedService.getAllMessages().subscribe(data => {
-    //   this.getAllMessagesLoader = false;
-    //   this.messages = data;
-    // }));
-  }
-  ngOnDestroy() {
-    this.observableSubscriptions.unsubscribe();
   }
   editMessage(message: any) {
+    console.log(message);
     this.observableSubscriptions.add(this.sharedService.getMessage(message.messageKey).subscribe(data => {
       const updateMessageModalRef = this.modalService.open(UpdateMessageComponent, {
         ariaLabelledBy: "modal-basic-title",
@@ -107,9 +107,14 @@ export class MessageComponent implements OnInit, OnDestroy {
   searchMessage(){
     this.messages$.length = 0;
     if(this.messageKey != ''){
-      this.observableSubscriptions.add(this.sharedService.getMessage(this.messageKey).subscribe(data => {
-        this.messages$ = data;
-      }));
+      this.messageKey = this.messageKey.trim();
+      this.messages$ = this.sharedService.getMessage(this.messageKey).pipe(
+        catchError((error) =>{
+          console.error('error loading the list of messages', error);
+          this.loadingError$.next(true);
+          return of();
+        })
+      );
     }else{
       return false;
     }
@@ -117,10 +122,7 @@ export class MessageComponent implements OnInit, OnDestroy {
   clearSearchMessage(){
     if(this.messageKey != ''){
       this.messageKey = '';
-      this.observableSubscriptions.add(this.sharedService.getAllMessages().subscribe(data => {
-        this.getAllMessagesLoader = false;
-        this.messages$ = data;
-      }));
+      this.getAllMessages();
     }else {
       return false;
     }

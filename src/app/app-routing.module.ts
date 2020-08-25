@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: 'search', loadChildren: () => import('./search/search.module').then(m => m.SearchModule) },
   { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) },
   { path: 'history', loadChildren: () => import('./history/history.module').then(m => m.HistoryModule) },
-  { path: '',redirectTo: '/dashboard',pathMatch: 'full'},
+  { path: '',redirectTo: '/home',pathMatch: 'full'},
 ];
 
 @NgModule({

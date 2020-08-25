@@ -23,6 +23,12 @@ export class ToggleComponent implements OnInit {
   toggleKey:any='';
   loadingError$ = new Subject<boolean>();
   ngOnInit(): void {
+    this.getAllToggles();
+  }
+  enableToggle(event:any){
+    console.log(event);
+  }
+  getAllToggles(){
     this.toggles$ = this.sharedService.getAllToggles().pipe(
       catchError(error => {
         console.error('error loading the list of users', error);
@@ -32,13 +38,10 @@ export class ToggleComponent implements OnInit {
       retry(2)
     );
   }
-  enableToggle(event:any){
-    console.log(event);
-    
-  }
   searchToggle(){
     this.toggles$.length = 0;
     if(this.toggleKey != ''){
+      this.toggleKey = this.toggleKey.trim();
       this.toggles$ = this.sharedService.searchToggle(this.toggleKey).pipe(
         catchError((error) => {
           console.error('error loading the list of users', error);
@@ -53,13 +56,7 @@ export class ToggleComponent implements OnInit {
   claerSearchToggle(){
     if(this.toggleKey != ''){
       this.toggleKey = '';
-      this.toggles$ = this.sharedService.getAllToggles().pipe(
-        catchError((error) => {
-          console.error('error loading the list of users', error);
-          this.loadingError$.next(true);
-          return of();
-        })
-      );
+      this.getAllToggles();
     }else {
       return false;
     }
