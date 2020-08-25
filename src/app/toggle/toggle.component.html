@@ -45,7 +45,7 @@
             </table>
             <ngb-pagination *ngIf='toggles.length > 10' size="sm" [(page)]="currentPage" [pageSize]="pageSize" [collectionSize]="toggles.length" [maxSize]="5"></ngb-pagination>
         </ng-container>
-        <ng-template #noItems>No Items found.!</ng-template>
+        <ng-template #noItems>No items found.!</ng-template>
     </div>
     <ng-template #loadingOrError>
         <div *ngIf="loadingError$ | async; else loading">
