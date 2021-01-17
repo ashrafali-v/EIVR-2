@@ -1,0 +1,15 @@
+<div class="app-toggle-content">
+    <h2>Campaign Type</h2>
+    <div class="serach-component">
+        <div class="noti-list-container">
+            <ul>
+                <li *ngFor="let notificationType of notificationTypes" class="camapign-details">
+                    <span class="camapign-details">{{notificationType.name}}</span>
+                    <span class="camapign-details">{{notificationType.defaultMessage}}</span>
+                    <span class="camapign-details">{{notificationType.audioFile}}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <button class="btn btn-success" (click)="createNotificationType()">Create Notification Type123</button>
+</div>

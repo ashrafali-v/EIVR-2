@@ -1,0 +1,19 @@
+<div class="app-toggle-content">
+    <h2>Campaign Type</h2>
+    <div class="serach-component">
+        <div class="noti-list-container">
+            <ul>
+                <li *ngFor="let audioFile of audioFiles" class="audio-files">
+                    <audio controls>
+                        <source [src]="audioFile.url" type="audio/mpeg">
+                    </audio>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <input type="file" (change)="audFileSelected($event)" accept="audio/*">
+    <audio controls #arAudio>
+        <source [src]="audSrc" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+</div>
