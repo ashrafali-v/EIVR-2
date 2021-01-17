@@ -1,0 +1,37 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{modalTitle}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form action="" #createNotificationForm="ngForm">
+        <section>
+            <input type="text" name="campaignName" id="campaignName" required #campaignName="ngModel" ngModel placeholder="Campaign Name">
+            <div class="alert alert-danger" *ngIf="campaignName.touched && campaignName.invalid">
+                <div *ngIf="campaignName.errors.required"> This field cannot be empty</div>
+            </div>
+        </section>
+        <section>
+            <input type="text" name="campaignDefaultMessage" id="campaignDefaultMessage" required #campaignDefaultMessage="ngModel" ngModel placeholder="Campaign default message">
+            <div class="alert alert-danger" *ngIf="campaignDefaultMessage.touched && campaignDefaultMessage.invalid">
+                <div *ngIf="campaignDefaultMessage.errors.required"> This field cannot be empty</div>
+            </div>
+        </section>
+        <section>
+            <select name="audio-select" id="audio-select">
+                <option value="i" *ngFor="let audiofile of audioFiles;let i=index">{{audiofile.name}}</option>
+            </select>
+        </section>
+        <input type="file" name="campaignAudioFile" #campaignAudioFile="ngModel" (change)="audFileSelected($event)" ngModel accept="audio/*">
+    </form>
+
+    <audio controls #figAudio>
+        <source [src]="audSrc" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+</div>
+<div class="modal-footer">
+    <input type="button" class="btn btn-primary" value="Create" [disabled]="createNotificationForm.invalid" (click)="createNotification(createNotificationForm.value)">
+    <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Close</button>
+</div>

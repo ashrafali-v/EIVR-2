@@ -19,6 +19,9 @@ import { HttpInterceptorProviders } from '../app/httpInterceptors/interceptor.pr
 import { UserLogComponent } from './modals/user-log/user-log.component';
 import { ViewLogComponent } from './modals/view-log/view-log.component';
 import { MalihuScrollbarModule } from 'ngx-malihu-scrollbar';
+import { CreateNotificationTypeComponent } from './modals/create-notification-type/create-notification-type.component';
+import { CreateCampaignModalComponent } from './modals/create-campaign-modal/create-campaign-modal.component';
+import {SanitizerUrlPipe} from './modals/create-notification-type/create-notification-type.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +34,9 @@ import { MalihuScrollbarModule } from 'ngx-malihu-scrollbar';
     CreateToggleComponent,
     UserLogComponent,
     ViewLogComponent,
+    CreateNotificationTypeComponent,
+    CreateCampaignModalComponent,
+    SanitizerUrlPipe
   ],
   imports: [
     BrowserModule,
