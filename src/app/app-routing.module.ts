@@ -10,6 +10,10 @@ const routes: Routes = [
   { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) },
   { path: 'history', loadChildren: () => import('./history/history.module').then(m => m.HistoryModule) },
   { path: '',redirectTo: '/home',pathMatch: 'full'},
+  { path: 'campaigntype', loadChildren: () => import('./campaigntype/campaigntype.module').then(m => m.CampaigntypeModule) },
+  { path: 'arfile-upload', loadChildren: () => import('./arfile-upload/arfile-upload.module').then(m => m.ArfileUploadModule) },
+  { path: 'create-campaign', loadChildren: () => import('./create-campaign/create-campaign.module').then(m => m.CreateCampaignModule) },
+  { path: 'settings', loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule) },
 ];
 
 @NgModule({

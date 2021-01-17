@@ -1,0 +1,17 @@
+<div class="app-toggle-content">
+    <h2>Campaigns</h2>
+    <div class="serach-component">
+        <div class="noti-list-container">
+            <ul>
+                <li *ngFor="let campaign of campaigns" class="camapign-details">
+                    <span class="camapign-details">{{campaign.name}}</span>
+                    <span class="camapign-details">{{campaign.defaultMessage}}</span>
+                    <span class="camapign-details">{{campaign.startDate}}</span>
+                    <span class="camapign-details">{{campaign.endDate}}</span>
+                    <span class="camapign-details">{{campaign.audioFile}}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <button class="btn btn-success" (click)="createCampaign()">Create Campaign</button>
+</div>
