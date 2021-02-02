@@ -15,17 +15,17 @@ export class CampaigntypeComponent implements OnInit {
       {
         name:"test1",
         defaultMessage:"msg1",
-        audioFile:1
+        audioFile:{name:"Audio1",campaignType:"Type1",url:"url1"}
       },
       {
         name:"test2",
         defaultMessage:"msg2",
-        audioFile:1
+        audioFile:{name:"Audio2",campaignType:"Type2",url:"url2"}
       },
       {
         name:"test3",
         defaultMessage:"msg3",
-        audioFile:1
+        audioFile:{name:"Audio3",campaignType:"Type3",url:"url3"}
       }
     ]
   }

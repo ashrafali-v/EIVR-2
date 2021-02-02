@@ -2,13 +2,31 @@
     <h2>Campaign Type</h2>
     <div class="serach-component">
         <div class="noti-list-container">
-            <ul>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Message</th>
+                        <th scope="col">Audio File</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let notificationType of notificationTypes;let i=index;">
+                        <td>{{i+1}}</td>
+                        <td>{{notificationType.name}}</td>
+                        <td>{{notificationType.defaultMessage}}</td>
+                        <td>{{notificationType.audioFile.name}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- <ul>
                 <li *ngFor="let notificationType of notificationTypes" class="camapign-details">
                     <span class="camapign-details">{{notificationType.name}}</span>
                     <span class="camapign-details">{{notificationType.defaultMessage}}</span>
                     <span class="camapign-details">{{notificationType.audioFile}}</span>
                 </li>
-            </ul>
+            </ul> -->
         </div>
     </div>
     <button class="btn btn-success" (click)="createNotificationType()">Create Notification Type123</button>
