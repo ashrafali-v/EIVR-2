@@ -4,6 +4,8 @@
         <div class="noti-list-container">
             <ul>
                 <li *ngFor="let audioFile of audioFiles" class="audio-files">
+                    <span>{{audioFile.name}}</span>
+                    <span>{{audioFile.campaignType}}</span>
                     <audio controls>
                         <source [src]="audioFile.url" type="audio/mpeg">
                     </audio>

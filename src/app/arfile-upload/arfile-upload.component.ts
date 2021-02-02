@@ -13,10 +13,10 @@ export class ArfileUploadComponent implements OnInit {
 
   ngOnInit(): void {
     this.audioFiles = [
-      {name:'audio1',url:'adiourl1'},
-      {name:'audio2',url:'adiourl2'},
-      {name:'audio3',url:'adiourl3'},
-      {name:'audio4',url:'adiourl4'}
+      {name:'audio1',campaignType:"Type1",url:'adiourl1'},
+      {name:'audio2',campaignType:"Type3",url:'adiourl2'},
+      {name:'audio3',campaignType:"Type1",url:'adiourl3'},
+      {name:'audio4',campaignType:"Type2",url:'adiourl4'}
     ]
   }
   audFileSelected(event: any) {
