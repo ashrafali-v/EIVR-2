@@ -14,15 +14,25 @@ export class CreateCampaignComponent implements OnInit {
     this.campaigns = [
       {
         name:"test1",
-        notificationType:"notif1",
+        notificationType:{
+          id:'fdgf55',
+          name:"test1",
+          defaultMessage:"msg1",
+          audioFile:{name:"Audio1",campaignType:"Type1",url:"url1"}
+        },
         startDate:'12/01/2020',
         endDate:"12/22/2020",
         defaultMessage:"msg1",
-        audioFile:1
+        audioFile:1,
       },
       {
         name:"test2",
-        notificationType:"notif2",
+        notificationType:{
+          id:'fdgf55',
+          name:"test1",
+          defaultMessage:"msg1",
+          audioFile:{name:"Audio1",campaignType:"Type1",url:"url1"}
+        },
         startDate:'12/01/2020',
         endDate:"12/22/2020",
         defaultMessage:"msg2",
@@ -30,7 +40,12 @@ export class CreateCampaignComponent implements OnInit {
       },
       {
         name:"test3",
-        notificationType:"notif3",
+        notificationType:{
+          id:'fdgf55',
+          name:"test1",
+          defaultMessage:"msg1",
+          audioFile:{name:"Audio1",campaignType:"Type1",url:"url1"}
+        },
         startDate:'12/01/2020',
         endDate:"12/22/2020",
         defaultMessage:"msg3",
