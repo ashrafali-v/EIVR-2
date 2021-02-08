@@ -1,15 +1,14 @@
 import { Component, OnInit,ViewChild,ElementRef } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import {CreateArfileComponent} from '../modals/create-arfile/create-arfile.component'
 @Component({
   selector: 'app-arfile-upload',
   templateUrl: './arfile-upload.component.html',
   styleUrls: ['./arfile-upload.component.scss']
 })
 export class ArfileUploadComponent implements OnInit {
-  @ViewChild('arAudio') arAudio: ElementRef;
   audioFiles:any = [];
-  audSrc = '';
-  file: File;
-  constructor() { }
+  constructor(private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.audioFiles = [
@@ -19,12 +18,14 @@ export class ArfileUploadComponent implements OnInit {
       {name:'audio4',campaignType:"Type2",url:'adiourl4'}
     ]
   }
-  audFileSelected(event: any) {
-    console.log(event.target.files);
-    
-    if (event.target.files && event.target.files[0]) {
-      this.audSrc = URL.createObjectURL(event.target.files[0]);
-      this.arAudio.nativeElement.src = this.audSrc;
-    }
+  createARFile(){
+    const messageInfoModalRef = this.modalService.open(CreateArfileComponent, {
+      ariaLabelledBy: "modal-basic-title",
+      size: "xl",
+      scrollable: true,
+      backdrop: 'static'
+    });
+    messageInfoModalRef.componentInstance.modalTitle = "Create Notification Type";
+    messageInfoModalRef.componentInstance.modalDescription = "You can create a notification type";
   }
 }
