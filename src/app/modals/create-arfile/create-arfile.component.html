@@ -1,0 +1,33 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{modalTitle}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <h1>The audio element</h1>
+    <form action="" #createARFile="ngForm">
+        <section>
+            <input type="text" name="arfileName" id="arfileName" required #arfileName="ngModel" ngModel placeholder="AR File Name">
+            <div class="alert alert-danger" *ngIf="arfileName.touched && arfileName.invalid">
+                <div *ngIf="arfileName.errors.required"> This field cannot be empty</div>
+            </div>
+        </section>
+        <!-- <section>
+            <input type="text" name="campaignDefaultMessage" id="campaignDefaultMessage" required #campaignDefaultMessage="ngModel" ngModel placeholder="Campaign default message">
+            <div class="alert alert-danger" *ngIf="campaignDefaultMessage.touched && campaignDefaultMessage.invalid">
+                <div *ngIf="campaignDefaultMessage.errors.required"> This field cannot be empty</div>
+            </div>
+        </section> -->
+        <!-- <input type="file" name="campaignAudioFile" #campaignAudioFile="ngModel" ngModel accept="audio/*"> -->
+        <input type="file" (change)="audFileSelected($event)" accept="audio/*">
+        <audio controls #arAudio>
+            <source [src]="audSrc" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </form>
+</div>
+<div class="modal-footer">
+    <input type="button" class="btn btn-primary" value="Create" (click)="createARFileAction(createARFile.value)">
+    <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Close</button>
+</div>
