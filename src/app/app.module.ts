@@ -16,6 +16,7 @@ import { MalihuScrollbarModule } from 'ngx-malihu-scrollbar';
 import { CreateNotificationTypeComponent } from './modals/create-notification-type/create-notification-type.component'
 import { CreateCampaignModalComponent } from './modals/create-campaign-modal/create-campaign-modal.component';
 import {SanitizerUrlPipe} from './modals/create-notification-type/create-notification-type.component';
+import { CreateArfileComponent } from './modals/create-arfile/create-arfile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +25,8 @@ import {SanitizerUrlPipe} from './modals/create-notification-type/create-notific
     FooterComponent,
     CreateNotificationTypeComponent,
     CreateCampaignModalComponent,
-    SanitizerUrlPipe
+    SanitizerUrlPipe,
+    CreateArfileComponent
   ],
   imports: [
     BrowserModule,

@@ -24,6 +24,8 @@ export class CreateCampaignComponent implements OnInit {
         endDate:"12/22/2020",
         defaultMessage:"msg1",
         audioFile:1,
+        type:"type1",
+        status:true 
       },
       {
         name:"test2",
@@ -36,7 +38,9 @@ export class CreateCampaignComponent implements OnInit {
         startDate:'12/01/2020',
         endDate:"12/22/2020",
         defaultMessage:"msg2",
-        audioFile:2
+        audioFile:2,
+        type:"type2",
+        status:false
       },
       {
         name:"test3",
@@ -49,7 +53,9 @@ export class CreateCampaignComponent implements OnInit {
         startDate:'12/01/2020',
         endDate:"12/22/2020",
         defaultMessage:"msg3",
-        audioFile:3
+        audioFile:3,
+        type:"type3",
+        status:true 
       }
     ]
   }

@@ -13,9 +13,5 @@
             </ul>
         </div>
     </div>
-    <input type="file" (change)="audFileSelected($event)" accept="audio/*">
-    <audio controls #arAudio>
-        <source [src]="audSrc" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
+    <button class="btn btn-success" (click)="createARFile()">Create AR File</button>
 </div>
