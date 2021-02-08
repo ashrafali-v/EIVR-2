@@ -2,7 +2,44 @@
     <h2>Campaign Type</h2>
     <div class="serach-component">
         <div class="noti-list-container">
-            <table class="table">
+
+
+          <div class="table" id="results">
+  <div class='theader'>
+    <div class='table_header'>#</div>
+    <div class='table_header'>Name</div>
+    <div class='table_header'>Message</div>
+    <div class='table_header'>FourAudio File</div>
+    <div class='table_header'>Type</div>
+  </div>
+  <div class='table_row' *ngFor="let notificationType of notificationTypes;let i=index;">
+    <div class='table_small'>
+      <div class='table_cell'>Header One</div>
+      <div class='table_cell'>{{i+1}}</div>
+    </div>
+    <div class='table_small'>
+      <div class='table_cell'>Header Two</div>
+      <div class='table_cell'>{{notificationType.name}}</div>
+    </div>
+    <div class='table_small'>
+      <div class='table_cell'>Header Three</div>
+      <div class='table_cell'>{{notificationType.defaultMessage}}</div>
+    </div>
+    <div class='table_small'>
+      <div class='table_cell'>Header Four</div>
+      <div class='table_cell'>{{notificationType.audioFile.name}}</div>
+    </div>
+    <div class='table_small'>
+      <div class='table_cell'>Header Five</div>
+      <div class='table_cell'>{{notificationType.type}}</div>
+    </div>
+  </div>
+   
+ 
+</div>  
+
+
+            <!-- <table class="table">
                 <thead>
                     <tr>
                         <th scope="col"># </th>
@@ -21,7 +58,7 @@
                         <td>{{notificationType.type}}</td>
                     </tr>
                 </tbody>
-            </table>
+            </table> -->
             <!-- <ul>
                 <li *ngFor="let notificationType of notificationTypes" class="camapign-details">
                     <span class="camapign-details">{{notificationType.name}}</span>
@@ -30,6 +67,9 @@
                 </li>
             </ul> -->
         </div>
+        <div class="noti_button_box">
+             <button class="btn btn-success" (click)="createNotificationType()">Create Notification Type</button>
+        </div>
     </div>
-    <button class="btn btn-success" (click)="createNotificationType()">Create Notification Type</button>
+    
 </div>

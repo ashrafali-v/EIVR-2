@@ -1,5 +1,31 @@
 @import '../../scss/eivr-master';
 ::ng-deep {
+
+    .noti-list-container {float: left; width: 100%; padding-top: 20px;}
+
+    .table {display: table;text-align: center; width: 100%;margin:0; border-collapse: separate;}
+    .table_row {display: table-row;}
+    .theader {display: table-row;}
+    .table_header {display: table-cell;background: #020b7a;color: #fff;padding-top: 10px;padding-bottom: 10px;font-weight: 500;font-size: 14px;}
+    .table_row {background: #F9F9F9B0;}
+    .table_header:first-child {border-left: #ccc 1px solid;border-top-left-radius: 5px;}
+    .table_header:last-child {border-right: #eee 1px solid;border-top-right-radius: 5px;}
+    .table_small {display: table-cell;}
+    .table_row > .table_small > .table_cell:nth-child(odd) {display: none;background: #bdbdbd;color: #e5e5e5;padding-top: 10px;padding-bottom: 10px;}
+    .table_row > .table_small > .table_cell {padding: 12px 0;color: #000;border-bottom: #ccc 1px solid;font-size: 12px;}
+    .table_row > .table_small:first-child > .table_cell {border-left: #ccc 1px solid;}
+    .table_row > .table_small:last-child > .table_cell {border-right: #ccc 1px solid;}
+    .table_row:last-child > .table_small:last-child > .table_cell:last-child {border-bottom-right-radius: 5px;}
+    .table_row:last-child > .table_small:first-child > .table_cell:last-child {border-bottom-left-radius: 5px;}
+    .table_row:nth-child(2n + 3) { background: #f4f4f4;}
+
+    .noti_button_box{ float:left; width:100%; text-align:center;}
+    .noti_button_box .btn.btn-success{ margin-top:20px; font-size: 14px;padding: 12px 32px;}
+
+    .login-inherits .app-toggle-content .serach-component{display:inline-block; width: 100%;}
+
+
+
     .app-toggle-content {
         h2 {
             @include ecs-typo($primary-font-regular, 400, 20px, 30px, $nutral-dark-color);
@@ -101,8 +127,7 @@
                         max-height: $default-unit*220;
                     }
                 }
-                .fas {
-                    margin-left: $default-margin;
+                .fas {margin-left: $default-margin;
                     color: $primary-dark-color;
                 }
             }
